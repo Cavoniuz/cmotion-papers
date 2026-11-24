@@ -1,0 +1,1530 @@
+
+
+
+
+
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,bm,mathtools}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xurl}
+\usepackage[expansion=false]{microtype}
+\setlength{\emergencystretch}{3em}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\usepackage[backend=biber,style=numeric,sorting=none,maxnames=6,uniquename=false,url=false]{biblatex}
+\AtEveryBibitem{\clearfield{note}\clearfield{annotation}\clearfield{keywords}}
+\AtBeginBibliography{\raggedright\small\setlength{\bibitemsep}{0pt}}
+\addbibresource{cmotion_foundational_general.bib}
+\addbibresource{cmotion_primary_research.bib}
+\addbibresource{cmotion_internal_manuscripts.bib}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\cmotion}{\mbox{C-Motion}}
+\newcommand{\ElEmEr}{\mbox{ElEmEr}}
+\newcommand{\cmc}{c}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\UU}{\mathrm{U}(1)}
+\newcommand{\SU}{\mathrm{SU}(2)}
+\newcommand{\SO}{\mathrm{SO}(3)}
+\newcommand{\Order}{\mathcal{O}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\ket}[1]{\left|#1\right\rangle}
+\newcommand{\bra}[1]{\left\langle#1\right|}
+
+\newcommand{\statusDerived}{\textcolor{green!50!black}{\textbf{Derived}}}
+\newcommand{\statusModelDerived}{\textcolor{cyan!55!black}{\textbf{Model-derived}}}
+\newcommand{\statusStructural}{\textcolor{blue!55!black}{\textbf{Structural}}}
+\newcommand{\statusAssumed}{\textcolor{orange!80!black}{\textbf{Assumed}}}
+\newcommand{\statusConditional}{\textcolor{yellow!60!black}{\textbf{Conditional}}}
+\newcommand{\statusNegative}{\textcolor{red!65!black}{\textbf{Negative}}}
+\newcommand{\statusConjectural}{\textcolor{magenta!65!black}{\textbf{Conjectural}}}
+\newcommand{\statusDeferred}{\textcolor{gray!70!black}{\textbf{Deferred}}}
+\newcommand{\statusOpen}{\textcolor{red!75!black}{\textbf{Open}}}
+\newcommand{\statusSharpOpen}{\textcolor{red!35!black}{\textbf{Open (sharp)}}}
+\newcommand{\statusRetracted}{\textcolor{red!80!black}{\textbf{Retracted}}}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black,
+  pdftitle={Quantum Foundations in C-Motion: From Recurrent Field Organization to Effective Quantum Dynamics},
+  pdfauthor={Toma Kavonius}
+}
+
+\title{\textbf{Quantum Foundations in \cmotion:\\
+From Recurrent Field Organization to Effective Quantum Dynamics}}
+\author{Toma Kavonius}
+\date{24 November 2026}
+
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\small\itshape
+Scope and limitations.  This manuscript presents a bounded effective route from the
+C-Motion framework toward one-particle quantum dynamics.  Imported normalization,
+conditional operator assumptions, and unresolved quantum-measurement completion are
+identified explicitly.
+\end{center}
+\vspace{0.6em}
+
+\begin{abstract}
+The C-Motion framework asks whether recurrent organization of a field
+propagating locally at speed $c$ can support an effective one-particle quantum
+description without taking point particles or complex wavefunctions as primitives.
+We examine a restricted free operator class rather than a selected microscopic
+ElEmEr law.  Given a translation-invariant Hermitian local first-order sector,
+isotropic $\pm c$ characteristics, an unsplit nonzero gap, and an independently
+assumed even-squared-symbol condition, its matrices satisfy Clifford relations.
+The resulting massive square-root branches admit a controlled low-momentum
+Schr\"odinger envelope.  A reconstructed quadratic branch action then yields a
+continuous phase charge and translation charges while leaving the absolute
+action scale $J_0$ undetermined; neither physical $Q=1$ nor $J_0=\hbar$ is
+derived.
+
+Within this free effective sector, Fourier uncertainty and superposition
+follow.  Tunnelling and the hydrogen gross spectrum additionally require
+supplied interaction and bound-state reductions.  Spinorial $4\pi$ return is
+available as a representation structure, not a derived matter identity or
+exchange law.  Physical conjugate closure branches offer a conjectural
+antimatter interpretation, but complex conjugation alone does not establish
+physical charge conjugation or opposite gauge current.  The counterexamples
+and exclusions identify why local-$c$ propagation and a gap alone cannot select
+the required operator or physical complex/positive-frequency structure.
+Microscopic closure dynamics, gap and branch selection, the action quantum,
+fermionic exchange, Born probabilities, and definite measurement outcomes
+remain unresolved.  Recovering established Dirac and Schr\"odinger mathematics
+conditionally is a consistency analysis, not independent empirical validation
+of the proposed field ontology.
+\end{abstract}
+
+\medskip
+
+\section{Introduction: from recurrent field organization to quantum dynamics}
+\label{sec:scope}
+
+Quantum mechanics is extraordinarily successful at predicting amplitudes, spectra, and
+measurement statistics.  A deeper physical question remains: what sort of underlying motion
+could make its one-particle wave dynamics natural?  \cmotion{} approaches that question from
+a field-first picture.  It does not begin by declaring a complex wavefunction, a particle
+Hamiltonian, or an action quantum to be primitive.  Instead it asks how much of those
+structures can arise once local-$c$ propagation becomes recurrently organized.
+
+The Main Framework supplies the common starting point \cite{CmotionMainFramework2026}.  The
+proposed underlying dynamical field/state structure is \textbf{Elemental Motion Resonance
+(ElEmEr)}.  Its resolved primitive changes propagate through physical three-space at local
+speed $c$.  A primitive succession parameter $s$ records the before--after ordering of that
+change; it is an evolution parameter, not a fourth spatial-like dimension and not ordinary
+clock time.  A \emph{closure} is a localized or otherwise persistent recurrent organization of
+the field, while an open mode propagates without such return.  In this paper a \emph{mode}
+means a solution or spectral component of an effective linear evolution, and a \emph{branch}
+means one of its separated spectral families, such as the positive- and negative-frequency
+families obtained below.
+
+A closure should not be interpreted as necessarily arising from a
+single propagation component bending into a closed path. Investigated
+kinematic pictures include a localized ElEmEr field packet returning
+and potentially overlapping itself, and a coherent recurrent
+organization containing oppositely directed propagation contributions
+of one underlying field. These are distinct descriptions whose
+physical equivalence has not been established. Their directional
+momentum contributions may balance while primitive local propagation
+remains at $c$, permitting rest-like collective motion with continuing
+internal activity.
+
+Such kinematic possibilities do not themselves establish
+self-confinement. In particular, cancelling net momentum does not
+automatically cancel the stresses relevant to an isolated stationary
+closure. The required stress balance, microscopic interaction, capture,
+finite-size selection and stability remain unresolved. Neither picture
+requires every closure to consist of exactly two waves or permanent
+field constituents.
+
+This gives the quantum discussion a concrete starting picture.  A particle-like object is not
+treated as a primitive point carrying an attached wave.  It is instead approached as an
+organized field state whose primitive propagation can remain local at $c$ while the recurrent
+pattern has its own slower collective motion and internal return structure.  Carrier-like phase
+variation and a slowly varying envelope are therefore two descriptions of one field
+configuration, not two material substances.
+
+Within an effective recurrent mode, phase may be pictured as keeping track of position within a
+repeatable cycle.  Only phase differences and phase evolution enter the observable relations
+used below; shifting the common phase origin is a symmetry of the reconstructed branch action.
+This physical picture motivates the later phase/action construction without claiming that a
+unique microscopic phase variable or complex state space has already been selected by the
+underlying field dynamics.
+
+It is equally important to keep three physical layers separate: linear propagation within the
+effective branch, formation and stabilization of a persistent closure, and interaction with an
+environment or apparatus.  The same symbol $\Psi$ can participate in descriptions of more than
+one layer, but success in the linear branch does not by itself solve closure formation or
+measurement.
+
+The quantum problem can then be stated physically:
+\begin{quote}
+\emph{If primitive propagation remains local at $c$, can recurrent internal organization
+produce a phase/action structure, a rest-like energy scale, spinorial rotation properties,
+and a low-energy envelope whose dynamics becomes Schrödinger-like?  If so, where do genuinely
+quantum ingredients such as the absolute action scale, action quantization, and measurement
+probabilities still have to enter?}
+\end{quote}
+
+The constructive chain developed here is
+\begin{equation}
+\boxed{
+\begin{gathered}
+\text{local-$c$ field organization}
+\longrightarrow
+\text{first-order spinorial sector}
+\longrightarrow
+\text{gapped branch}\\
+\longrightarrow
+\text{effective mass scale}
+\longrightarrow
+\text{Schrödinger envelope}\\
+\longrightarrow
+\text{action/translation charges}
+\longrightarrow
+\text{one-particle quantum regime.}
+\end{gathered}}
+\label{eq:readerchain}
+\end{equation}
+The first arrow is not yet a microscopic derivation: the effective first-order operator and
+the nonzero gap remain additional assumptions.  The value of the chain is that, once those
+upstream structures are supplied, several later steps are no longer independent quantum
+postulates.
+
+The common notions of primitive succession, local-$c$ propagation, operational time,
+field-first interaction, and the generic distinction between energy and action are taken from
+the Main Framework rather than rederived here \cite{CmotionMainFramework2026}.  Local gauge
+architecture and Maxwell dynamics are treated separately in
+\emph{Gauge Architecture and Constraints in C-motion I: Recurrent Closure,
+Native Constraints, and Conditional Gauge Structure} \cite{CmotionSMStructureI2026}.  Born probabilities, apparatus coupling, and definite
+single outcomes remain part of the separate, publication-deferred measurement-completion problem.  The formal scientific-status and provenance
+bookkeeping for the results used here is collected in \Cref{app:status}; the main text is
+organized around the physical argument.
+
+\subsection{Contribution relative to established theory}
+\label{sec:contribution}
+
+The algebraic link between a relativistic first-order multicomponent wave
+operator, anticommuting matrices and a massive dispersion relation is part of
+the established Dirac/Clifford framework \cite{Dirac1928Electron,LawsonMichelsohn1989SpinGeometry}.
+The nonrelativistic reduction of that framework is likewise established
+\cite{FoldyWouthuysen1950,Sakurai2017Modern}, as is the correspondence between
+continuous action symmetries and conserved charges \cite{Noether1918}.
+The present paper does \emph{not} claim originality for those algebraic or
+low-energy formulas, nor does their reproduction count as independent
+experimental support for \cmotion{}.
+
+The contribution assessed here is more specific.  First, a recurrent-field
+interpretation motivates a restricted effective first-order model class,
+but the actual operator and its gap are declared as unproved inputs.
+Second, \Cref{sec:antecedents,sec:clifford} makes the hypotheses of the
+Clifford reduction explicit and exhibits why an independent even-squared-symbol
+condition is necessary in the tested class; local speed $c$ and a gap alone do
+not select the massive square-root branch.  Third, the isolated spectral
+branch, its low-momentum envelope and its reconstructed quadratic action are
+kept distinct from physical branch selection and from a microscopic closure
+solution.  Fourth, the resulting continuous action charge identifies precisely
+why $Q=1$ and the empirical scale $J_0=\hbar$ require further physical input.
+The scoped negative results on free localization, physical complex-structure
+selection and sector/statistics identification serve the same purpose: they
+exclude shortcuts, not alternative microscopic theories generally.
+
+Thus this is a \emph{conditional reconstruction and constraint analysis}, with
+a proposed C-Motion interpretation of the assumptions, not a derivation of
+ordinary quantum mechanics from established ElEmEr field equations.  It does
+not yet predict a deviation from the conventional one-particle theory or
+identify an observation that favors the proposed ontology.  Its testable
+value at this stage lies in making the missing constitutive and selection
+mechanisms explicit, so that proposed native completions can be evaluated
+against them.
+
+\section{From local-\texorpdfstring{$c$}{c} propagation to a gapped effective sector}
+\label{sec:antecedents}
+
+Primitive local-$c$ propagation by itself describes open propagation, not a massive particle.
+Recurrence introduces a second scale of description.  The field can keep propagating locally at
+$c$ while an organized return pattern carries a repeatable internal phase and the pattern as a
+whole changes more slowly.  A recurrent structure therefore motivates looking for a
+characteristic internal frequency, but recurrence alone does not determine its value or even
+guarantee the particular spectral form used here.
+
+In the effective sector studied below, that internal scale appears as a nonzero spectral
+\emph{gap}.  We denote the half-gap by $\Delta>0$.  Here $\Delta$ is specifically the frequency
+separation between the zero-frequency reference and the two gapped spectral families produced
+by the operator.  It should not be silently identified with every recurrence frequency that a
+future microscopic closure might possess.  The present theory does not yet derive what
+microscopic closure dynamics creates or selects $\Delta$.
+
+To ask what a local-$c$ gapped sector is allowed to look like, we make five explicit effective
+assumptions:
+\begin{enumerate}[leftmargin=*,label=\textbf{A\arabic*:},ref=A\arabic*]
+\item\label{ass:qf-A1} \textbf{Local linear first-order Hermitian evolution.}  In the free sector of interest, the
+resolved effective field obeys a Hermitian evolution equation first order in primitive
+succession $s$ and first order in spatial derivatives.
+\item\label{ass:qf-A2} \textbf{Translation-invariant free region.}  The coefficients are constant where the
+free symbol, spectral branches, and translation charges are constructed.
+\item\label{ass:qf-A3} \textbf{Exact isotropic characteristic speed.}  Removing the gap leaves only the
+isotropic characteristics $\omega=\pm c|\mathbf k|$.
+\item\label{ass:qf-A4} \textbf{Unsplit zero-momentum gap.}  At $\mathbf k=0$, the Hermitian gap
+symbol has only the spectral values $+\Delta$ and $-\Delta$, with $\Delta>0$
+(and possible multiplicities), rather than several inequivalent gap magnitudes.
+\item\label{ass:qf-A5} \textbf{Even squared free symbol.}  For the constant-coefficient free
+symbol $h(\mathbf k)=cA^jk_j+\Delta B$, the selected unsplit sector obeys
+$h(\mathbf k)^2=h(-\mathbf k)^2$ for every $\mathbf k$.  This excludes
+momentum-odd contributions to the \emph{squared} generator; it is an
+independent restriction on the effective model class, not a consequence of local
+$c$-propagation or a proof of microscopic parity symmetry.
+\end{enumerate}
+
+The first-order form, the gap, and the unsplit squared-symbol property are upstream
+effective assumptions.  Translation invariance is an effective free-sector condition.  The
+isotropic characteristic speed is how the inherited local-$c$ premise is represented inside
+this operator class.  The physical meaning of $\Delta$ beyond the spectrum remains to be
+supplied by closure dynamics; in particular, it is not identified here with a primitive
+electroweak bare mass.  Conditions A4 and A5 are deliberately stronger than merely requiring
+some isotropic nonzero gap: other first-order models may have split or shifted branches.
+
+These restrictions pose a sharp mathematical question: which matrix algebra realizes a
+local first-order evolution with exactly isotropic gapless characteristics, a single
+zero-momentum gap magnitude, and an even squared symbol?  For finite-dimensional complex realizations, the algebraic answer is Clifford
+structure; irreducibility is needed only for the subsequent minimality and
+action-uniqueness statements.  The evenness condition is not derived
+from the other four assumptions.
+
+\section{Why Clifford structure appears}
+\label{sec:clifford}
+
+A single scalar amplitude can describe a wave magnitude, but it has too little internal
+structure to represent several first-order propagation directions together with an isotropic
+mixer without introducing direction-dependent artifacts.  The multicomponent field used here
+provides an internal state space in which direction-sensitive propagation and direction-neutral
+mixing can coexist.  Its components are effective internal coordinates; they are not identified
+here with electric/magnetic fields, weak chirality, particle/antiparticle labels, or any other
+empirical pair.
+
+The role of the internal matrices is to encode that structure while keeping the characteristic
+speed independent of spatial direction.  This is precisely the algebraic problem solved by a
+Clifford representation.  We write the effective evolution as
+\begin{equation}
+ i\partial_s\Psi=H_s\Psi,
+ \qquad
+ H_s=-icA^j\partial_j+\Delta B,
+ \label{eq:firstorder}
+\end{equation}
+where $\Psi$ is an $N$-component effective field and the constant matrices $A^j$ and $B$ are
+Hermitian.  The matrices $A^j$ govern the directional first-order propagation; $B$ mixes the
+internal components in the gapped sector.  The operator $H_s$ has units of inverse
+succession interval (angular frequency).  When the universal action-normalization slot
+$J_0$ is introduced below, the corresponding effective energy generator is
+$H_E:=J_0H_s$; thus $iJ_0\partial_s\Psi=H_E\Psi$.  This is a generator convention,
+not an identification of primitive succession with an independently measured clock time.
+
+\begin{theorem}[Clifford reduction of the effective sector]
+\label{thm:clifford}
+Under A1--A5 in \Cref{sec:antecedents}, for a finite-dimensional complex
+realization of the selected gapped sector, the coefficients satisfy
+\begin{align}
+ \{A^i,A^j\}&=2\delta^{ij}I,\label{eq:cliffA}\\
+ B^2&=I,\qquad \{A^i,B\}=0.\label{eq:cliffB}
+\end{align}
+Consequently the momentum-space Hermitian symbol
+\begin{equation}
+ h(\mathbf k)=cA^j k_j+\Delta B
+\end{equation}
+satisfies
+\begin{equation}
+ \boxed{h(\mathbf k)^2=(\Delta^2+c^2|\mathbf k|^2)I},
+ \label{eq:squaresymbol}
+\end{equation}
+and therefore has the two spectral values
+\begin{equation}
+ \boxed{\omega_\pm(\mathbf k)=\pm\sqrt{\Delta^2+c^2|\mathbf k|^2}}.
+ \label{eq:dispersion}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The gapless symbol is $h_0(\mathbf k)=cA^j k_j$.  Exact isotropic $\pm c$
+characteristics require $h_0(\mathbf k)^2=c^2|\mathbf k|^2I$ for every $\mathbf k$.
+Comparison of the quadratic coefficients gives \eqref{eq:cliffA}.  With the constant mixer,
+\[
+h(\mathbf k)^2=c^2|\mathbf k|^2I+c\Delta k_j\{A^j,B\}+\Delta^2B^2.
+\]
+The zero-momentum spectrum consists only of $\pm\Delta$; since $B$ is Hermitian,
+this fixes $B^2=I$.  Assumption A5 makes the square equal at $\mathbf k$ and
+$-\mathbf k$.  Subtracting the two displayed squared symbols gives
+$2c\Delta k_j\{A^j,B\}=0$ for all $\mathbf k$, and hence
+$\{A^j,B\}=0$ (as $\Delta>0$).  Equation~\eqref{eq:squaresymbol} and the
+eigenvalues \eqref{eq:dispersion} follow.
+\end{proof}
+
+No step of this algebraic proof requires irreducibility. Reducible direct sums
+also satisfy the relations; minimal representation dimension and the scalar
+commutant used later require their separate irreducibility hypothesis.
+The square-root dispersion follows algebraically within this restricted operator class;
+it is not an independently postulated dispersion relation.  To see why the fifth
+assumption matters, consider the Hermitian four-component example
+$A^j=\sigma_j\otimes I_2$ and $B=I_2\otimes\sigma_3$, with Pauli matrices
+$\sigma_j$.  It has the stipulated gapless $\pm c|\mathbf k|$ spectrum and
+zero-momentum eigenvalues $\pm\Delta$, but $[A^j,B]=0$, giving the shifted
+branches $\pm c|\mathbf k|\pm\Delta$, not \eqref{eq:dispersion}.
+Thus the unsplit squared-symbol condition is a separate effective-model assumption.  Merely supplying local
+first-order isotropic propagation and a nonzero gap does \emph{not} force this particular
+massive-looking branch.  C-Motion has not derived the microscopic first-order operator,
+the gap mechanism, or the physical selection of this unsplit sector.
+
+\subsection{What the Clifford structure gives---and what it does not}
+
+The smallest complex gapless block has dimension two, while the smallest block admitting an
+independent anticommuting gap mixer has dimension four
+\cite{LawsonMichelsohn1989SpinGeometry}.  This gives a natural spinorial container for the
+gapped branch and fixes its dispersion, but it does not yet make a localized particle.  The
+translation-invariant free Clifford operator has no nonzero square-integrable stationary
+eigenstate: at fixed energy its Fourier support lies on a measure-zero shell.  Some additional
+interaction or closure dynamics is therefore required to localize the branch physically.
+
+The same representation theory also supplies a clean exclusion.  Irreducible complex
+Clifford/Weyl module dimensions occur in powers of two, so the observed three fermion families
+cannot simply be the dimension of one such module.  The result says where the family
+multiplicity does \emph{not} come from; it does not supply a replacement family mechanism.
+Likewise the spectral gap $\Delta$ is not, by itself, a derivation of weak chirality, a
+scalar/Higgs mechanism, or a primitive gauge-invariant charged-lepton mass.
+
+\section{From the gapped branch to the Schrödinger envelope}
+\label{sec:schbridge}
+
+The gapped spectrum contains two separated frequency families.  A \emph{positive-frequency
+branch} is the family with $\omega=+\sqrt{\Delta^2+c^2k^2}$; choosing it means restricting the
+effective state to that spectral subspace.  Mathematically this selects one sense of phase
+evolution in the gapped sector.  The projector performs that restriction cleanly, but it is not
+itself a physical law explaining why nature should occupy that branch.
+
+Once the branch is chosen, two scales become visible.  The factor set by $\Delta$ advances
+rapidly even for very small spatial momentum, whereas the extra phase associated with spatial
+modulation changes slowly when $c|\mathbf k|\ll\Delta$.  This is the familiar
+carrier--envelope separation used for modulated waves: the fast factor and the slow envelope
+are parts of one field state.  Here that separation is what turns the square-root spectrum into
+a low-energy one-particle envelope dynamics.
+
+Define
+\begin{equation}
+ \Omega_k=\sqrt{\Delta^2+c^2|\mathbf k|^2},
+ \qquad
+ P_\pm(\mathbf k)=\frac12\left(I\pm\frac{h(\mathbf k)}{\Omega_k}\right).
+\end{equation}
+For data entirely in one spectral branch, $P_\pm\widehat\Psi=\widehat\Psi$, the exact
+branch evolution is multiplication by $\pm\Omega_k$.  On the positive branch,
+\begin{equation}
+ i\partial_s\Psi_+=\sqrt{\Delta^2-c^2\nabla^2}\,\Psi_+.
+ \label{eq:sqrtfull}
+\end{equation}
+Here and below the square root is the positive self-adjoint Fourier multiplier on the chosen
+branch.  The spectral projector cleanly describes the branch once chosen; the microscopic
+reason nature should select the corresponding positive-frequency/positive-energy solution
+space remains unresolved.
+
+\paragraph{Local full equation versus nonlocal isolated branch.}
+The full free first-order equation \eqref{eq:firstorder} is a \emph{local} differential
+system with characteristic speeds $\pm c$ under the stated effective assumptions.
+By contrast, $P_\pm(\mathbf k)$ depends on $\mathbf k$ and projects the complete field
+by a spatially nonlocal Fourier multiplier; the scalar multiplier
+$\sqrt{\Delta^2-c^2\nabla^2}$ in \eqref{eq:sqrtfull} is likewise nonlocal as a
+spatial operator.  Thus a strictly localized full-field preparation is not in
+general preserved as a strictly localized \emph{positive-branch component} after
+projection.  The group velocity
+$|\nabla_{\mathbf k}\Omega_k|=c^2|\mathbf k|/\Omega_k\leq c$ does
+not by itself establish compact-support propagation for the projected variable.
+This mathematical nonlocality is a consequence of resolving one spectral sector
+of a local parent description; it is \emph{not}, without further physical input,
+a mechanism for superluminal signalling or a failure of causal propagation in the
+complete field.  Physical preparation, interactions, and local observables cannot
+be inferred from a branch projection alone.  The native \ElEmEr{} dynamics and any
+physical rule selecting or sustaining this branch remain Open.
+
+Hegerfeldt's localization obstruction concerns positive-energy quantum
+evolution together with sharp particle-localization assumptions, including
+orthogonality of states localized in disjoint regions
+\cite{Hegerfeldt1974}. It is not a theorem that every spatially nonlocal
+operator permits operational acausal signals. Its localization assumptions
+must be checked for the proposed physical observables; a projected field
+component alone supplies neither a localization measurement nor a signal protocol.
+
+Finite-speed causal evolution of the complete effective field, operational
+no-signalling of detector marginals, and \emph{operator microcausality} are distinct
+conditions.  In particular, neither the locality of the full classical/free
+operator nor a bound on the isolated-branch group velocity establishes spacelike
+commutation of physical extended-mode observables.  Such an operator algebra and
+its commutation properties remain Open; no spin--statistics conclusion follows
+from the free branch or its spectral projection alone.
+
+Now separate the rapid internal phase from the slowly varying spatial modulation:
+\begin{equation}
+ \Psi_+(\mathbf x,s)=e^{-i\Delta s}\psi(\mathbf x,s).
+\end{equation}
+The field $\psi$ is the \emph{envelope field}: it tracks how the amplitude and phase of the
+selected branch vary on scales slow compared with the internal frequency $\Delta$.  A useful
+picture is a rapidly repeating internal rhythm whose overall modulation drifts only slightly
+from cycle to cycle.  The picture is an interpretation of the scale separation, not a claim
+that a microscopic closure solution with that detailed motion has already been constructed.
+Then
+\begin{equation}
+ \boxed{
+ i\partial_s\psi=
+ \left[\sqrt{\Delta^2-c^2\nabla^2}-\Delta\right]\psi.}
+ \label{eq:exactsqrt}
+\end{equation}
+This is exact within the selected free branch.
+
+For a wavepacket whose Fourier support obeys
+\begin{equation}
+ \epsilon=\frac{c|k|}{\Delta}\ll1,
+ \label{eq:epsilon}
+\end{equation}
+the multiplier has the controlled expansion
+\begin{align}
+ \sqrt{\Delta^2+c^2k^2}-\Delta
+ &=\frac{c^2k^2}{2\Delta}-\frac{c^4k^4}{8\Delta^3}
+ +\Order(\epsilon^6\Delta),
+\end{align}
+and therefore
+\begin{equation}
+ \boxed{
+ i\partial_s\psi=
+ -\frac{c^2}{2\Delta}\nabla^2\psi
+ -\frac{c^4}{8\Delta^3}\nabla^4\psi+\ldots.}
+ \label{eq:slowplain}
+\end{equation}
+Introduce the symbolic action normalization $J_0$ and define the corresponding branch mass
+scale
+\begin{equation}
+ \boxed{M=\frac{J_0\Delta}{c^2}}.
+ \label{eq:Mdef}
+\end{equation}
+Multiplying \eqref{eq:exactsqrt} by $J_0$ gives the exact form
+\begin{equation}
+ iJ_0\partial_s\psi=
+ \left[\sqrt{M^2c^4-J_0^2c^2\nabla^2}-Mc^2\right]\psi,
+ \label{eq:exactsqrtJ}
+\end{equation}
+and the slow-envelope reduction becomes
+\begin{equation}
+ \boxed{
+ iJ_0\partial_s\psi=
+ -\frac{J_0^2}{2M}\nabla^2\psi
+ -\frac{J_0^4}{8M^3c^2}\nabla^4\psi+\ldots.}
+ \label{eq:schbridge}
+\end{equation}
+The leading term is the standard free Schr\"odinger kinetic operator with the action scale
+$J_0$ left symbolic.  The result is controlled by the small parameter
+$c|\mathbf k|/\Delta$: the Schrödinger equation appears here as the slow-envelope limit of the
+gapped branch rather than as the primitive evolution law.  The next term also fixes the first
+relativistic correction within the same expansion.
+
+\paragraph{Physical meaning of the mass scale.}
+Equation~\eqref{eq:Mdef} makes the central physical distinction explicit.  The resolved
+primitive propagation tangent can remain locally at $c$ even when the recurrent organization
+has a subluminal collective or envelope motion.  Mass-like behaviour belongs to the organized
+pattern, not to a primitive carrier that has slowed below $c$.  Once the action scale $J_0$ is
+specified, the gap carries the energy scale $J_0\Delta$ and therefore the effective mass scale
+$M=J_0\Delta/c^2$.  For a branch carrying action charge $Q$, the rest-frequency contribution
+is $J_0Q\Delta=QMc^2$.  The $M$ in the Schr\"odinger kinetic operator is
+therefore a \emph{branch mass parameter per unit action charge}; it is not
+by itself the total mass of an arbitrary finite-$Q$ field configuration.
+For a single monochromatic mode with total translation momentum $\mathbf P$,
+the low-momentum collective kinetic term has denominator $2QM$, not $2M$.
+For a finite packet there is also energy from its nonzero Fourier-width, as
+shown explicitly in \eqref{eq:packetmassdecomp} below.  This gives a
+conditional effective realization of rest-like energy and collective inertia
+without establishing the mass of a localized physical closure.  The physical
+identification still requires native gap and localization dynamics, the
+selection of $Q$, and the relevant energy--momentum/clock bridge.
+
+\paragraph{Complex notation and physical complex structure.}
+The slow envelope can be rewritten in two real quadratures with a real operator $\mathbb J$
+obeying $\mathbb J^2=-I$; multiplication by $i$ is then a quarter-turn in that real
+quadrature plane.  Complex notation is therefore mathematically available without having yet
+explained why one particular complex structure is the physical one shared by free, bound, and
+interacting states.  That selection problem is returned to in
+\Cref{sec:complexmeasurement}.
+
+\section{Phase symmetry, action amount, energy, and momentum}
+\label{sec:actionbridge}
+
+The previous section derived an evolution equation.  Its phase already carries a simple
+physical meaning: it records how the effective mode advances through its recurrent oscillation,
+while phase differences distinguish interference and relative organization.  To turn that
+phase evolution into physical energy and momentum one needs more than periodicity; one needs an
+action whose continuous symmetries generate conserved quantities.
+
+In the present effective sector the first-order Hermitian branch admits such a local quadratic
+action.  The factor $J_0$ sets its overall action scale.  Changing $J_0$ rescales the action and
+all associated dimensionful Noether charges without changing the classical field equation.
+This is why the branch can determine the structure of the energy--frequency relation while
+leaving its absolute physical normalization unresolved.
+
+A manifestly real representative is
+\begin{equation}
+ S_{\rm eff}=J_0\int\dd s\,\dd^3x\left[
+ \frac{i}{2}\left(\Psi^\dagger\partial_s\Psi
+ -(\partial_s\Psi^\dagger)\Psi\right)
+ -\Psi^\dagger H_s\Psi\right],
+ \label{eq:Seffreal}
+\end{equation}
+which differs by a boundary term from
+\begin{equation}
+ \boxed{
+ S_{\rm eff}=J_0\int\dd s\,\dd^3x\,
+ \Psi^\dagger(i\partial_s-H_s)\Psi.}
+ \label{eq:Seff}
+\end{equation}
+Varying $\Psi^\dagger$ gives the same effective first-order equation.  The construction is
+therefore an action for the resolved branch dynamics.  It should be read at that scale: the
+microscopic \ElEmEr{} action from which such a branch might ultimately emerge is still
+unknown.
+
+\subsection{How much of the effective action is fixed}
+
+Suppose a same-field local quadratic first-order action uses a constant Hermitian symplectic
+metric $G$ and is required to reproduce the same Hermitian minimal irreducible Clifford
+dynamics without changing the generator class.  Compatibility requires $G$ to commute with
+all $A^j$ and $B$.  For the minimal irreducible complex module, Schur's lemma makes $G$
+scalar.  Within this restricted class, the action is therefore fixed up to the common overall
+normalization $J_0$ and boundary terms.  Reducible sectors can have a larger commutant and need
+not share this uniqueness.  The algebra fixes the form much more tightly than it fixes the
+absolute size of the action.
+
+\subsection{Global phase symmetry and action charge}
+
+Within the effective branch, the absolute origin chosen for the common phase is arbitrary:
+shifting every component by the same constant angle does not change the action, whereas
+relative phases between components or modes can affect interference and other relational
+observables.  The exact global transformation
+$\Psi\mapsto e^{i\alpha}\Psi$ therefore leaves the effective action unchanged.  Noether's
+theorem associates a conserved quantity with this continuous phase symmetry:
+\begin{equation}
+ \boxed{Q=\int \Psi^\dagger\Psi\,\dd^3x.}
+ \label{eq:Q}
+\end{equation}
+We call $Q$ the \emph{action charge}.  Here ``charge'' has the Noether meaning: it is a
+conserved quantity associated with an exact continuous symmetry.  It is not electric charge,
+a local gauge charge, or automatically a particle number.  In the chosen normalization $Q$
+is dimensionless, and the corresponding dimensionful action amount is $J_0Q$.
+
+Because the effective theory is classical and linear, its amplitude can be scaled
+continuously, so $Q$ is continuous.  The symmetry therefore identifies where an action quantum
+would have to enter, but the quadratic branch theory does not itself select a discrete unit
+such as $Q=1$.
+
+\paragraph{Three distinct quantization questions.}
+It is useful to separate three logically independent questions that can otherwise be
+blurred together.  First, closure dynamics, return conditions, or boundary conditions
+may select a discrete set of admissible states, frequencies, or spatial eigenmodes.
+This is \emph{state or mode selection}.  Second, even within one allowed mode, the
+present linear effective theory permits continuous amplitude rescaling and therefore
+continuous action charge $Q$; a further physical principle would be required to select
+discrete action amounts or an elementary value such as $Q=1$.  Third, even if such a
+unit were physically selected, its dimensional size would still be set by the
+independent action-normalization scale $J_0$.  Recovering ordinary quantum
+normalization would then additionally require the empirical identification
+$J_0=\hbar$.
+
+Thus
+\[
+\boxed{
+\begin{gathered}
+\text{discrete closure-state selection}
+\;\neq\;
+\text{action-charge quantization}
+\\[2pt]
+\neq\;
+\text{absolute action normalization}
+\end{gathered}
+}
+\]
+and success at any one of these levels does not by itself solve the others.  In
+particular, a discrete spectrum does not derive $Q=1$, and a physical selection
+$Q=1$ would still not derive $J_0=\hbar$.
+
+\subsection{Translations give energy and momentum}
+
+For fields with the usual decay or boundary conditions, $s$-translation and spatial
+translation give
+\begin{align}
+ E&=J_0\int\Psi^\dagger H_s\Psi\,\dd^3x,
+ \label{eq:Echarge}\\
+ \mathbf P&=J_0\int\Psi^\dagger(-i\nabla)\Psi\,\dd^3x.
+ \label{eq:Pcharge}
+\end{align}
+The same action therefore ties phase evolution, spatial wavevector, energy, and momentum to
+one symmetry structure.  The familiar generators $H_s$ and $-i\nabla$ are not being added here
+as independent quantum postulates; they arise as the translation generators of the effective
+action.
+
+For a resolved monochromatic plane-wave branch mode
+$\Psi=u\,a\,e^{i\mathbf k\cdot\mathbf x-i\omega s}$, normalized over a finite box or as a
+wavepacket limit so that \eqref{eq:Q} is finite, the branch eigenvalue equation gives
+\begin{equation}
+ \boxed{E=J_0Q\omega,
+ \qquad
+ \mathbf P=J_0Q\mathbf k.}
+ \label{eq:modeEP}
+\end{equation}
+For a single resolved mode, frequency and wavevector therefore carry energy and momentum in
+proportion to the same action amount $J_0Q$.  Equivalently,
+\[
+ \frac{E}{\omega}=J_0Q,
+ \qquad
+ \frac{E}{f}=2\pi J_0Q
+ \quad (f=\omega/2\pi).
+\]
+This makes precise, in a controlled setting, the physical intuition that converting a cycle
+rate into an energy requires an action scale: $J_0Q$ is the action amount per radian of phase
+advance, and $2\pi J_0Q$ is the corresponding energy--period product for one full cycle.  The
+result is exact inside this linear sector and does not require choosing the special
+normalization $Q=1$.
+
+For an arbitrary finite packet in one isolated branch, let $a(\mathbf k)$ denote the spectral
+amplitude in an orthonormal branch basis and define
+\begin{equation}
+ Q=\int |a(\mathbf k)|^2\,\dd^3k,
+ \qquad
+ \langle F\rangle_Q=\frac{1}{Q}\int F(\mathbf k)|a(\mathbf k)|^2\,\dd^3k.
+\end{equation}
+Then the exact charges are
+\begin{equation}
+ \boxed{
+ E=J_0Q\langle\omega\rangle_Q,
+ \qquad
+ \mathbf P=J_0Q\langle\mathbf k\rangle_Q.}
+ \label{eq:packetEP}
+\end{equation}
+A finite packet is therefore not assigned one exact $(\omega,\mathbf k)$ unless its spectral
+support justifies that approximation.  After rest-frequency removal on the positive branch,
+the corresponding envelope energy is
+\begin{equation}
+ E_{\rm env}=J_0Q\left\langle\sqrt{\Delta^2+c^2k^2}-\Delta\right\rangle_Q.
+\end{equation}
+
+\paragraph{Finite-$Q$ collective motion versus spectral-width energy.}
+For a positive-branch packet with $Q>0$ and spectral support in
+$c|\mathbf k|/\Delta\ll1$, define
+$\sigma_k^2:=\langle|\mathbf k|^2\rangle_Q-|\langle\mathbf k\rangle_Q|^2$
+(the sum of the component variances).  Using \eqref{eq:packetEP} and
+\eqref{eq:Mdef}, the low-momentum expansion gives
+\begin{equation}
+\begin{split}
+ E&=QMc^2+\frac{J_0^2Q}{2M}\langle|\mathbf k|^2\rangle_Q
+      +\Order(J_0Q\Delta\epsilon_{\max}^4)\\
+  &=QMc^2+\frac{|\mathbf P|^2}{2QM}
+    +\frac{J_0^2Q}{2M}\sigma_k^2
+    +\Order(J_0Q\Delta\epsilon_{\max}^4),
+\end{split}
+\label{eq:packetmassdecomp}
+\end{equation}
+where $\epsilon_{\max}$ bounds $c|\mathbf k|/\Delta$ on the packet's
+spectral support.  In the finite-box monochromatic limit $\sigma_k^2=0$,
+the charge-weighted energy has the usual low-momentum collective term
+$|\mathbf P|^2/(2QM)$.  For a \emph{localized} packet,
+$\sigma_k^2>0$: the extra energy is not part of the motion of the spectral
+mean $\langle\mathbf k\rangle_Q$.  Consequently $QM$ must not be called
+the full invariant mass of a generic packet or a derived physical particle
+mass.  The distinction also does not turn $Q$ into a particle count.
+
+\subsection{Why the simple product law works here}
+
+The result above also explains when the simple energy--frequency product is legitimate.  The
+Main Framework gives the Conditional stationary-family action--charge derivative relation
+\begin{equation}
+ \frac{\dd E}{\dd Q}=J_0\Omega
+ \label{eq:conjugacy}
+\end{equation}
+for a smooth family of stationary points of $E-J_0\Omega Q$, with exact
+phase symmetry, fixed action, couplings, boundary conditions and other
+charges, vanishing boundary variations, and $Q$ a valid local family coordinate
+\cite{CmotionMainFramework2026}.  In the present linear resolved-mode sector the frequency is
+amplitude independent, so varying the mode amplitude changes $Q$ at fixed $\omega$ and
+\eqref{eq:modeEP} indeed gives
+\begin{equation}
+ \frac{\dd E}{\dd Q}=J_0\omega,
+ \qquad E=J_0Q\omega
+\end{equation}
+after the natural zero-energy reference of that linear mode.  In a nonlinear closure, $\Omega$
+can vary with $Q$, so the general relation is an integral over the family rather than this simple
+product.  The resolved-mode formula is
+therefore a real structural result without being a universal nonlinear closure law.
+
+\section{Where the quantum action scale enters}
+\label{sec:normalization}
+
+The effective action now tells us exactly what has and has not been fixed.  Its equations determine
+how one common action scale propagates into energy and momentum, but a classical rescaling of
+the whole action leaves the equations of motion unchanged.  The symbol $J_0$ denotes that
+overall \emph{action-normalization scale}.  It converts the dimensionless phase/action
+structure of the branch into dimensionful action, energy, and momentum.
+
+The hierarchy is
+\begin{equation}
+ \boxed{
+ \begin{array}{rcl}
+ J_0 &:& \text{structural common action-normalization slot},\\
+ Q &:& \text{continuous effective branch charge},\\
+ J_0Q &:& \text{dimensionful effective action amount},\\
+ Q=1 &:& \text{normalization convention unless physically selected},\\
+ J_0=\hbar &:& \text{empirical identification; not fixed by the present dynamics}.
+ \end{array}}
+ \label{eq:hierarchy}
+\end{equation}
+The hierarchy says more than ``a constant is missing.''  Phase supplies a dimensionless measure
+of cycle advance, while energy and momentum are dimensionful.  An action scale is exactly what
+converts one into the other.  The effective branch therefore locates the junction at which the
+empirical quantum of action must enter.  What it does not yet explain is whether the dynamics
+selects a discrete value of $Q$, fixes the common scale $J_0$, or supplies both ingredients.
+Neither happens in the present quadratic branch theory.
+
+Consequently, for a normalized $Q=1$ resolved mode,
+\begin{equation}
+ E=J_0\omega,\qquad \mathbf p=J_0\mathbf k,
+ \label{eq:Jrelations}
+\end{equation}
+and only after the empirical identification $J_0=\hbar$ does one obtain
+\begin{equation}
+ E=\hbar\omega=hf,
+ \qquad
+ \mathbf p=\hbar\mathbf k.
+ \label{eq:empiricalPlanck}
+\end{equation}
+Identifying $J_0$ with Planck's reduced constant would connect the effective branch directly
+to empirical quantum normalization.  At present that identification is supplied from
+experiment rather than derived from the microscopic C-Motion dynamics.  Closure periodicity,
+parameter independence of dimensionless quantities along an effective-model
+scale-similarity orbit, and the Conditional recurrent conjugacy
+\eqref{eq:conjugacy} do not fix it.  Likewise, normalizing one branch to $Q=1$ does not turn a
+continuous classical Noether charge into a physically quantized one.
+
+The action-current statement proved here also remains specific to the reconstructed effective
+branch.  A unique positive action current for an arbitrary finite microscopic \ElEmEr{} wave
+has not yet been established. The generic finite-wave action-current provenance,
+its absolute normalization and its persistence through nonlinear closure
+formation remain Open (sharp), independently of the resolved-branch formulas
+and the empirical assignment $J_0=\hbar$ \cite{CmotionMainFramework2026}.
+
+\section{What follows in the low-energy one-particle regime}
+\label{sec:controls}
+
+Once the gapped branch has reduced to the Schrödinger envelope and its translation generators
+have been identified, familiar one-particle quantum mathematics becomes available.  These
+results test whether the effective C-Motion construction has entered the right low-energy
+regime.  Their physical content is easier to read in that order: first obtain the branch and
+its generators, then ask whether ordinary packet localization, interference, barrier
+penetration, and bound states follow.
+
+\subsection{Wave localization and momentum uncertainty}
+\label{sec:uncertainty}
+
+For an $L^2$ packet with finite position and wavevector variances in one
+Cartesian direction,
+\begin{equation}
+ \Delta x\,\Delta k\geq\frac12
+ \label{eq:fourier}
+\end{equation}
+is the exact Fourier/Cauchy--Schwarz spread theorem. The established
+uncertainty results provide the corresponding quantum benchmark
+\cite{Heisenberg1927,Kennard1927,Robertson1929}.  Physically, making a packet narrow in
+space requires combining a wider range of spatial wavelengths; a nearly single-wavelength
+state necessarily extends farther.  No measurement disturbance is needed for this kinematic
+trade-off.  The branch translation theorem now supplies the conditional momentum
+scale.  For a fixed packet of nonzero effective charge $Q$, normalize the
+spectral density as
+$w(\mathbf k)=|a(\mathbf k)|^2/Q$ and take $\Delta k$ to be its standard deviation in the
+chosen Cartesian component.  The conserved Noether momentum of this \emph{whole}
+configuration is the definite number $P_{\mathrm{total}}=J_0Q\langle k\rangle_Q$
+from \eqref{eq:packetEP}; it has no Fourier-component variance as a fixed classical
+field charge.  Instead define the conditional \emph{spectral component-momentum}
+variable $p_{\mathrm{sp}}(k)=J_0k$.  Its spread satisfies
+\begin{equation}
+ \boxed{\Delta x\,\Delta p_{\mathrm{sp}}\geq\frac{J_0}{2}.}
+ \label{eq:uncertaintysp}
+\end{equation}
+One may alternatively introduce the explicitly charge-scaled spectral variable
+$P^{(Q)}_{\mathrm{sp}}(k)=J_0Qk$, which gives the bookkeeping identity
+\begin{equation}
+ \boxed{\Delta x\,\Delta P^{(Q)}_{\mathrm{sp}}\geq\frac{J_0Q}{2}.}
+ \label{eq:uncertaintyQ}
+\end{equation}
+The second spread is not an uncertainty in the integrated field momentum
+$P_{\mathrm{total}}$.  For an explicitly normalized $Q=1$ branch the two
+spectral variables coincide.  Only with the empirical identification $J_0=\hbar$
+does their coefficient become $\hbar/2$.  What has been obtained is a
+Fourier/translation-component relation, not yet the momentum measurement-outcome
+uncertainty of a physical single particle; that interpretation requires a further
+quantum measurement framework.
+
+\subsection{Superposition}
+
+Linearity of the Clifford equation, the isolated branch generator, and the slow envelope means
+that linear combinations of solutions are again solutions while the system remains in this
+free linear sector.  In a field-first picture this is less mysterious than the familiar phrase
+\emph{a particle in two places}: the effective state is one spatially distributed field
+configuration, and different path or mode contributions can coexist and interfere within it
+\cite{Arndt1999C60,Fein2019superposition}. Relative phase determines the cross-terms.
+These experiments demonstrate interference of composite systems; they do not
+uniquely establish the C-Motion field ontology or its microscopic dynamics.
+
+This statement belongs to the effective propagation regime.  It does not require the complete
+microscopic \ElEmEr{} dynamics to be globally linear, and a later interaction may reorganize
+the complete local field state outside this reduction.  Linearity also does not, by itself,
+assign Born probabilities to the amplitudes.
+
+\subsection{Tunnelling}
+
+The dependency chain is
+\begin{equation}
+\begin{gathered}
+ \text{Clifford sector under the assumptions above}
+ \longrightarrow
+ \text{slow-envelope kinetic operator}\\
+ \longrightarrow
+ \text{standard barrier mathematics once }V\text{ is separately supplied}.
+\end{gathered}
+\end{equation}
+Once a suitable \emph{low-energy interacting envelope} and a potential $V$ are separately
+supplied, the usual Schr\"odinger barrier equation supports evanescent penetration through
+classically forbidden regions.  This is not an exact theorem that an arbitrary local $V$
+can be added to the \emph{free} positive-frequency projector: an inhomogeneous interaction
+can mix the two free spectral branches.  The field need not be pictured as a point particle
+traversing a region with locally forbidden classical kinetic energy.  Instead, the effective
+envelope is exponentially small within a barrier and can remain nonzero beyond it.
+The standard WKB exponent is recorded in \Cref{app:compatibility}
+\cite{Wentzel1926WKB}.  The C-Motion-specific part of this conditional chain is the free
+kinetic-envelope antecedent; the interaction, its admissible projection/reduction, the
+source, sign and coupling of $V$, and the physical transmission-rate interpretation
+remain additional assumptions or open native problems.
+
+\subsection{Hydrogen}
+
+Hydrogen is included as a downstream \emph{conditional consistency test}, not as a new
+derivation of atomic physics from C-Motion primitives.  The dependency chain is:
+\begin{enumerate}[leftmargin=*]
+\item the Clifford free sector under all five effective assumptions of
+  \Cref{sec:antecedents}, including the independently stipulated even-squared-symbol condition;
+\item its controlled free slow-envelope kinetic operator \eqref{eq:schbridge} and the
+  symbolic action normalization $J_0$;
+\item an independently supplied charged-closure/Maxwell--Coulomb interaction sector,
+  including the source/current and the coupling convention
+  \cite{CmotionSMStructureI2026};
+\item an additional controlled low-energy \emph{interacting} one-particle/two-body reduction,
+  including a supplied $Q=1$ single-particle identification (not a derived physical
+  action quantum), and the standard electron--proton reduced mass $\mu$; and
+\item ordinary Coulomb spectral and boundary-condition mathematics.
+\end{enumerate}
+
+\paragraph{Interaction and projection qualification.}
+The exact square-root operator \eqref{eq:exactsqrt} and the free projector
+$P_+^0:=P_+$ defined above are constructed in a \emph{free},
+translation-invariant effective sector.  For a
+spatially varying local potential $V(\mathbf x)$ one generally has
+\begin{equation}
+ [P_+^0,V(\mathbf x)]\ne 0,
+ \label{eq:freeprojpotential}
+\end{equation}
+so the potential may mix the free positive- and negative-frequency subspaces.
+The expression $P_+^0 V P_+^0$ is itself a projected, generally nonlocal interaction,
+not identically a local multiplicative potential acting in a free one-branch Hilbert
+space.  An interacting low-energy Schr\"odinger description is consequently a
+\emph{further effective reduction}, rather than an exact algebraic consequence of the
+free spectral projector.  In the weakly bound, low-momentum regime, with
+$|E_{\rm bind}|\ll\mu c^2$, typical relative momenta
+$|\mathbf p|\ll\mu c$, and small effective Coulomb coupling
+$\alpha_{\rm eff}\ll1$ as defined below, standard block reduction permits the leading Coulomb--Schr\"odinger form; omitted
+higher-order corrections include relativistic and spin-dependent terms.  These
+conditions do not derive the electromagnetic source, interaction or the physical
+branch selector from ElEmEr dynamics.
+
+\paragraph{Coulomb coupling and its units.}
+Write $g_C>0$ for the coefficient of the attractive potential $-g_C/r$; it has
+units of energy times length.  For ordinary opposite charges of magnitude $e$ in
+vacuum, the externally normalized SI value is
+$g_C=e^2/(4\pi\varepsilon_0)$.  In this effective branch one may define the
+dimensionless ratio
+\begin{equation}
+ \alpha_{\rm eff}:=\frac{g_C}{J_0c}.
+ \label{eq:alphaeff}
+\end{equation}
+Only with the empirical identification $J_0=\hbar$ and the standard Maxwell
+charge normalization does $\alpha_{\rm eff}$ equal the measured
+fine-structure constant $\alpha_{\rm fs}$.  None of these physical identifications
+follows from the free Clifford symbol alone.
+
+Under the stated two-body, interaction-reduction and normalization assumptions,
+the ordinary leading Coulomb envelope equation is
+\begin{equation}
+ \left[-\frac{J_0^2}{2\mu}\nabla^2-\frac{g_C}{r}\right]\psi=E\psi,
+ \label{eq:hydrogenJ}
+\end{equation}
+and regularity and square-integrability give its gross levels,
+\begin{equation}
+ E_n=-\frac{\mu g_C^2}{2J_0^2}\frac{1}{n^2}
+     =-\frac{\mu c^2\alpha_{\rm eff}^2}{2n^2},
+ \qquad n=1,2,\ldots.
+ \label{eq:hydrogenlevelsJ}
+\end{equation}
+The $E_n$ are binding energies relative to the leading two-body rest-energy
+reference; this is not an absolute ElEmEr closure-energy prediction.
+With $J_0=\hbar$, imported observed charges and the physical reduced mass,
+the leading coefficient agrees with the standard nonrelativistic gross
+hydrogen spectrum.  The allowed integer $n$ comes from ordinary wave
+regularity, normalizability and boundary conditions even when the amplitude
+remains continuous; it neither derives physical $Q=1$ nor fixes $J_0$.
+
+This is a conditional \emph{compatibility} of the free kinetic
+bridge with an additional interacting low-energy construction.  It does not
+supply native charged-closure currents, the native unbroken electromagnetic $\mathrm U(1)$ current and
+Maxwell source/action realization, or an exact
+interacting positive-frequency selector. The separate, more ambitious problem
+of deriving the surviving electromagnetic direction from electroweak structure
+is not needed for this leading hydrogen control.  Static Coulomb is a
+constraint/source sector in the conditional electromagnetic description, not
+an on-shell open photon mode.  The radial mathematics is
+summarized in \Cref{app:compatibility}.
+
+\section{Spinorial return: what rotation structure is already available}
+\label{sec:spin}
+
+Ordinary orbital structure is not enough to represent half-integer spin.  A rotating scalar
+pattern or ordinary vector returns to the same representative after a $2\pi$ rotation.  A
+spinor instead transforms on the double cover of the spatial rotation group: one $2\pi$
+rotation changes the representative by a sign, and only $4\pi$ returns it completely.
+
+This is physically interesting in C-Motion because a recurrent organization may carry more
+than spatial support; it may also carry an internal frame or orientation state that must return
+consistently when the whole organization is rotated.  The spinorial picture is therefore not a
+tiny object literally spinning in space.  It is a statement about how the internal state
+transforms under rotation.  The Clifford sector supplies an appropriate mathematical container
+for that possibility.
+
+If a physical internal closure state is selected to transform in the double cover of
+$\SO$, then
+\begin{equation}
+ U(\hat{\mathbf n},\theta)
+ =\exp\!\left[-\frac{i\theta}{2}\hat{\mathbf n}\cdot\bm\sigma\right],
+ \qquad U(2\pi)=-I,\quad U(4\pi)=I.
+ \label{eq:4pi}
+\end{equation}
+The equations therefore admit the familiar spinor return law
+\cite{RauchWerner2000}. Neutron-interferometry experiments tested the
+relative sign under spin rotation \cite{Rauch1975Spinor,Werner1975}; they
+provide the empirical spinorial benchmark, not evidence selecting a native
+C-Motion closure mechanism. A natural C-Motion interpretation is that a framed recurrent
+organization could carry this double-cover return structure.  What is not yet known is why a
+physical elemental matter closure should be selected into that sector rather than into an
+ordinary vector-like one.
+
+Within ordinary single-valued classical scalar/vector/tensor transport, a
+$2\pi$ circuit does not by itself produce the spinorial sign.  A physical
+framed or protected-core configuration-space lift could carry extra return
+structure, but its existence, occupation, and sector selection would be
+additional native obligations.  This is a restriction on the tested ordinary
+transport route, not a general exclusion of all possible classical field
+organizations.
+
+A one-body $2\pi\mapsto-1$ return does not determine the many-body exchange character.  In
+three-dimensional identical-particle configuration space both $+1$ and $-1$ one-dimensional
+exchange characters are topologically admissible \cite{LeinaaMyrheim1977}; a specific
+Finkelstein--Rubinstein identification requires the actual physical configuration space
+\cite{FinkelsteinRubinstein1968}.  Therefore the physical exchange rule
+\begin{equation}
+ H_{\rm exch}=-I
+\end{equation}
+has not been obtained from the one-body return alone.  Once antisymmetric many-body
+composition is supplied, Pauli exclusion follows exactly by standard algebra.  The unresolved
+physics is the bridge from a framed one-body closure to the exchange character of two
+identical closures.  The present construction does not supply a C-Motion spin--statistics theorem.
+The established relativistic spin--statistics argument uses additional
+physical hypotheses: Pauli's free-field analysis invokes relativistic
+invariance and positivity of energy, and, for its integer-spin conclusion,
+commutativity of observables at spacelike separation
+\cite{Pauli1940SpinStatistics}. More generally, locality/microcausality and
+a positive physical state space cannot be replaced by a one-body rotation
+matrix. Those field-theoretic antecedents have not been derived here.
+
+\section{Decoherence and Zeno as consistency checks}
+\label{sec:decozeno}
+
+The effective branch can also be placed inside familiar open-system and repeated-interrogation
+mathematics.  In physical terms, decoherence begins when information about relative phase is
+carried into degrees of freedom that are no longer controlled as part of the system.  It is an
+interaction effect, not a consequence of an observer merely ``looking.''  To calculate it one
+must nevertheless specify a system--environment split and a coupling.  If such a unitary
+coupling produces
+\begin{equation}
+ |\Psi\rangle=a|1\rangle|E_1\rangle+b|2\rangle|E_2\rangle,
+\end{equation}
+then tracing over the environment suppresses the system coherence by the overlap
+$\langle E_2|E_1\rangle$ \cite{Zurek2003Decoherence}.  This shows compatibility with ordinary
+decoherence once a microscopic environment and coupling are specified; it does not yet tell
+us what the microscopic C-Motion environment, pointer basis, or coupling should be.
+
+Similarly, a self-adjoint effective generator and a normalized initial state with finite
+spectral variance give the standard quadratic short-interval survival law.  Under an
+\emph{additional} ideal rank-one survival-test protocol, repeated tests with
+state re-preparation conditioned on the survival result produce the standard Zeno
+suppression \cite{MisraSudarshan1977}.  Such a test sequence is not obtained merely
+by allowing the free \ElEmEr{} field to propagate; it supplies a measurement or
+intervention rule.  The compact formula is given in \Cref{app:compatibility}.
+A C-Motion-specific implementation, and especially an anti-Zeno prediction, would
+require the actual apparatus/environment coupling, spectrum, correlation law, and
+readout dynamics.  Neither decoherence nor ideal Zeno suppression selects a
+definite single outcome or supplies the Born rule.
+
+\section{The remaining specifically quantum ingredients}
+\label{sec:complexmeasurement}
+
+\subsection{Why the complex structure is still a physical question}
+
+The symbol $i$ in the effective equations is easy to use and harder to explain physically.  A
+real oscillation can be described by two quadratures---for example cosine-like and sine-like
+components separated by a quarter cycle.  Writing those two real components as one complex
+amplitude is equivalent to choosing an operator $\mathbb J$ that rotates one quadrature into
+the other and satisfies $\mathbb J^2=-I$.  In that limited sense, complex notation is a compact
+way to encode a two-dimensional real phase plane.
+
+The deeper question is why one particular quarter-turn structure should be the physically
+selected complex structure shared by free, bound, and interacting systems, and how that choice
+is tied to a positive-frequency/positive-energy solution space.  The mathematical packaging is
+available; the physical selection from the underlying real field dynamics is not yet explained.
+
+A tested proposal identified the complex unit with the local turning map
+$J_h v=v\times\widehat h$ on a nonzero-steering transverse plane.  This map
+has $J_h^2=-I$ on that plane, but it does \emph{not} select the common complex
+unit of the field sector.  A straight monochromatic wave accumulates eikonal
+phase, with $\dd\chi/\dd\ell=k_{\rm eff}$, while its propagation direction
+need not turn at all; local turning instead depends on a transverse gradient.
+Literal identification also confuses independently selectable carrier-phase
+winding with path/frame-turning winding, artificially collapsing the permitted
+mode tower.  Thus the literal local-steering-origin identification is
+\statusRetracted{} within the tested scope.  This does not exclude a future, separately derived
+phase--frame coupling, and a chosen local quarter-turn or intertwiner is not a
+physical selection law for the global complex structure.
+
+A complete answer should come from the microscopic action, constraints, symplectic structure,
+and positive physical norm.  Those structures are not yet available at the required level.
+The branch calculations above therefore use a compatible complex representation and branch
+choice without claiming to have explained why that choice is physically fundamental.
+Real quadratures still permit interference.  Expressing a general closure as a
+single amplitude times $e^{i\chi}$ additionally requires an independently
+selected periodic, narrow-band, or otherwise phase-reducible mode description;
+this is not an objection to the explicitly controlled branch/envelope calculation
+above, nor a claim that arbitrary linear superpositions are monochromatic.
+Native compatibility of a shared complex structure across interacting sectors,
+and the physical composition rule for multiple prepared systems, are likewise
+unresolved.  Neither naive real nor standard complex tensor-product composition
+is presently derived from the underlying field; their experimental comparison
+must not be presented as a direct prediction of this unfinished framework.
+
+There is nevertheless a precise external composition benchmark.
+Renou et al. separate real and complex Hilbert-space predictions in networks
+with independently prepared sources and specified local measurements,
+using ordinary tensor products for system composition
+\cite{Renou2021RealQuantum}. The superconducting implementation of Chen
+et al. and the optical network of Li et al. test the corresponding bounds
+\cite{Chen2022RealQT,Li2022RealQT}; their conclusions retain the respective
+preparation, measurement and independence assumptions. These results constrain
+the standard real-Hilbert composition class, not every ontology formulated
+with real fields or every alternative composition law. A real-quadrature
+rewrite of a single complex system does not settle how independent systems
+compose. C-Motion has not supplied that physical composition rule and therefore
+does not yet confront this benchmark as a completed microscopic theory.
+
+\subsection{Conjugate branches and the antimatter interpretation}
+\label{sec:conjugate-antimatter}
+
+The complex representation makes a conjugation operation mathematically available, but that
+fact is weaker than a physical antimatter theory.  Once a complex structure has been chosen one
+can write, schematically, $\Psi\mapsto\Psi^*$.  A physical charge-conjugation operation must do
+more: it must map one admissible recurrent organization to another admissible physical branch
+with the correct conserved quantities, interactions, and gauge-sector transformation laws.
+Because the physical complex/positive-frequency structure is itself still unresolved in the
+preceding subsection, ordinary algebraic complex conjugation cannot by itself be identified with
+the physical $C$ operation.
+
+A bounded C-Motion hypothesis is nevertheless available.  Particle and antiparticle states may
+correspond to a pair of recurrent closure organizations related by a physical conjugate-state
+map, which we may denote schematically by
+\begin{equation}
+ \mathcal C_{\rm cl}:\Psi_{a}\longmapsto\Psi_{\bar a}.
+ \label{eq:closure-conjugate-map}
+\end{equation}
+The notation in \eqref{eq:closure-conjugate-map} is a candidate physical relation, not a derived
+microscopic symmetry operator.  If the microscopic closure dynamics admits such a paired branch
+and the two branches have the same invariant return energy, then the existing conditional
+mass-as-return-energy interpretation gives equal particle and antiparticle masses.  The equality
+is therefore conditional on the physical branch pairing and equal invariant return energy; it
+does not follow merely from writing $\Psi^*$.
+
+The charge statement is an additional bridge.  An opposite electric or gauge current would
+follow only if the sector-specific physical current/source map changes orientation under the
+conjugate-state operation.  That map is not derived in this paper.  Local gauge architecture and
+electromagnetic completion belong to the Standard-Model sector \cite{CmotionSMStructureI2026}.
+Accordingly, the structural conjugate-closure hypothesis should not be read as a derivation of
+opposite electric charge, a completed physical $C$ symmetry, or CPT.
+
+There is also a useful but still conjectural process interpretation.  If an interacting closure
+and its physical conjugate can jointly lose the organization that keeps each branch closed, the
+pair may reorganize into whatever open or other outgoing modes are allowed by the microscopic
+action and conserved quantities:
+\begin{equation}
+ \text{closure}+\text{conjugate closure}
+ \longrightarrow
+ \text{allowed outgoing modes}.
+ \label{eq:conjugate-unwinding}
+\end{equation}
+This is a candidate reading of particle--antiparticle annihilation, not a calculation of an
+annihilation amplitude, allowed channel, cross section, lifetime, or branching ratio.  Those
+require the still-missing interaction action and couplings.  The existence or magnitude of a
+matter--antimatter asymmetry is likewise not explained by this structural pairing and remains an
+independent open problem.
+
+\subsection{Why recovering wave dynamics is not yet a measurement theory}
+
+Recovering a Schrödinger envelope explains an important part of quantum evolution, but a
+measurement must still be a physical interaction between the prepared field organization,
+apparatus, and environment.  The present paper does not yet specify what microscopic
+interaction makes one laboratory coupling a measurement or why individual outcomes occur with
+Born probabilities.  No appeal to observation alone fills that gap.
+
+The continuous Noether charge $Q=\int\Psi^\dagger\Psi$ does not solve the problem: choosing
+$Q=1$ is a normalization of the effective branch, not a derivation of outcome weights.
+Decoherence can suppress interference between effective alternatives without selecting one
+actual outcome, and the Zeno effect presupposes an interrogation model rather than deriving it.
+
+The remaining measurement problem can therefore be stated plainly: C-Motion still needs a
+microscopic account of apparatus coupling, definite single outcomes, and the empirical Born
+weights. The Born probability prescription is the empirical benchmark,
+historically introduced for scattering \cite{Born1926}; its modern
+state/effect form below is a control, not a derivation from that historical
+paper or from the present effective action. Concretely, an eventual detector model must specify physically admitted
+apparatus/environment preparations and their measure $\nu$, interaction and
+record-selection dynamics $\mathcal S$, and show why repeated records in a
+specified context have frequencies matching the standard control
+$\operatorname{Tr}(\rho E_i)$ for the corresponding effective state $\rho$
+and measurement effects $E_i$.  Supplying those frequencies as initial data, or
+merely preserving a previously assumed measure, is not their derivation.
+Historical basin-capture or threshold proposals are research candidates, not
+completed physical selection laws.  The detailed task belongs to the separate,
+publication-deferred measurement-completion research programme; it is not reopened here.
+
+\section{What remains to make the bridge microscopic and fully quantum}
+\label{sec:open}
+
+The constructive chain reached in this paper can be summarized without the internal project
+classification language:
+\begin{equation}
+\boxed{
+\begin{gathered}
+\text{local-$c$ field picture}\\
++\text{ stated first-order isotropic assumptions}\\
++\text{ unsplit gap/even squared symbol}\\
+\Longrightarrow\text{Clifford algebra}
+\Longrightarrow\omega_\pm^2=\Delta^2+c^2k^2\\
+\Longrightarrow\text{selected square-root branch}
+\Longrightarrow\text{slow Schrödinger envelope}\\
+\Longrightarrow\text{effective branch action}
+\Longrightarrow Q,E,\mathbf P\\
+\Longrightarrow E=J_0Q\omega,\quad \mathbf P=J_0Q\mathbf k\\
+\text{(for a resolved linear mode).}
+\end{gathered}}
+\label{eq:constructivespine}
+\end{equation}
+
+Several missing steps are now sharply localized.  Upstream, the microscopic C-Motion dynamics
+must explain why a local first-order Clifford-like sector exists at all, how a nonzero
+isotropic gap and the unsplit squared-symbol property are generated or selected, and what
+microscopic action underlies the effective branch.  It must also select the physical complex/positive-frequency structure rather than
+merely permit one.  The associated free-sector vacuum selection, admissible
+mode/phase reduction for recurrent closures, and composition of interacting
+complex state sectors remain independent native debts; interference in a real
+quadrature representation is not in question.
+
+At the normalization level, the theory must explain whether physical action comes in discrete
+units, whether a physical elementary branch has $Q=1$ or some other selected value, and why
+the universal action scale is $J_0=\hbar$.  Downstream, a complete particle account must supply
+the relevant interaction potentials/couplings, explain why matter occupies the spinorial
+sector, determine whether physical conjugate closure branches exist and what operation realizes
+charge conjugation and current reversal, derive the exchange character of identical closures,
+and ultimately account for Born probabilities and definite outcomes.
+
+These questions identify the precise places where additional physics is still required.  The
+present paper stops at that boundary rather than introducing new mechanisms to fill it.  The
+formal scientific status of each item is collected in \Cref{app:status}.
+
+\section{Conclusion}
+
+The constructive result can be stated compactly.  If local-$c$ propagation admits a local
+linear first-order isotropic sector with the stipulated two-valued zero-momentum gap
+\emph{and} independent even-squared-symbol condition, its complex gapped operator satisfies Clifford relations. The minimal
+irreducible realization is four-dimensional; this extra restriction is not
+needed for the algebraic reduction.  The resulting spectrum has a rapid internal scale $\Delta$ and an exact square-root
+branch.  Factoring out that rapid phase exposes a slow envelope, and expanding the branch for
+$c|\mathbf k|/\Delta\ll1$ yields the Schrödinger kinetic equation with the effective mass scale
+\[
+ M=\frac{J_0\Delta}{c^2}.
+\]
+This $M$ is the resolved-branch kinetic parameter; a single mode with action
+charge $Q$ carries a $Q$-weighted rest-frequency energy, while a finite packet
+also retains spectral-width energy.  Neither $M$ nor $QM$ is automatically the
+mass of a physical localized closure.  The physical picture is that rest-like
+energy can belong to recurrent internal organization while primitive propagation
+continues locally at $c$.  The positive-branch square-root evolution is a
+nonlocal spectral reduction of the local effective first-order equation, not an
+independent native propagation or signalling law.  The fast internal phase and
+the slow envelope are two scales of one effective field organization.
+
+The branch action then connects phase symmetry to a continuous Noether action charge and
+connects translations to energy and momentum.  A resolved mode satisfies
+\[
+ E=J_0Q\omega,
+ \qquad
+ \mathbf P=J_0Q\mathbf k,
+\]
+while a finite packet carries the corresponding action-weighted spectral means.  The same
+construction reveals exactly where empirical quantum normalization has not yet been explained:
+$Q$ remains continuous in the quadratic theory, $Q=1$ is not physically selected, and the
+overall action scale $J_0$ is not yet derived to equal $\hbar$.
+
+With the low-energy free envelope in place, Fourier uncertainty and
+superposition follow within that effective sector.  Tunnelling and hydrogenic
+bound-state mathematics follow only with an additional low-energy interacting
+reduction and supplied sector-specific potentials, not from the free positive-
+frequency projection alone.  The spinorial structure
+also supports the characteristic $4\pi$ return, giving a plausible container for framed
+matter organization.  A further bounded structural possibility is that antiparticles are
+paired physical conjugate closure branches; equal mass then follows only conditionally from
+equal invariant return energy, while physical charge conjugation, opposite gauge current and
+annihilation dynamics remain unresolved.  What remains genuinely quantum is now more sharply
+defined rather than hidden: the physical complex/positive-frequency structure, action
+quantization, exchange statistics, and the measurement dynamics that turn amplitudes into
+Born-distributed definite outcomes.
+
+The mathematical recovery of familiar free-particle formulas is a
+conditional consistency result, not an independent empirical validation of the
+C-Motion interpretation or a claim that the Dirac and Schr\"odinger limits
+are new mathematics.  The distinct contribution is the explicitly scoped
+chain of antecedents, consequences, exclusions and unresolved native
+selection problems identified in \Cref{sec:contribution}.
+
+The resulting picture is constructive but incomplete.  C-Motion supplies a concrete effective
+path from recurrent local-$c$ field organization, under explicit operator and gap assumptions,
+to a massive square-root branch and its Schrödinger limit.  The remaining problems are no
+longer hidden inside the familiar quantum formulas: they concern the microscopic operator and
+gap, the physical complex/branch selection, the quantum of action, exchange statistics, and
+the interaction dynamics that produce Born-distributed definite outcomes.
+
+
+\medskip
+
+\appendix
+\section{Downstream compatibility formulas}
+\label{app:compatibility}
+
+\subsection{Barrier penetration / WKB}
+
+With a separately supplied, admissible \emph{low-energy interacting} envelope
+and a one-dimensional barrier potential (not an exact generic addition to the
+free spectral projector),
+\begin{equation}
+ -\frac{J_0^2}{2M}\psi''+V(x)\psi=E\psi,
+\end{equation}
+a classically forbidden region $V>E$ has local decay rate
+\begin{equation}
+ \kappa(x)=\frac{\sqrt{2M[V(x)-E]}}{J_0}.
+\end{equation}
+For a slowly varying barrier,
+\begin{equation}
+ T_{\rm WKB}\sim
+ \exp\!\left[-2\int_{x_1}^{x_2}
+ \frac{\sqrt{2M[V(x)-E]}}{J_0}\,\dd x\right].
+\end{equation}
+Setting $J_0=\hbar$ recovers the conventional expression
+\cite{Wentzel1926WKB}.  The potential is additional sector-specific structure.
+
+\subsection{Coulomb bound-state termination}
+
+With the \emph{additional} weakly interacting one-particle/two-body reduction
+and dimensionful coupling $g_C$, separating variables in \eqref{eq:hydrogenJ}
+gives the standard Coulomb radial equation.  The regular solution becomes a
+confluent hypergeometric function whose square-integrable decay requires
+polynomial termination.  This gives the principal integer $n$ and
+\eqref{eq:hydrogenlevelsJ}.  The calculation is standard bound-state mathematics;
+it neither supplies the physical source/charge-normalization law nor proves
+that an arbitrary free positive-frequency state remains in that sector after
+an interaction is switched on.
+
+\subsection{Decoherence and Zeno formulas}
+
+For an effective system--environment state
+$|\Psi\rangle=a|1\rangle|E_1\rangle+b|2\rangle|E_2\rangle$, the reduced coherence is multiplied
+by $\langle E_2|E_1\rangle$ \cite{Zurek2003Decoherence}.  This assumes the factorization and
+coupling.
+
+For the effective frequency generator $H_s$ of \eqref{eq:firstorder}, define
+$H_E=J_0H_s$.  Let $\delta s$ denote a finite evolution interval in the same parameter
+as $H_s$ (not automatically an observer-clock duration).  For a normalized state with
+finite spectral variance $\Delta_\psi H_E<\infty$, with $\delta s$ having
+the units of $s$ so that $H_s\delta s$ is dimensionless,
+\begin{equation}
+ |\langle\psi|e^{-iH_s\,\delta s}|\psi\rangle|^2
+ =|\langle\psi|e^{-iH_E\,\delta s/J_0}|\psi\rangle|^2
+ =1-\frac{(\Delta_\psi H_E)^2}{J_0^2}(\delta s)^2+o((\delta s)^2).
+\end{equation}
+For $N$ ideal rank-one survival projections onto the same initial state,
+equally spaced over a fixed interval $S$ of the \emph{same} evolution parameter,
+conditional survival probabilities multiply:
+\[
+P_N(S)=\left[P_{\rm surv}(S/N)\right]^N\longrightarrow1
+\qquad(N\longrightarrow\infty),
+\]
+under the finite-variance and ideal-state-reset assumptions stated above.
+This is a mathematical interrogation protocol, not a native C-Motion
+apparatus or outcome law \cite{MisraSudarshan1977}.  Neither the required
+state-reset dynamics nor a microscopic anti-Zeno rate follows from the effective
+branch alone.
+
+\section{Separating phase symmetry, gauge redundancy, and Maxwell dynamics}
+\label{app:gaugeguard}
+
+The branch-action theorem makes an important distinction precise.  A global phase symmetry of
+the specified effective action gives the Noether charge $Q$.  Declaring an overall ray-state
+phase unobservable is a different statement, and neither one by itself creates a local gauge
+redundancy.  If local
+phase frames are introduced, a connection and transformation law are additional structures;
+Maxwell dynamics additionally requires a kinetic/source law and its normalization.  Thus
+\begin{align}
+ \text{ray phase}&\not\Rightarrow\text{global Noether charge},\\
+ \text{global action }\UU&\not\Rightarrow\text{local gauge dynamics},\\
+ \text{local gauge redundancy}&\not\Rightarrow\text{Maxwell dynamics}.
+\end{align}
+The local electromagnetic completion is treated separately in
+\emph{Gauge Architecture and Constraints in C-Motion I: Recurrent Closure,
+Native Constraints, and Conditional Gauge Structure}
+\cite{CmotionSMStructureI2026}.
+
+\section{Major-result scientific-status and nativity register}
+\label{app:status}
+
+This appendix records the scientific status of the major results used in this paper.
+Scientific status is separate from the route/provenance shorthand: \emph{N2} means a
+calculation in the explicitly assumed C-Motion-motivated effective model class;
+\emph{C} denotes a downstream standard or externally supplied mathematical/physical
+control; and \emph{O} marks an open native physical input or completion.  These
+codes classify how an argument enters the manuscript, not its scientific status
+and not a claim that the microscopic C-Motion dynamics has been established.
+Empirical calibrations and unresolved dependencies are stated in the scope column.
+
+The scientific-status vocabulary follows the Derivation Ledger.
+\emph{Conditional} denotes a conclusion from an explicit premise/model class
+not itself derived; \emph{Structural} denotes an exact or banked
+organizational/accounting statement that supplies no microscopic dynamical law.
+\emph{Model-derived} denotes a rigorous result inside a specified effective
+or analogue model, never a native Derived claim.
+The two labels are not mutually exclusive as logical descriptions:
+a Model-derived result may also depend on assumptions.  In this
+register, Conditional emphasizes the unresolved physical premises
+of a proposed C-Motion reduction, whereas Model-derived emphasizes
+an exact calculation within a separately specified effective or
+analogue control model.  Neither label establishes a native
+microscopic derivation. \emph{Assumed} denotes a provisional active premise.
+ \emph{Negative} excludes an identification, mechanism or branch
+ only in its stated scope; \emph{Conjectural} is motivated
+but underived. \emph{Open} is unresolved, and \emph{Open (sharp)} isolates
+a missing bridge, not greater confidence. \emph{Deferred} places work outside
+the publication critical path without resolving it. \emph{Retracted} records
+the withdrawal of the specifically identified tested claim; it does not
+exclude distinct mechanisms outside that claim's scope.
+
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{P{3.7cm}P{2.7cm}P{1.45cm}P{6.6cm}}
+\toprule
+\textbf{Major result} & \textbf{Scientific status} & \textbf{Nativity} & \textbf{Scope / unresolved bridge}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Major result} & \textbf{Scientific status} & \textbf{Nativity} & \textbf{Scope / unresolved bridge}\\
+\midrule
+\endhead
+Local linear first-order free operator & \statusAssumed{} / \statusConditional{} & O & Required effective antecedent; microscopic origin unresolved.\\
+Nonzero isotropic gap $\Delta$ & \statusAssumed{} / \statusOpen{} & O & Required for the gapped branch; physical origin/meaning unresolved.\\
+A5 follows from local $c$ and a gap & \statusNegative{} & N2 & The displayed commuting $A^j,B$ counterexample satisfies A1--A4 but gives shifted branches; it excludes this implication, not all massive models or independent routes to A5.\\
+Clifford anticommutation relations & \statusConditional{} & N2 & Forced within assumptions A1--A5, including the independent even-squared-symbol restriction; not from local-$c$ and a gap alone.\\
+$\omega_\pm=\pm\sqrt{\Delta^2+c^2k^2}$ & \statusConditional{} & N2 & Consequence of the Clifford symbol; not inserted independently.\\
+Exact isolated-branch square-root generator & \statusConditional{} & N2 & Nonlocal Fourier multiplier on the selected spectral subspace; full free first-order parent remains local. Physical branch selector and observable causal bridge Open.\\
+Controlled Schr\"odinger kinetic envelope & \statusConditional{} & N2 & $c|k|/\Delta\ll1$ expansion; $J_0$ remains symbolic.\\
+$M=J_0\Delta/c^2$ branch mass scale & \statusStructural{} / \statusConditional{} & N2 & Parameter per unit $Q$; monochromatic rest-frequency energy $QMc^2$. Finite packets also have spectral-width energy; localized physical mass remains unselected.\\
+Quadratic effective branch action & \statusConditional{} & N2 & Reconstructed effective action, not microscopic \ElEmEr{} action.\\
+Minimal irreducible action uniqueness & \statusConditional{} & N2 & Same-field local quadratic class; scalar commutant only; reducible sectors excluded from uniqueness claim.\\
+$Q=\int\Psi^\dagger\Psi$ & \statusConditional{} & N2 & Continuous classical effective Noether charge.\\
+$E$ and $\mathbf P$ translation charges & \statusConditional{} & N2 & Noether charges of the reconstructed effective action.\\
+$E=J_0Q\omega$, $\mathbf P=J_0Q\mathbf k$ & \statusConditional{} & N2 & Exact for a resolved linear monochromatic mode; not generic nonlinear closure law.\\
+Packet spectral-mean $E,\mathbf P$ & \statusConditional{} & N2 & Exact in one isolated branch; the controlled low-momentum $E$ separates collective $|\mathbf P|^2/(2QM)$ and nonzero spectral-width energy.\\
+Generic nonlinear $E=J_0\Omega Q$ & \statusNegative{} & N2 & Only special linear/isochronous product; the Conditional Main Framework stationary-family relation is $\dd E/\dd Q=J_0\Omega$ under its fixed-action and exact-symmetry hypotheses.\\
+$J_0$ normalization slot & \statusStructural{} & N2 & Overall action normalization remains free in the effective action.\\
+Physical $Q=1$ / elementary action increment & \statusOpen{} & O & Unit normalization is not physical quantization.\\
+$J_0=\hbar$ & \statusAssumed{} / \statusSharpOpen{} & O & Empirical identification; no native derivation retained.\\
+$E=\hbar\omega=hf$ & \statusSharpOpen{} & C & Used downstream only through the empirical $J_0=\hbar$ normalization; a native universal energy--frequency/action-quantum derivation remains Open (sharp).\\
+Fourier $\Delta x\Delta k\geq1/2$ & \statusStructural{} & C & Exact standard Fourier mathematics for an $L^2$ packet with finite variances; no physical momentum or measurement identification is included in this row.\\
+Spectral spreads $\Delta x\Delta p_{\rm sp}\geq J_0/2$ and $\Delta x\Delta P^{(Q)}_{\rm sp}\geq J_0Q/2$ & \statusConditional{} & N2 & Fourier theorem plus N2 translation component-momentum identification; neither $\Delta p_{\rm sp}$ nor $\Delta P^{(Q)}_{\rm sp}$ is a variance of the fixed total-field Noether momentum.\\
+Linear superposition & \statusConditional{} & C & Downstream consequence of the N2 linear sector; not microscopic global linearity.\\
+Tunnelling/WKB & \statusConditional{} & C & Standard WKB in a separately supplied low-energy interacting-envelope reduction and barrier; a generic local potential does not preserve the free spectral branch automatically.\\
+Hydrogen gross $1/n^2$ spectrum & \statusConditional{} & C & Free N2 kinetic bridge + $J_0$ + sourced Maxwell--Coulomb interaction + additional weakly bound two-body/branch reduction and $Q=1$ identification. $g_C$ is dimensionful, $\alpha_{\rm eff}=g_C/(J_0c)$; exact interacting branch selection and native electromagnetic current/source realization remain Open.\\
+Decoherence & \statusModelDerived{} & C & Exact reduced-coherence identity in the supplied factorized system/environment model with its coupling and normalized environment states; no native coupling, pointer basis or outcome selection.\\
+Zeno suppression & \statusConditional{} & C & Finite spectral variance yields short-interval survival expansion; ideal repeated rank-one survival projections further require a conditional state-reset/interrogation rule. Native apparatus/readout and anti-Zeno rate Open.\\
+Framed/double-cover $4\pi$ return & \statusConditional{} & N2 & Mathematical/framed admissibility; ordinary single-valued tensor transport alone does not force the spinorial sign; physical matter-sector selection Open.\\
+Physical spinorial-sector selector & \statusOpen{} & O & Not supplied by the one-body Clifford algebra.\\
+Many-closure exchange sign & \statusSharpOpen{} & O & One-body $4\pi$ return does not select antisymmetry.\\
+Pauli exclusion once antisymmetry supplied & \statusConditional{} & C & Exact downstream consequence once antisymmetry is supplied; the native exchange-sign/statistics bridge remains Open.\\
+Literal local-steering origin of the complex unit & \statusRetracted{} & N2 & The tested identification $J_hv=v\times\widehat h$ does not select the shared quantum complex unit; independent phase/frame coupling candidates are not excluded.\\
+Generic finite-wave action-current and normalization bridge & \statusSharpOpen{} & O & Unique positive physical current, modal provenance and persistence through nonlinear closure formation are not supplied by the resolved quadratic branch or its arbitrary scale $J_0$.\\
+Physical complex structure / positive-frequency selection & \statusSharpOpen{} & O & Effective quadratures do not select the physical free-sector vacuum, shared complex unit or multi-system composition. The local steering-origin identification was tested and retracted.\\
+Conjugate-closure / antimatter interpretation & \statusConjectural{} / \statusConditional{} & O & Candidate physical paired-branch structure; equal mass only if paired branches have equal invariant return energy. Algebraic conjugation does not derive physical $C$, opposite gauge charge/current, annihilation dynamics, CPT, or baryogenesis.\\
+Born weights / apparatus / definite outcome & \statusOpen{} / \statusDeferred{} & O & Native preparation measure, detector coupling and context-dependent record-selection frequencies unproved; completion belongs to the separate publication-deferred measurement research programme.\\
+Free Clifford stationary localization & \statusNegative{} & N2 & No nonzero $L^2$ stationary eigenstate in the stated free translation-invariant class.\\
+Three families from Clifford/Weyl dimension & \statusNegative{} & N2 & Module dimensions are powers of two; family mechanism lies elsewhere.\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\newpage
+
+\printbibliography[title={References}]
+
+
+\end{document}

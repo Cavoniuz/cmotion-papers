@@ -1,0 +1,52 @@
+cff-version: 1.2.0
+message: "Please cite the relevant individual C-motion paper listed below."
+title: "C-motion papers: a six-paper collection"
+authors:
+  - family-names: Kavonius
+    given-names: Toma
+    orcid: "https://orcid.org/0009-0006-7394-2973"
+version: "1.0"
+license: CC-BY-4.0
+references:
+  - type: unpublished
+    title: "C-Motion: Local-c Propagation, Recurrent Closure, and Field-First Interaction"
+    authors:
+      - family-names: Kavonius
+        given-names: Toma
+    doi: "10.5281/zenodo.24481577"
+    url: "https://doi.org/10.5281/zenodo.24481577"
+  - type: unpublished
+    title: "Quantum Foundations in C-Motion: From Recurrent Field Organization to Effective Quantum Dynamics"
+    authors:
+      - family-names: Kavonius
+        given-names: Toma
+    doi: "10.5281/zenodo.24481842"
+    url: "https://doi.org/10.5281/zenodo.24481842"
+  - type: unpublished
+    title: "Structural Entanglement in C-Motion I: Common-Source Pairing and the Singlet Preparation Kernel"
+    authors:
+      - family-names: Kavonius
+        given-names: Toma
+    doi: "10.5281/zenodo.24482061"
+    url: "https://doi.org/10.5281/zenodo.24482061"
+  - type: unpublished
+    title: "Thermodynamics in C-Motion: From Field States to Entropy, Temperature, and Equilibrium"
+    authors:
+      - family-names: Kavonius
+        given-names: Toma
+    doi: "10.5281/zenodo.24482472"
+    url: "https://doi.org/10.5281/zenodo.24482472"
+  - type: unpublished
+    title: "Weak-field gravity in C-Motion: scalar failure and conditional tensor recovery"
+    authors:
+      - family-names: Kavonius
+        given-names: Toma
+    doi: "10.5281/zenodo.24482696"
+    url: "https://doi.org/10.5281/zenodo.24482696"
+  - type: unpublished
+    title: "Gauge Architecture and Constraints in C-Motion I: Recurrent Closure, Native Constraints, and Conditional Gauge Structure"
+    authors:
+      - family-names: Kavonius
+        given-names: Toma
+    doi: "10.5281/zenodo.24482849"
+    url: "https://doi.org/10.5281/zenodo.24482849"

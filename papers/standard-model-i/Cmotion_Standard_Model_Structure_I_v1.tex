@@ -1,0 +1,945 @@
+
+
+% !TeX program = pdflatex
+% !BIB program = biber
+
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,bm,mathtools}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xurl}
+\usepackage[expansion=false]{microtype}
+\setlength{\emergencystretch}{3em}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\usepackage[backend=biber,style=numeric,sorting=none,maxnames=6,uniquename=false,url=false]{biblatex}
+\addbibresource{cmotion_foundational_general.bib}
+\addbibresource{cmotion_primary_research.bib}
+\addbibresource{cmotion_internal_manuscripts.bib}
+
+
+\AtEveryBibitem{\clearfield{note}\clearfield{annotation}\clearfield{keywords}\clearfield{file}}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\cmotion}{\mbox{C-Motion}}
+\newcommand{\ElEmEr}{\mbox{ElEmEr}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\Uone}{\mathrm{U}(1)}
+\newcommand{\SUtwo}{\mathrm{SU}(2)}
+\newcommand{\SUthree}{\mathrm{SU}(3)}
+\newcommand{\Lag}{\mathcal{L}}
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\thetaw}{\theta_{\mathrm W}}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black,
+  pdftitle={Gauge Architecture and Constraints in C-Motion I: Recurrent Closure, Native Constraints, and Conditional Gauge Structure},
+  pdfauthor={Toma Kavonius}
+}
+
+\title{\textbf{Gauge Architecture and Constraints in \cmotion{} I:}\\
+Recurrent Closure, Native Constraints, and Conditional Gauge Structure}
+\author{Toma Kavonius}
+\date{24 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\small\itshape
+Scope and limitations.  This manuscript establishes bounded constraints on proposed
+C-Motion gauge constructions.  The scoped parity-covariance and parity-sector
+results do not derive weak parity violation or a physical chiral selector.
+Native local-frame selection, gauge source/action and coupling laws, empirical
+charge normalization, and physical $C$, $T$, and $CPT$ completion remain unresolved.
+\end{center}
+\vspace{0.6em}
+
+\begin{abstract}
+In \cmotion{}, localized matter is modeled as recurrent field organization
+whose resolved primitive changes propagate locally at speed $c$ in physical
+three-space.  Recurrence makes phase, orientation, and steering relevant, but
+does not by itself select the Standard Model gauge interactions.  We identify
+the additional physical antecedents required for that selection.  A conditional
+global phase/action symmetry does not force local $\Uone$ freedom; smooth,
+local, signed, rotationally covariant response does not uniquely require
+one-form transport.  In their tested classes, scalar-only signed steering and
+carrier-bound algebraic exchange do not supply complete separated mediation,
+and local-$c$ propagation does not imply a gapless mediator.
+
+Within the specified closure-scaffold scope, parity covariance fixes the
+allowed polar/axial assignments.  Full evolution covariance on a
+parity-preserving domain separates linearized parity-even and parity-odd
+perturbations about a P-even background.  A specified flux-aligned axial-source proposal is
+excluded within its assumptions, while neither observed weak chirality nor
+physical $C$, $T$, and $CPT$ behavior is selected.  Vector-like source and
+antisymmetric steering classes remain conditional possibilities.  Given
+independently supplied local frames, covariant matter comparison, mediator
+and effective-action premises, familiar Abelian, Maxwell/helicity, and
+$\SUtwo$ connections follow as standard conditional controls.  An assumed
+common action also relates its current and quadratic vertices to the
+canonically normalized effective coupling, without deriving its physical
+value.  The resulting constraints localize the missing native selectors for
+frame structure, source/current/action, interaction range, charge, and weak
+chirality.
+\end{abstract}
+
+
+% =====================================================================
+\section{Introduction: from active recurrence to the gauge question}
+\label{sec:introduction}
+% =====================================================================
+
+In the Standard Model, interactions are organized by local gauge fields and matter representations
+of $\SUthree\times\SUtwo\times\Uone$~\cite{YangMills1954,Glashow1961,Weinberg1967,Salam1968}.
+The strong $\SUthree$ factor belongs to QCD development: the color-octet
+gluon construction of Fritzsch, Gell-Mann and Leutwyler \cite{FritzschGellMannLeutwyler1973}
+and the asymptotic-freedom results of Gross--Wilczek and Politzer
+\cite{GrossWilczek1973,Politzer1973} provide distinct standard precedents.
+The question here is not whether that mathematics can be written inside \cmotion{}, but whether specifically C-Motion physics selects the local frames, connections, sources and mediator classes from which it would follow.
+
+The starting picture is physical rather than algebraic.  A localized material object is treated as a recurrent field organization, not as an inert point carrying internal labels.  Primitive field change remains locally active at magnitude $c$ while the organized pattern returns, interferes, steers and persists.  A closure that is macroscopically rest-like can therefore remain internally active, with its persistence depending on phase, orientation and the directed structure of local propagation.
+
+A useful bounded representation makes this concrete.  Two opposed or complementary propagation contributions can participate in one recurrent organization.  Their direction-even content may add while their net directional current cancels, so zero bulk drift need not mean zero local activity.  Relative phase can still alter coherent return.  This is an illustrative two-channel decomposition, not a claim that every closure consists of two plane waves or that the two channels are electric/magnetic fields, charge signs, chiral sectors, particle/antiparticle components or weak-isospin states.
+
+This picture naturally creates a comparison problem.  If phase or internal orientation matters to recurrent return, what physical rule compares that information between neighboring parts of the organization?  Gauge theory answers analogous questions with connections.  The investigation below asks which parts of that structure follow from C-Motion constraints, which familiar shortcuts fail, and where standard gauge mathematics begins only after an additional physical antecedent is supplied.
+
+\paragraph{Contribution and provenance.}
+The Abelian, Maxwell, $\SUtwo$ and electroweak formulas used below are established
+connection and field-theory controls, not newly derived C-Motion dynamics.  The
+contribution of this paper is the explicitly bounded \emph{physical dependency and
+exclusion analysis}: starting from recurrent, directed propagation and the tested
+steering/source classes, it identifies which local comparison, mediator, gap and
+chirality jobs cannot be supplied by symmetry notation alone, and it records the
+scoped parity results for the specified closure scaffold.  The steering and
+linear-block algebra are printed here; full source-functional and
+boundary/return-operator reproduction remains incomplete, as stated in
+\cref{sec:parity_covariance,app:parity_derivation}.  The paper offers
+neither a native derivation of the observed gauge groups nor independent empirical
+evidence for the proposed ontology.  Each additional effective premise is stated
+where it enters; the complete ElEmEr source/action law remains Open.
+
+
+% =====================================================================
+\section{Physical ingredients: recurrence, local propagation and steering}
+\label{sec:physical_ingredients}
+% =====================================================================
+
+\subsection{Physical three-space and primitive succession}
+
+The primitive ontology is formulated in physical three-space.  Primitive ordered succession is denoted by $s$ and is an evolution/order parameter, not a fourth physical dimension.  Along a resolved primitive propagation characteristic,
+\begin{equation}
+  \dd\ell=c\,\dd s,
+  \label{eq:local_c_succession}
+\end{equation}
+where $\dd\ell$ is physical spatial arclength.  Operational clock time is constructed from recurrent physical processes rather than identified directly with $s$~\cite{CmotionMainFramework2026}.
+
+Where evolution and position must be displayed together we write $(s,\mathbf x)$.  Standard indexed objects such as $A_\mu$, $F_{\mu\nu}$ and $D_\mu$ are retained later as effective gauge-theory bookkeeping.  They do not alter the underlying three-space ontology.
+
+\subsection{A bounded counter-propagating closure picture}
+
+Write two effective coherent contributions along a closed coordinate $\theta$ as
+\begin{equation}
+ R=A_R e^{\ii(m\theta-\Omega s+\phi_{R0})},
+ \qquad
+ L=A_L e^{\ii(-m\theta-\Omega s+\phi_{L0})}.
+ \label{eq:bounded_counterflow_picture}
+\end{equation}
+For equal amplitudes, a direction-even quantity can remain nonzero while a simple directional current cancels,
+\begin{equation}
+ |R|^2+|L|^2=2|A|^2,
+ \qquad
+ j_{\rm dir}\propto |R|^2-|L|^2=0,
+ \label{eq:balanced_counterflow}
+\end{equation}
+where $R$ and $L$ are effective counter-propagating contributions, which may
+be branches of one underlying ElEmEr field rather than independent primitive
+waves or literal permanent constituents.  The displayed sum and current use
+the stipulated two-channel weighting, not a universal field-energy or current
+functional.  Independent phase symmetries for the two channels are an
+additional hypothesis, not automatic for branches of one carrier.  The cross term in $|R+L|^2$ still depends on relative phase.  Cancellation of this directional current does not establish binding, full
+stress balance, finite-radius stability or a unique closure geometry.
+A single packet returning and overlapping itself is a separately investigated
+possible formation picture; it is not identified with, or proved to produce,
+the balanced two-channel state.  The physical lesson is therefore limited but useful: a recurrent configuration can be rest-like as a whole while local propagation remains active and return remains sensitive to phase and direction.
+
+This helps separate three scales that are otherwise easy to confuse.  The primitive field activity is local and propagating; the recurrent pattern is the larger organized return; and a macroscopic centre or bulk state summarizes the closure without replacing its internal motion.  A rest-like centre therefore does not require any primitive component to ``stop.''  What must persist is the organization of the moving field structure.  That is why internal direction, return phase and orientation are legitimate physical data for the later gauge question.
+
+The decomposition also explains why relative phase is more important here than an abstract phase label.  If two contributing parts return with the wrong relation, their combined pattern changes even when the common phase origin has been shifted uniformly.  Recurrence can therefore make relational phase physically readable while leaving a common phase convention redundant at the effective level.  Nothing in this picture, however, says that the same freedom can be chosen independently at each location.
+
+\subsection{Field-first response and steering}
+
+At framework level the reusable interaction architecture is only
+\begin{equation}
+ \text{sector source/condition}
+ \longrightarrow
+ \text{local field/state reorganization}
+ \longrightarrow
+ \text{response}.
+ \label{eq:source_response_architecture}
+\end{equation}
+A generated physical change then propagates causally according to the primitive local-$c$ rule.  Generation and propagation are distinct; this architecture does not itself specify a gauge source, connection, coupling, range or mediator mode.
+
+One specifically C-Motion ingredient is that response can appear as reorientation of local propagation while primitive speed remains fixed.  This matters because a closure is built from directed local propagation rather than from a point whose velocity is simply accelerated.  A local interaction can change the direction in which the field organization continues without requiring a change in the primitive propagation magnitude.  In the current Conditional/Structural representation,
+\begin{equation}
+ \boxed{
+ \frac{\dd\mathbf u}{\dd s}
+ =
+ \mathbf P_\perp(\mathbf u)\,\mathbf g_{\rm st}
+ +\frac{\mathbf u}{c}\times\mathbf h_{\rm st}}
+ \label{eq:projected_steering}
+\end{equation}
+where $\mathbf u$ is a local propagation tangent with $|\mathbf u|=c$, $\mathbf P_\perp$ projects perpendicular to $\mathbf u$, and $\mathbf g_{\rm st},\mathbf h_{\rm st}$ are neutral names for transverse and rotational steering-response components.  The equation concerns local field propagation, not the bulk velocity of a point particle, and the two response pieces are not identified here with electric and magnetic fields.  The first term turns $\mathbf u$ through a component transverse to its present direction; the second has the form of a local rotation about $\mathbf h_{\rm st}$.  Both are kinematic response channels.  Their microscopic source, action and relation to any familiar gauge field remain separate questions.
+
+This sets up the two branches studied below.  Phase recurrence asks how internal phase descriptions can be compared.  Steering asks which local response structures can turn primitive propagation while preserving $|\mathbf u|=c$.  The branches are physically related by the closure, but neither is allowed to supply the missing premise of the other by notation alone.
+
+% =====================================================================
+\section{From global phase to a local connection: the missing step}
+\label{sec:phase_to_connection}
+% =====================================================================
+
+The relevant hierarchy is
+\begin{equation}
+\boxed{
+\begin{array}{c}
+\text{global phase symmetry}\\
+\not\Downarrow\\
+\text{local phase-frame equivalence and covariant comparison}\\
+\Downarrow\quad\text{if supplied}\\
+\text{connection }A\\
+\Downarrow\\
+\text{curvature }F=\dd A\ \text{(possibly zero)}\\
+\not\Downarrow\\
+\text{Maxwell dynamics}.
+\end{array}}
+\label{eq:gauge_hierarchy}
+\end{equation}
+Each line answers a different physical question.
+
+A $\Uone$ phase symmetry is invariance under multiplication by a unit complex number $e^{\ii\alpha}$.  Within the current Conditional Quantum Foundations branch,
+\begin{equation}
+ \Psi\longrightarrow e^{\ii\alpha}\Psi
+ \label{eq:global_phase}
+\end{equation}
+leaves the effective branch action unchanged, and Noether's theorem supplies the corresponding effective action charge under the stated assumptions~\cite{CmotionQuantumFoundations2026}.  An active global transformation of a complex field can represent a genuine physical symmetry and carry a Noether charge; it need not be a gauge redundancy.  A passive change of a chosen common phase reference, when applicable, is a different descriptive operation.
+
+Allowing the phase convention to vary independently with location is stronger.  A uniform change uses one number $\alpha$ for the whole effective state.  A local change uses a function $\alpha(s,\mathbf x)$, which changes how neighboring descriptions are compared.  These are physically different claims, not two sizes of the same symmetry.  The central negative result is therefore
+\begin{equation}
+ \boxed{\text{global }\Uone\not\Rightarrow\text{local }\Uone.}
+ \label{eq:global_not_local}
+\end{equation}
+Global phase symmetry does not by itself create a pointwise physical redundancy, a gauge current or an interaction field.
+
+The physical distinction is easiest to see operationally.  A global symmetry applies one parameter uniformly to an effective field, whereas a passive common phase-origin convention only changes its description.  Neither statement alone licenses an independent relabelling at each position.  A local gauge freedom would say that two neighboring descriptions may choose different phase frames and still represent the same physical state after a prescribed comparison.  That second statement already contains new local structure: one must know what it means to carry a phase reference from one neighborhood to the next.  C-Motion recurrence motivates asking for such a rule, but the current closure dynamics has not yet established that the local phase reference is redundant in this stronger sense.
+
+If a physical local phase-frame equivalence is independently supplied \emph{and} a differentiable charged field must be compared covariantly between nearby locations, standard connection geometry gives a comparison rule.  A \emph{connection} is such a rule for comparing internal phase references; a \emph{one-form} is its linear infinitesimal representation in a local chart.  The redundancy alone does not require a propagating gauge mediator: a connection may be flat or auxiliary, and its kinetic term and physical coupling demand further dynamical antecedents.  The need for a compensating comparison rule is easy to see: for a local phase change,
+\begin{equation}
+ \partial_\mu(e^{\ii q\alpha}\psi)
+ =e^{\ii q\alpha}\left(\partial_\mu\psi+\ii q(\partial_\mu\alpha)\psi\right),
+ \label{eq:local_phase_derivative}
+\end{equation}
+so the ordinary derivative acquires an extra term proportional to the local change of phase convention.  A connection compensates that term.  This is the standard phase-compensation
+construction associated with Weyl's gauge formulation~\cite{Weyl1929},
+used here conditionally rather than as a native local-frame selector.
+Covariant comparison is then written
+\begin{equation}
+ D_\mu=\partial_\mu+\ii qA_\mu,
+ \qquad
+ A_\mu\mapsto A_\mu-\partial_\mu\alpha,
+ \label{eq:conditional_u1_connection}
+\end{equation}
+where $D_\mu$ is the covariant derivative and $q$ is the supplied representation weight, not yet empirical electric charge.  The associated Abelian curvature,
+\begin{equation}
+ F=\dd A,
+ \qquad
+ F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu,
+ \label{eq:abelian_curvature}
+\end{equation}
+is a two-form: an antisymmetric differential object measuring the failure of parallel comparison to return unchanged around an infinitesimal loop.  Here $F=\dd A$ is a local-chart expression: a nontrivial bundle need not admit one globally defined potential $A$, even though curvature is globally meaningful.  These are standard consequences once the relevant local frame and connection structure are admitted.  The C-Motion-specific question lies earlier: what physical law makes such a local phase frame real?  That selector remains Open (sharp).
+
+% =====================================================================
+\section{Why recurrence still does not force one-form transport}
+\label{sec:tangent_linearity}
+% =====================================================================
+
+Coherent recurrent return gives phase a physical role.  If one segment of a recurrent evolution carries a phase increment from state 1 to state 2 and a second from state 2 to state 3, the total increment along the \emph{realized concatenated path} can be their sum.  Such pathwise additivity does not imply endpoint independence, a globally exact differential or a one-form on all possible trajectories.  This is genuine physical content: the closure dynamics may distinguish compatible from incompatible phase return rather than merely assigning a phase label after the fact.
+
+That compositionality is still weaker than a local connection.  It applies along the history actually realized by the closure.  A connection would provide an infinitesimal comparison rule for arbitrary neighboring physical states or directions in the relevant effective state space.  A retarded reduced description may also hide phase-relevant information in present field records, internal modes or correlations.  C-Motion therefore has a reason to seek a local sufficient-state description, but recurrence alone does not prove that the reduced phase law has already descended to one.
+
+Even if one grants that stronger state-local description, one more obstruction remains.  Let $\hat{\mathbf n}$ be a local propagation direction and $\mathbf b$ a local physical vector.  The signed phase-rate correction
+\begin{equation}
+ \delta_q\Omega=q\,\lambda(X)(\mathbf b\cdot\hat{\mathbf n})^3
+ \label{eq:cubic_counterexample}
+\end{equation}
+can be local, smooth, signed, rotationally covariant and additive when integrated along successive realized segments.  This use of ``compositional'' does not assert path-independent integrability.  Yet it is not generally reducible to the first directional harmonic
+\begin{equation}
+ A_s(X)+c\,\mathbf A(X)\cdot\hat{\mathbf n}.
+ \label{eq:one_form_directional}
+\end{equation}
+Hence
+\begin{equation}
+\boxed{
+\text{local + smooth + compositional + signed + rotational}
+\not\Rightarrow
+\text{one-form transport}.}
+\label{eq:tangent_linearity_negative}
+\end{equation}
+A closure can sample local response through many directed propagation segments; symmetry does not by itself say that only the first directional harmonic is physical.  In the two-channel picture this can be visualized simply: knowing that the two directions are related by symmetry does not determine whether the response depends on $\mathbf b\!\cdot\!\hat{\mathbf n}$, its cube, or some other allowed odd angular function.  A native connection therefore requires an additional tangent-linearity/first-harmonic selector.  The result is constructive because it identifies exactly what a future microscopic law must suppress.  Conversely, if a leading local action is \emph{independently} restricted to a signed term linear in the path tangent, its line integral has the standard effective one-form and curvature structure.  That conditional construction does not follow from the weaker assumptions tested here, nor does it select the native action, field equations or source.  Eikonal/phase-line constructions provide one-form controls only in their separately supplied tangent-linear action class; they do not extend the uniqueness claim to arbitrary recurrent response.
+
+This also prevents a second shortcut.  In the Conditional QF branch a mode phase $\Theta(s,\mathbf x)$ has the exact differential
+\begin{equation}
+ \dd\Theta=(\partial_s\Theta)\,\dd s+\nabla\Theta\cdot\dd\mathbf x.
+ \label{eq:qf_exact_phase_gradient}
+\end{equation}
+But $\dd\Theta$ describes variation of the state's own phase; it is not an independently derived interaction connection:
+\begin{equation}
+ \boxed{\dd\Theta\ \not\Rightarrow\ A_{\rm interaction}\ \text{as a derived field}.}
+ \label{eq:phase_not_connection}
+\end{equation}
+An Abelian pure-gauge potential can coincide with an exact phase differential in a particular gauge, up to convention and normalization.  The missing step is therefore \emph{physical derivation and independent provenance}, not mathematical impossibility of equality.  Accordingly, the familiar combination
+\begin{equation}
+ \pi=\dd\Theta-qA
+ \label{eq:conditional_phase_covector}
+\end{equation}
+becomes physical only after $A$ has independent provenance.  Likewise, defining $q\mathbf A$ as the difference between a phase-conjugate momentum and a mechanical/flow momentum would merely name the residual unless both momenta were independently supplied by an interacting native law.
+
+% =====================================================================
+\section{Signed steering narrows the mediator problem}
+\label{sec:signed_mediator}
+% =====================================================================
+
+The phase-localization obstruction does not remove all C-Motion-specific information about a signed interaction.  A signed interaction must do more than alter an internal phase label: opposite signed sectors must be capable of opposite local response, and separated closures require some physical mechanism by which a generated change reaches the second closure.  Steering and mediator tests therefore ask a different question from the phase-frame analysis and exclude some simpler possibilities.
+
+\subsection{Scalar-only steering is insufficient in the tested class}
+
+A scalar refractive/index law can redirect propagation through the gradient of one scalar quantity.  Within the tested signed-steering class it does not reproduce the complete direction-changing response represented by both terms of \cref{eq:projected_steering}.  The scoped conclusion is therefore
+\begin{equation}
+ \boxed{\text{tested scalar-only signed steering is insufficient}.}
+ \label{eq:scalar_negative}
+\end{equation}
+This removes a simple candidate class; it does not force a one-form and does not exclude every scalar interaction in every sector.  In particular, the tangent-linearity result of \cref{eq:tangent_linearity_negative} blocks the inference ``scalar fails, therefore a gauge one-form is derived.''
+
+\subsection{Overlap interaction is not separated mediation}
+
+Consider the algebraic current--current auxiliary class.
+A quartic representative uses a supplied classical
+carrier $\Psi$ with $V^\mu=\bar\Psi\gamma^\mu\Psi$ and
+$\bar\Psi=\Psi^\dagger\gamma^0$, a fixed nonzero coupling $G_V$, and
+the interaction and auxiliary rewrite
+\[
+ \Lag_{\rm int}=-\frac{G_V}{2}V_\mu V^\mu,
+ \qquad
+ \Lag_{\rm aux,int}=-\mathcal C_\mu V^\mu
+                 +\frac{1}{2G_V}\mathcal C_\mu\mathcal C^\mu.
+\]
+The effective contraction convention is $(+---)$; these expressions supplement
+the specified first-order carrier kinetic term.  The auxiliary has no
+derivative/kinetic term.  Its Euler equation is
+$\mathcal C_\mu=G_VV_\mu$; substitution returns the same interaction.
+Thus the one-form is algebraically tied to the carrier current and has no
+independent vacuum mode.  Such an interaction can organize local exchange where the relevant current is present, including a composite derivative curvature $\dd\mathcal C$ where the current varies, but it does not by itself provide a disturbance that continues through a source-free separation.  Thus, within that class,
+\begin{equation}
+ \boxed{
+ \text{carrier-bound algebraic exchange}
+ \not\Rightarrow
+ \text{separated propagating mediator}.}
+ \label{eq:b4_negative}
+\end{equation}
+One representative algebraic on-shell branch has
+\begin{equation}
+ \mathcal C_\mu=f(V_\nu V^\nu)\,V_\mu,
+ \qquad V_\mu=0\ \Longrightarrow\ \mathcal C_\mu=0,
+ \label{eq:b4_auxiliary_on_shell}
+\end{equation}
+where $V_\mu$ is the specified carrier current and $f$ is regular at the vacuum value.  This conclusion presumes the algebraic auxiliary field has \emph{no independent kinetic equation or homogeneous mode}: a purely algebraic, current-bound variable cannot carry a freely propagating source-free disturbance.  A locked single-common-phase, leading-eikonal calculation imposes a
+curvature limitation only on that restricted subbranch.  It is not a
+universal obstruction for the current--current class.  With independently
+phased carrier contributions, nonzero composite curvature can occur:
+for constant $G_V$, $\dd\mathcal C=G_V\dd V$ need not vanish.
+This corrects the overgeneralized common-phase no-go without giving
+$\mathcal C$ an independent homogeneous propagation equation.  Composite
+curvature is not a derived native electromagnetic mediator.
+The restricted result does not exclude a separate dynamical connection or a different mediator sector.  This is the field-first distinction between local overlap response and a generated state change that propagates causally and affects another closure elsewhere.  An overlap term can be perfectly legitimate local interaction physics and still fail as a long-range mediator because nothing in the algebraic auxiliary variable persists once the carrier current is absent.  Separated mediation therefore requires an additional vacuum-capable field organization, not merely a different interpretation of the same local auxiliary.
+
+\subsection{Vector-like and antisymmetric classes survive conditionally}
+
+Under additional assumptions---a conserved signed source, locality and a leading-derivative interaction class---a compact surviving source representation is vector-like, for example
+\begin{equation}
+ \Lag_{\rm int}\sim-qA_\mu J^\mu,
+ \label{eq:conditional_vector_coupling}
+\end{equation}
+with $J^\mu$ the supplied effective source current.  Separately, within the all-null tangent-linear response class, speed-preserving directional response is naturally represented by an antisymmetric generator/two-form.
+
+These two facts are suggestive but not an identification:
+\begin{equation}
+ \boxed{
+ \text{vector-like signed source candidate}
+ \not\equiv
+ \text{antisymmetric steering-response field}.}
+ \label{eq:source_response_not_identified}
+\end{equation}
+The missing bridge is physical: a native source/action law must show that source mediation and trajectory steering are two aspects of one sector.  A completed native account would have to connect at least three statements that are currently separate: what local signed source condition generates the disturbance, what field organization propagates away from that source, and how the arriving disturbance changes the local propagation tangent of another closure.  Matching tensor shapes at the last step is not enough to prove that all three belong to one field.  Until this source--propagation--response chain is established, two-form steering is not electromagnetism.
+
+% =====================================================================
+\section{Propagation speed, spectral gap and long range}
+\label{sec:range_gap}
+% =====================================================================
+
+A second tempting shortcut is to infer a massless mediator directly from primitive local-$c$ propagation.  That implication is false.  Consider the effective control equation in succession and physical three-space
+\begin{equation}
+ \partial_s^2\Phi-c^2\nabla^2\Phi+\Omega_m^2\Phi=0,
+ \qquad
+ \omega^2=c^2|\mathbf k|^2+\Omega_m^2.
+ \label{eq:gapped_local_c_control}
+\end{equation}
+The highest-derivative part retains the local-$c$ characteristic/front structure even when the normal modes have a nonzero gap $\Omega_m$.  Therefore
+\begin{equation}
+ \boxed{
+ \text{local characteristic speed }c
+ \not\Rightarrow
+ \text{zero spectral gap}.}
+ \label{eq:local_c_not_gapless}
+\end{equation}
+Characteristic speed constrains how disturbances first propagate; a lower-order gap changes the spectrum without changing that principal front speed.  Equivalently, the front of a disturbance can respect the primitive local-$c$ causal structure while a wave packet built from the gapped normal modes has different dispersive behavior.  This is why causal propagation speed and effective rest/gap structure have to be treated separately.
+
+The organizational vocabulary must therefore stay separate from spectral vocabulary:
+\begin{equation}
+ \boxed{\text{open}\not\Rightarrow\text{massless},\qquad
+ \text{closed}\not\Rightarrow\text{massive}.}
+ \label{eq:open_closed_not_mass}
+\end{equation}
+Open/closed describes recurrence and organization; massive/massless describes effective dispersion.  Particular realizations may correlate them, but the correlation is dynamical rather than definitional.
+
+Electromagnetism supplies an empirical long-range target over finite tested
+scales.  Photon-mass limits constrain deviations from a massless
+description; they do not demonstrate an infinite interaction range \cite{GoldhaberNieto2010}.
+An exactly massless Maxwell sector is the idealized comparison target.  Within a simple stable local linear gapped class, a positive gap gives a finite screening length, schematically
+\begin{equation}
+ G(r)\propto\frac{e^{-r/\lambda}}{r},
+ \qquad \lambda=\frac{c}{\Omega_m}.
+ \label{eq:yukawa_screening}
+\end{equation}
+If exact unscreened asymptotic range is supplied as a premise, it excludes a
+strict positive gap within that specified class.  This is a Conditional
+static Green-function/spectral control, not a consequence of finite-range
+measurements or a native derivation of photon masslessness; gapless support also need not mean one unique isolated massless pole.
+
+This separation matters for future C-Motion work.  A native derivation cannot stop after showing that a disturbance respects the primitive causal front.  It must additionally explain why the relevant signed sector has no positive spectral gap, or why its long-range response contains the required zero-frequency support.  Conversely, importing the observed long range as a target is legitimate for phenomenological matching, but it must remain visibly empirical rather than being retroactively attributed to local-$c$.
+
+% =====================================================================
+\section{What follows conditionally: Abelian, Maxwell and charge structure}
+\label{sec:abelian_controls}
+% =====================================================================
+
+The preceding sections identify the missing physical joints.  If a locally redundant phase frame, differentiable charged matter, and a covariant comparison rule are supplied, \cref{eq:conditional_u1_connection} gives an Abelian connection and \cref{eq:abelian_curvature} gives its curvature.  This does not ensure nonzero curvature, a kinetic term or an interacting vacuum field.  If one additionally supplies a gapless Abelian/vector sector with local, linear, parity-even, minimal-derivative, positive-energy free dynamics, no additional propagating vacuum fields, \emph{and an effective operational Lorentz-covariant kinetic structure (or an equivalent common-cone and constitutive-normalization condition)}, the standard leading control is Maxwell-like.  In the relativistic
+effective actions below we use $g_{\mu\nu}=\operatorname{diag}(1,-1,-1,-1)$
+in a local flat comparison chart, with Lorentzian index raising and
+$x^0_{\rm eff}=ct_{\rm eff}$.  This agrees with the Main/QF action convention;
+the opposite signature used in Gravity's PPN comparison is a separate declared
+convention.  Neither chart introduces a universal observer clock.
+With these conventions,
+\begin{equation}
+ \Lag_A=-\frac{Z_A}{4}F_{\mu\nu}F^{\mu\nu}.
+ \label{eq:conditional_maxwell}
+\end{equation}
+The extra constitutive premise is essential.  In an effective $(s,\mathbf x)$
+chart, gauge invariance and spatial isotropy also allow the parity-even quadratic
+trial action
+\begin{equation}
+ \mathcal L_{\rm trial}=
+ \frac{\kappa_E}{2}|\mathbf E|^2-
+ \frac{\kappa_B}{2}|\mathbf B|^2,\qquad
+ \kappa_E,\kappa_B>0,
+ \label{eq:nonlorentz_gauge_trial}
+\end{equation}
+with $E_i=F_{si}$ and $B_i=\tfrac12\epsilon_{ijk}F_{jk}$ in a chosen
+consistent chart normalization.  Its transverse plane waves obey
+$\omega^2=(\kappa_B/\kappa_E)|\mathbf k|^2$; the two coefficients are not fixed
+relative to the intended common physical cone by local gauge invariance or
+positivity alone.  The covariant contraction in
+\cref{eq:conditional_maxwell} is therefore a \emph{conditional standard
+Maxwell control}, not a consequence of primitive local-$c$ kinematics or
+an independently selected C-Motion vacuum law.
+
+For the standard massless Abelian gauge field, quotienting redundant gauge components leaves two transverse helicities,
+\begin{equation}
+ h=\pm1,
+ \label{eq:helicity_control}
+\end{equation}
+where helicity is angular momentum projected onto the propagation direction.  These are successful conditional endpoints; the starting local connection, physical source identity and zero-gap mediator remain the unresolved C-Motion steps.
+
+
+Gauge notation can also hide distinct meanings of ``charge.''
+SM-I keeps four notions separate:
+\begin{equation}
+	\boxed{\bigl\{Q_{\rm action},\ q_{\rm gauge},\
+		J^\mu_{\rm source},\ Q_{\rm electric}\bigr\}
+		\quad\text{have no derived mutual identification}.}
+	\label{eq:charge_distinctions}
+\end{equation}
+This absence of a derived identification holds unless an explicit
+bridge is supplied.  $Q_{\rm action}$ is the Conditional QF Noether
+charge associated with global phase symmetry.  $q_{\rm gauge}$ is
+a representation weight once a local gauge representation is supplied.
+$J^\mu_{\rm source}$ is the physical current that an interacting
+source/action law must independently define.  $Q_{\rm electric}$ is
+the measured electric charge whose identification and normalization
+remain open.
+
+These four entries distinguish definitions and bridge obligations, not four
+necessarily unrelated conserved quantities.  In a completed physical theory,
+the integral of an appropriately normalized source current may coincide with
+an action charge and measured electric charge.  Such identifications require
+the source dynamics, boundary conditions and operational normalization; they
+are not prohibited by this bookkeeping.
+
+The distinction is not merely terminological.  A conserved action charge can exist in an effective free branch even when no local interaction connection has been identified.  A gauge weight can be specified algebraically without proving which physical field distribution carries the corresponding source.  And a source law can still leave the absolute empirical unit undetermined.  Conservation of $Q_{\rm action}$ is therefore not, by itself, a derivation of conservation, source normalization or quantization of empirical electric charge.
+
+\subsection{Common-action coupling and the remaining normalization scale}
+\label{sec:common_action_coupling}
+
+There is nevertheless a more constructive \emph{conditional} relationship among the
+source vertex, the interaction term and the coupling convention.  Suppose an
+effective Lorentz-compatible Abelian matter--field sector is supplied with
+positive constants $Z_A,Z_\psi$ and with \emph{one} common minimally coupled
+action,
+\begin{equation}
+ S_{\rm eff}=\int \dd^4x_{\rm eff}\left[-\frac{Z_A}{4}F_{\mu\nu}F^{\mu\nu}
+ +Z_\psi (D_\mu\psi)^*(D^\mu\psi)-V(|\psi|^2)\right],\qquad
+ D_\mu=\partial_\mu+\ii qA_\mu.
+ \label{eq:common_action_u1}
+\end{equation}
+The four-coordinate notation is an effective Lorentz-chart integration
+convention, not a fourth primitive spatial dimension or an independently
+established native action.  Expanding the \emph{same} covariant kinetic term gives
+\begin{equation}
+ Z_\psi|D\psi|^2=Z_\psi|\partial\psi|^2-qA_\mu j_0^\mu
+  +Z_\psi q^2 A_\mu A^\mu|\psi|^2,\qquad
+ j_0^\mu=\ii Z_\psi(\psi^*\partial^\mu\psi-\psi\partial^\mu\psi^*).
+ \label{eq:common_action_vertices}
+\end{equation}
+Thus the linear current vertex and the quadratic $A^2|\psi|^2$
+(``seagull'') term are linked by one supplied covariant derivative;
+within this action they cannot be given unrelated coefficients.  The full
+current obtained by variation with respect to $A_\mu$ includes the
+$A$-dependent term and should not be identified with the free current $j_0^\mu$
+alone.
+
+After canonical field normalization $A^{(c)}_\mu=\sqrt{Z_A}\,A_\mu$
+and $\psi_c=\sqrt{Z_\psi}\,\psi$, the effective coupling of the
+canonically normalized connection to this charge-$q$ representation is
+\begin{equation}
+ \boxed{e_{\rm eff}=\frac{q}{\sqrt{Z_A}}.}
+ \label{eq:common_action_canonical_coupling}
+\end{equation}
+The simultaneous redefinition $A'_{\mu}=\lambda A_\mu$,
+$q'=q/\lambda$ and $Z_A'=Z_A/\lambda^2$ ($\lambda>0$) preserves
+$e_{\rm eff}$.  Specifying a compact $\Uone$ representation might
+restrict relative character weights to $q_n=nq_0$, but neither such
+representation theory nor the common-action identity selects which
+physical closures realize those weights or the base coupling
+$q_0/\sqrt{Z_A}$.  In particular, this does not derive empirical
+electric charge, the fine-structure constant, a native electromagnetic
+action or the weak mixing angle.  Those normalization and realization
+problems remain Open.
+
+% =====================================================================
+\section{The spinorial branch and the weak-sector boundary}
+\label{sec:weak_boundary}
+% =====================================================================
+
+Quantum Foundations contains a Conditional first-order multicomponent/Clifford sector and spinorial return structure under stated assumptions~\cite{CmotionQuantumFoundations2026}.  A \emph{doublet} is a two-component object transformed together by an internal symmetry; $\SUtwo$ is the group of unitary $2\times2$ matrices of determinant one and naturally acts on complex doublets.
+
+The bounded counter-propagating closure picture supplies only intuition that one recurrent organization may admit more than one internally related component.  QF adds a more specific Conditional spinorial possibility: under its stated first-order/Clifford assumptions, internal states can transform in a two-component representation sensitive to the spinorial double cover.  That makes a local doublet-frame question mathematically natural, but it still does not identify either the counter-propagating pieces or the QF spinor components with weak isospin.  A complex two-component space by itself permits multiple possible frame groups (for example $\mathrm U(2)$ or subgroups); the actual local redundancy and invariant structures must be physically fixed.  The physical chain remains
+\begin{equation}
+\begin{aligned}
+\text{Conditional spinorial/lift-readable structure}
+&\longrightarrow \text{physical local doublet frame (Open)}\\
+&\longrightarrow \text{selected local }\SUtwo\text{ redundancy (Open)}\\
+&\longrightarrow \SUtwo\text{-connection mathematics (Conditional)}.
+\end{aligned}
+\label{eq:su2_chain}
+\end{equation}
+If a local $\SUtwo$-structured frame equivalence is independently supplied---including the requisite preserved inner product, determinant-one structure and transformation rules---\emph{and} a differentiable doublet is required to admit covariant comparison or parallel transport, standard connection mathematics gives
+\begin{equation}
+ D_\mu=\partial_\mu+\ii gW_\mu^aT^a,
+ \label{eq:conditional_su2_connection}
+\end{equation}
+where $T^a$ are the internal generators and $W_\mu^a$ the corresponding connection components.  This constructs the appropriate comparison rule within the assumed representation; it does not select a dynamical non-Abelian mediator, its kinetic term, its sources or its physical identification with weak isospin.  The decisive boundary is
+\begin{equation}
+ \boxed{\SUtwo_{\rm spin/spinorial}\not\Rightarrow\SUtwo_{\rm weak}.}
+ \label{eq:spin_su2_not_weak}
+\end{equation}
+Spinorial transformation under spatial rotation and weak isospin are different physical roles.  The same group symbol does not make them the same physical symmetry: one concerns how an effective internal state transforms under rotations, while the other labels the interaction representation of the weak sector.  In practical terms, a spatial spinor tells us how the state responds when physical orientation is changed; a weak doublet tells us which internal components a particular interaction mixes and how they are sourced.  Those statements can share $\SUtwo$ representation theory while referring to different physical operations.  A native theory must therefore supply a bridge at the level of the interaction, not rely on the shared group mathematics.
+
+\subsection{Parity covariance constrains, but does not select, chirality}
+\label{sec:parity_covariance}
+
+A stronger, narrowly scoped parity statement is retained for the specified
+closure scaffold: projected fixed-speed steering with a density-sourced polar
+$\mathbf g_{\rm st}$ channel, a vorticity-based axial $\mathbf h_{\rm st}$
+channel, and parity-compatible regularity, boundary and return conditions.
+The parity claims apply only in that scope; they do not select a native
+ElEmEr action or weak chirality.  Let spatial parity act at fixed succession parameter $s$ by $\mathbf x\mapsto-\mathbf x$.  The supported assignments are
+\begin{equation}
+\begin{aligned}
+ \rho^{P}(s,\mathbf x)&=+\rho(s,-\mathbf x),\\
+ \mathbf u^{P}(s,\mathbf x)&=-\mathbf u(s,-\mathbf x),\\
+ \mathbf j^{P}(s,\mathbf x)&=-\mathbf j(s,-\mathbf x),\qquad \mathbf j=\rho\mathbf u,\\
+ \mathbf g_{\rm st}^{P}(s,\mathbf x)&=-\mathbf g_{\rm st}(s,-\mathbf x),\\
+ \mathbf h_{\rm st}^{P}(s,\mathbf x)&=+\mathbf h_{\rm st}(s,-\mathbf x),\\
+ \boldsymbol\omega^{P}(s,\mathbf x)&=+\boldsymbol\omega(s,-\mathbf x),\qquad
+ \boldsymbol\omega=\nabla\times\hat{\mathbf u}.
+\end{aligned}
+\label{eq:parity_assignments}
+\end{equation}
+Thus $\rho$ is parity-even; $\mathbf u$, $\mathbf j$ and $\mathbf g_{\rm st}$ are polar vectors; $\mathbf h_{\rm st}$ and vorticity $\boldsymbol\omega$ are axial vectors.  The helicity-like handedness scalar
+\begin{equation}
+ \chi=\hat{\mathbf u}\cdot(\nabla\times\hat{\mathbf u})
+ \label{eq:helicity_pseudoscalar}
+\end{equation}
+is a pseudoscalar and changes sign under $P$.
+
+With these assignments, the tested projected steering law, the density-sourced $\mathbf g_{\rm st}$ sector, the vorticity-based $\mathbf h_{\rm st}$ sector, and the closure conditions checked in that scaffold map a solution to a parity-reflected solution.  The projected steering transformation and the conditional linear parity-block proof are displayed explicitly in Appendix~\ref{app:parity_derivation}.  The printed steering proof does not independently reproduce the complete
+source-functional checks.  Exact source kernels, coefficient/domain definitions
+and return operators are not all specified in the available manuscript/source
+reconstruction, so a full independent reproduction of that scaffold is not
+claimed.  The covariance result is limited to the specified source types and
+the parity-preserving regularity, standing-wave/self-consistency, outgoing
+radial and winding-magnitude conditions summarized in the Appendix; it is not a theorem about every term that may appear in a future native \ElEmEr{} action.
+
+The linear consequence assumes covariance of the \emph{full} evolution,
+a differentiable evolution map, and a domain and boundary/return conditions
+preserved by the parity involution.  Around a P-even background, and only
+with those hypotheses, the linearized operator commutes with $P$, so a perturbation decomposes into non-mixing parity sectors,
+\begin{equation}
+ \delta X=\delta X_{+}+\delta X_{-},
+ \qquad
+ P\delta X_{\pm}=\pm\delta X_{\pm}.
+ \label{eq:parity_blocks}
+\end{equation}
+A $P$-even linearized closure therefore cannot acquire a $P$-odd component merely through the parity-covariant linear dynamics.  Equivalently, if a handed closure branch exists in this scaffold, parity supplies an opposite-handed partner with the same parity-even scalar data.  The scaffold can therefore \emph{permit} a chirality sign without \emph{selecting} one.  An imposed chiral seed is not evidence that the native dynamics forced the observed weak handedness.  More narrowly, the specified balanced-sideband source-inactivity test concerns the specifically prescribed symmetric source/seed class, not all possible parity-odd interactions.
+
+Parity also excludes a specified flux-aligned source candidate.  Because $\mathbf h_{\rm st}$ is axial, a flux-aligned magnetization-like source $\mathbf M\propto\rho\hat{\mathbf u}$ is polar and has the wrong parity to source that channel in a parity-covariant law.  A vorticity-aligned form $\mathbf M\propto\rho(\nabla\times\hat{\mathbf u})$ has the admissible axial character, but admissible parity is not sufficient for activation: in the tested balanced-sideband closures, the specified activating source cancels algebraically.  In that model it can be written $J_\phi=(|\psi_{+1}|^2-|\psi_{-1}|^2)/\rho$ where $\rho>0$; if $|\psi_{+1}|=|\psi_{-1}|$, then $J_\phi=0$.  The cancellation uses the balance condition, not an assertion that every parity-odd field vanishes pointwise on every parity-invariant background.  The corresponding source route is therefore inactive on that tested class rather than rescued by coefficient tuning.
+
+The scope boundary is essential.  This $P$ result does not derive the observed parity violation of the weak interaction; a native weak sector would need additional physics that distinguishes the empirical left- and right-handed representations.  Nor is a complete discrete-symmetry package established here.  The physical closure-conjugation bridge needed for $C$ is incomplete; retarded dependence by itself is not a complete $T$ theorem because the dynamical law, admissible boundary conditions and advanced/retarded solution class must be compared; consequently $C$, $T$ and $CPT$ remain Open.
+
+Weak chirality is a further independent target.  \emph{Chirality} distinguishes left- and right-handed representation sectors, and the observed weak interaction treats them asymmetrically, schematically
+\begin{equation}
+ \psi_{\rm L}:\mathbf2,
+ \qquad
+ \psi_{\rm R}:\mathbf1
+ \label{eq:chiral_target}
+\end{equation}
+under weak $\SUtwo$.  Neither two-component structure, Clifford structure, an effective gap nor $\SUtwo$ mathematics alone supplies this asymmetry.  A vectorlike two-component theory can treat left and right sectors symmetrically even though its kinematics is spinorial.  The empirical weak assignment therefore asks for extra physics that selects which sector feels the weak doublet action and how that selection remains compatible with the origin of mass.  The current QF gapped sector is effectively vectorlike unless additional structure is introduced; consistent readings therefore include a post-EWSB gap, an emergent/order-field gap or a vectorlike precursor.  The physical weak-frame and chirality selectors remain Open.
+
+% =====================================================================
+\section{Downstream electroweak, Higgs and color controls}
+\label{sec:downstream_controls}
+% =====================================================================
+
+Once effective $\SUtwo\times\Uone$ connections and the empirical Standard-Model representation assignments are supplied, the usual electroweak algebra follows~\cite{Glashow1961,Weinberg1967,Salam1968}.  The familiar charged combinations $W^\pm=(W^1\mp\ii W^2)/\sqrt2$, neutral $B/W^3$ mixing and $Q=T^3+Y_{\rm here}$ are therefore downstream controls, not evidence that C-Motion selected the gauge sectors or hypercharges.  Here $Y_{\rm here}$ denotes the hypercharge generator normalized so that $Y_{\rm here}=Y_{\rm conventional}/2$ if the alternative convention writes $Q=T^3+Y_{\rm conventional}/2$; its Abelian coupling must be redefined consistently when conventions are exchanged.
+
+The gauge-boson symmetry-breaking literature includes the independent
+1964 contributions of Englert and Brout~\cite{EnglertBrout1964},
+Higgs~\cite{Higgs1964}, and Guralnik, Hagen and Kibble
+~\cite{GuralnikHagenKibble1964}.
+With standard kinetic terms and a supplied doublet-only symmetry-breaking
+background, the electroweak control gives,
+at tree level,~\cite{Higgs1964,Weinberg1967}
+\begin{equation}
+ m_W=\frac{gv}{2},
+ \qquad
+ m_Z=\frac{v}{2}\sqrt{g^2+g'^2},
+ \qquad
+ \frac{m_W}{m_Z}=\cos\theta_{\rm W}.
+ \label{eq:standard_mass_relation}
+\end{equation}
+Here $\cos\theta_{\rm W}=g/\sqrt{g^2+g'^2}$ at tree level.
+The last relation depends on the standard doublet symmetry-breaking antecedent;
+radiative corrections and precision-observable schemes require separate treatment, and neutral mixing alone does not derive it.  Interpreting symmetry breaking as ``closure reorganization'' remains Conjectural compatibility because no native Higgs potential, order-field dynamics, vacuum selection or Yukawa structure has yet been derived.  Detailed weak-angle/SCF numerical work belongs to the separate, publication-deferred Electroweak research programme.
+
+SM-I also does not derive color or fermion families.  If one independently supplied a physical local three-component internal frame, standard mathematics could admit an $\SUthree$-type connection, but that does not explain why physical color exists or why the strong gauge group is $\SUthree$.  Detailed color, confinement and charge-lattice work belongs to the
+publication-deferred SM-II programme.  The first-wave framework retains the
+concession that the family mechanism is not derived; Quantum Foundations owns
+the Clifford-dimension exclusion, while the physical family selector remains
+Open and its mechanism programme Deferred.  These ownership distinctions do
+not turn deferred research into first-wave evidence; no inference from $D=3$, three spatial axes, component counts or closure branches to three fermion generations is made here.
+
+% =====================================================================
+\section{Constructive constraints: what is established and what remains missing}
+\label{sec:constructive_map}
+% =====================================================================
+
+The negative results are constructive because each isolates a specific physical job that a future native gauge derivation must perform.
+
+\renewcommand{\arraystretch}{1.18}
+\small
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.29\textwidth} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Question} & \textbf{What is established} & \textbf{What is still missing}\\
+\midrule
+Does global phase give local gauge freedom? & No.  QF supplies global phase/action structure only. & A physical local phase/frame law.\\
+Is one-form transport forced? & No. Higher directional harmonics survive the weaker assumptions. & A tangent-linearity/first-harmonic selector.\\
+Does scalar signed steering suffice? & No in the tested scalar/refractive class. & A viable directional response law; scalar failure does not select a one-form.\\
+Does carrier-bound overlap exchange give separated mediation? & No in the tested algebraic current--current auxiliary class. & An independently vacuum-capable propagated response.\\
+Does local-$c$ imply masslessness? & No. Characteristic speed can coexist with a nonzero gap. & A native range/gap selector.\\
+Does two-form steering equal electromagnetism? & No physical identity has been established. & Native source/action/mediator identity and coupling.\\
+Does a doublet imply weak $\SUtwo$? & No. It motivates a frame-comparison question only. & A physical local $\SUtwo$ frame redundancy and weak-isospin identification.\\
+What does scoped $P$ covariance fix? & Field parities and linear $P$-even/$P$-odd block separation; flux-aligned sourcing of the axial steering channel is excluded. & A native weak parity-violating/chiral selector; full $C/T/CPT$ completion.\\
+Is weak chirality derived? & No.  The parity-covariant scaffold permits opposite-handed partners but does not select the observed weak sign. & A native chiral selector compatible with the QF gap status.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+\normalsize
+
+The remaining problem is therefore not one undifferentiated instruction to ``derive the Standard Model.''  It is localized at a small set of physical joints: local phase/frame selection; tangent-linearity; an interacting source/current/action law; source--mediator/steering identity; range/gap selection; weak-frame/chirality; and the bridge from action/gauge charge to empirical electric charge and normalization.
+
+% =====================================================================
+\section{Claim-status and provenance register}
+\label{sec:status_register}
+% =====================================================================
+
+The register states scientific status separately from assumptions and provenance
+in the boundary column.  In the programme's vocabulary, Derived follows from
+the stated C-Motion premises; Conditional depends on an explicit premise or
+model class not itself derived; Structural is an exact or banked organizational
+or accounting statement without a supplied microscopic law.  Model-derived
+means rigorous within a specified effective/analogue model, never native Derived.
+Open denotes an unresolved question; Open (sharp) isolates a missing bridge,
+not greater confidence.  Negative excludes only a stated identification,
+mechanism or branch; Conjectural denotes a motivated but unestablished physical
+interpretation.  Publication deferral leaves scientific status unresolved.
+
+
+The two parity entries retain the scientific-status designation
+\emph{Derived} explicitly recorded in Derivation Ledger v16.  Both
+apply only within their specified closure-scaffold hypotheses.  They
+do not claim that the full source/return scaffold has been independently
+reproduced here or that a native interaction action has been selected.
+The linear theorem is an exact structural consequence of full
+P covariance, a P-preserving domain and boundary/return conditions,
+and a P-even background; that mathematical description does not replace
+its Ledger-authorized scientific-status label.
+
+The distinction between these scaffold-scoped Derived entries and the
+programme's general Derived/Model-derived definitions remains a
+terminological reconciliation question.  Effective/model/control
+descriptions in the boundary column identify provenance and scope,
+not empirical matching, native action selection or publication
+ownership.  No separate N1/N2 shorthand is needed.
+
+
+\renewcommand{\arraystretch}{1.15}
+\footnotesize
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.31\textwidth}
+                  >{\raggedright\arraybackslash}p{0.20\textwidth}
+                  >{\raggedright\arraybackslash}p{0.37\textwidth}}
+\toprule
+\textbf{Claim} & \textbf{Scientific status} & \textbf{Boundary or missing antecedent}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Claim} & \textbf{Scientific status} & \textbf{Boundary or missing antecedent}\\
+\midrule
+\endhead
+QF global phase/action symmetry & Conditional & C-Motion-constrained effective-branch control; deeper realization/normalization remains QF-owned.\\
+Global $\Uone\Rightarrow$ local $\Uone$ & Negative & Localization requires additional physics.\\
+Physical local phase redundancy/frame & Open (sharp) & Distinct from global physical symmetry or passive common-phase convention.\\
+Weaker local/smooth/signed/rotational assumptions $\Rightarrow$ one-form & Negative & Higher harmonics survive; tangent-linearity selector Open (sharp).\\
+Abelian connection with covariant local comparison & Conditional & Requires a physical local frame equivalence, differentiable matter and a supplied covariant comparison; does not select dynamics.\\
+$F=\dd A$ & Structural & Local-chart curvature relation; not a globally fixed $A$, dynamical law or electromagnetic identity.\\
+Scalar signed-steering route & Negative & Within the tested signed scalar/refractive class only; does not uniquely select a one-form or exclude all scalar sectors.\\
+Carrier-bound algebraic exchange as separated mediator & Negative & Within algebraic current-bound class (\cref{eq:b4_auxiliary_on_shell}) only; local composite curvature is possible, but no independent source-free mode.\\
+Vector-like source / two-form steering classes & Conditional & Source class and steering representation are not yet one physical field.\\
+Source mediator $=$ steering two-form & Open & Native source/action/identity bridge.\\
+Primitive local-$c\Rightarrow$ zero gap & Negative & Lower-order gap can preserve local-$c$ characteristics.\\
+Open $=$ massless; closed $=$ massive & Negative & Universal identification excluded: organizational and spectral classifications are distinct.\\
+Maxwell/helicity class & Conditional & Requires supplied local gauge, gapless vector, Lorentz/constitutive kinetic and free-dynamics premises.\\
+Common-action canonical vertex relation & Conditional & \cref{eq:common_action_u1,eq:common_action_vertices,eq:common_action_canonical_coupling}; a supplied effective common action, not native coupling selection.\\
+QF action charge $=$ empirical electric charge & Open & Source/gauge/electric-charge bridge and normalization.\\
+Physical local doublet frame & Open & Native frame selector; complex rank two alone does not select local gauge redundancy.\\
+$\SUtwo$ connection with selected local redundancy & Conditional & Requires selected $\SUtwo$-structured local frame equivalence and covariant comparison of doublets; no mediator dynamics follows.\\
+Spinorial $\SUtwo=\SUtwo_{\rm weak}$ & Open & Physical weak-isospin identification.\\
+
+$P$ covariance of specified closure scaffold & Derived &
+Ledger-v16 status, restricted to the specified density/vorticity-source
+scaffold with P-preserving domain and boundary/return conditions.
+Appendix~\ref{app:parity_derivation} reproduces the steering algebra,
+but not all source-functional and boundary/return checks.
+Independent reproduction of the full scaffold from the equations
+printed here remains pending; no native action selection is claimed.\\
+
+Linear $P$-even/$P$-odd block separation & Derived & Differentiable full P-covariant evolution, P-preserving domain and boundary/return conditions, and P-even background; exact structural linear consequence, not weak chirality or spontaneous-handedness selection.\\
+Flux-aligned self-magnetization source & Negative & Bare polar $\rho\hat{\mathbf u}$ has wrong parity for the tested axial source absent extra pseudoscalar structure; balanced-sideband activation is separately inactive within its tested source/seed class.\\
+$C$, $T$ and $CPT$ completion & Open & Physical conjugation bridge and full reversal/boundary-condition analysis remain incomplete.\\
+Weak chirality & Open & Scoped $P$ covariance permits opposite-handed partners but does not select observed weak chirality.\\
+Non-Lorentz gauge-action counterexample & Negative & Gauge invariance, spatial isotropy and positive electric/magnetic coefficients alone do not fix the intended physical Maxwell cone; \cref{eq:nonlorentz_gauge_trial}.\\
+Yukawa screening control & Conditional & Static linear positive-gap model gives \cref{eq:yukawa_screening}; exact unscreened range is an ideal premise, not demonstrated by finite measurements.\\
+Four-way charge bookkeeping & Structural & Distinct definitions in \cref{eq:charge_distinctions}; physical identifications are possible but require dynamics and normalization.\\
+State phase gradient $\dd\Theta\Rightarrow A_{\rm interaction}$ & Negative & The implication from state phase alone is excluded; pure-gauge equality in a chosen convention remains possible.\\
+Balanced counterflow algebra & Conditional & Exact in the stipulated two-channel current model; no universal field-energy identity or stress-balance theorem.\\
+Physical counterflow closure realization & Conjectural & Same-field branches are possible; physical sector selection, binding, return geometry and stability remain Open.\\
+Tree-level electroweak identities & Conditional & Supplied representations, standard kinetic terms and doublet-only symmetry breaking; no native weak-angle or mass-generation prediction.\\
+Native color, confinement and family selectors & Open & Detailed strong-sector and family-mechanism research is publication-deferred; QF owns the Clifford-dimension exclusion, not a derived family count.\\
+Higgs/closure-reorganization interpretation & Conjectural & Native order-field dynamics absent.\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+Detailed electroweak numerical results, color, confinement, and fermion-family
+claims lie outside this manuscript.  Their publication routing and scientific
+statuses belong to the respective companion papers; none is assigned a new
+scientific status here.
+
+% =====================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+% =====================================================================
+
+C-Motion gives a concrete physical reason to ask gauge questions.  A recurrent closure can be rest-like as an organized whole while remaining internally active through local-$c$ propagation; relative phase, orientation and steering can matter to its persistence.  The bounded opposed/complementary propagation picture makes that intuition visible without turning it into a literal two-wave particle ontology.
+
+What C-Motion presently contributes is a set of nontrivial constraints.  Global phase/action structure does not localize itself into gauge freedom.  Smooth local signed covariance does not uniquely select one-form transport.  A tested scalar-only steering route is insufficient, carrier-bound overlap exchange does not by itself provide separated mediation, and primitive local-$c$ does not determine the mediator gap.  Within the specified P-covariant closure scaffold, the stated parity
+hypotheses fix the field-parity bookkeeping and separate linear
+$P$-even and $P$-odd sectors around a P-even background.  They also
+exclude the bare flux-aligned polar source as the tested axial steering
+source without additional parity-odd structure.  Under these same
+hypotheses, the result shows that the scaffold does not select a unique
+chirality sign.  Vector-like source and antisymmetric steering classes remain viable Conditional entry points, but their physical identity is still open, and $C/T/CPT$ completion remains unresolved.
+
+What standard mathematics then supplies is clear once the missing antecedents are given: a selected local frame equivalence plus covariant matter comparison gives the standard Abelian connection/curvature construction; a suitable gapless vector sector with an effective Lorentz-compatible kinetic/constitutive premise gives Maxwell/helicity control; a physically selected local $\SUtwo$ frame redundancy gives its connection; and standard electroweak/Higgs relations follow after the usual representation and symmetry-breaking assumptions are supplied.  These are conditional endpoints, not evidence that the antecedents have already emerged natively.
+
+The additional common-action calculation binds the current vertex, quadratic matter--connection term and canonical effective coupling within an assumed action, but leaves the absolute empirical charge scale and native dynamics unresolved.  The remaining problem is therefore sharply localized rather than vague.  A native gauge sector still needs a selector for local phase/frame freedom and tangent-linearity; a consistent interacting source/current/action law; mediator identity and range; and physical charge and weak-chirality bridges.  Progress must occur at those joints rather than by repeating downstream gauge algebra.
+
+
+\appendix
+\section{Bounded parity and source calculations}
+\label{app:parity_derivation}
+
+This appendix reproduces the projected steering and abstract linear-block
+algebra.  It does not reproduce every source-functional or return-operator
+check needed to reconstruct the full specified scaffold, and does not supply
+an unwritten complete ElEmEr action.
+Throughout $P$ reflects $\mathbf x\mapsto-\mathbf x$ at unchanged succession
+label $s$.  For a polar vector $\mathbf v$ and an axial vector $\mathbf w$,
+\begin{equation}
+ (P\mathbf v)(s,\mathbf x)=-\mathbf v(s,-\mathbf x),\qquad
+ (P\mathbf w)(s,\mathbf x)=+\mathbf w(s,-\mathbf x).
+ \label{eq:parity_polar_axial}
+\end{equation}
+The following are the transformation jobs used by the tested scaffold;
+independent physical selection of its constitutive source functions is not
+claimed.
+\begin{center}
+\small
+\begin{tabularx}{0.96\textwidth}{@{}p{0.32\textwidth}X@{}}
+\toprule
+Quantity or operation & Parity transformation / limited check\\
+\midrule
+$\rho$, $\mathbf u$, $\mathbf j=\rho\mathbf u$ & Scalar-even density; polar-odd transport/current\\
+$\nabla\rho$ or density-gradient source & Polar-odd, appropriate to $\mathbf g_{\rm st}$ if the scalar-source coefficient is even\\
+$\nabla\times\hat{\mathbf u}$ & Axial-even; an admissible parity type for $\mathbf h_{\rm st}$, not proof of source activation\\
+$P_\perp(\mathbf u)=I-\mathbf u\mathbf u^T/c^2$ & Even under $\mathbf u\mapsto-\mathbf u$\\
+$\rho\hat{\mathbf u}$ & Polar-odd, not an axial source without extra pseudoscalar structure\\
+Return and boundary data & Standing-wave, outgoing radial and $|N|$ constraints must be carried to allowed reflected conditions; these rows do not reconstruct the specified vetted scaffold\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+For $\dot{\mathbf u}=P_\perp(\mathbf u)\mathbf g_{\rm st}
++(\mathbf u/c)\times\mathbf h_{\rm st}$, the parity-reflected right-hand
+side is
+
+\begin{align}
+	&P_\perp(-\mathbf u)(-\mathbf g_{\rm st})
+	+(-\mathbf u/c)\times(+\mathbf h_{\rm st})\nonumber\\
+	&\qquad=-\left[P_\perp(\mathbf u)\mathbf g_{\rm st}
+	+(\mathbf u/c)\times\mathbf h_{\rm st}\right],
+	\label{eq:parity_steering_check}
+\end{align}
+
+where fields on the right are evaluated at $(s,-\mathbf x)$.  Since $s$
+is unchanged, the transformed left-hand side $\partial_s(P\mathbf u)$
+has the same polar minus sign.  The projected steering \emph{equation} is
+therefore parity-covariant if the source definitions for $\mathbf g_{\rm st}$
+and $\mathbf h_{\rm st}$ and admissible conditions transform as specified.
+
+\paragraph{Full-evolution hypotheses and reproduction boundary.}
+For the abstract linear theorem, $P$ must be a linear involution on the
+complete perturbation space, preserving the evolution domain and all
+admissible boundary/return data.  Write the full evolution as
+$\partial_sX=\mathcal F(X)$, require differentiability at the background,
+and require $\mathcal F(PX)=P\mathcal F(X)$ for the \emph{complete} source,
+transport and return problem.  This includes covariant density-sourced
+polar and vorticity-sourced axial maps, parity-compatible axis regularity
+and outgoing/radiation conditions, standing-wave/self-consistency kernels
+built from separation magnitudes and succession differences, and winding
+conditions depending on magnitude rather than sign.  These describe the
+specified scaffold's required transformation properties; the exact complete
+source kernels, coefficients, domains and return operators are not all
+available here, so none is invented to close the reproduction gap.
+
+Require a P-even background $PX_0=X_0$, and let $L=D\mathcal F(X_0)$.
+Differentiation gives $D\mathcal F(PX_0)P=P D\mathcal F(X_0)$, hence
+\begin{equation}
+ LP=PL,\qquad
+ \Pi_\pm=\tfrac12(I\pm P),\qquad L\Pi_\pm=\Pi_\pm L.
+ \label{eq:parity_linear_block_proof}
+\end{equation}
+At a non-P-invariant background, covariance generally relates the
+linearization there to the one at its reflected background; it does not
+imply commutation at the original background.  Thus even/odd perturbations
+decouple \emph{at the stated linearized level}, not
+necessarily under finite nonlinear evolution or after parity-breaking source
+selection.
+
+Finally, the specified balanced-sideband activating quantity is
+\begin{equation}
+ J_\phi=\frac{|\psi_{+1}|^2-|\psi_{-1}|^2}{\rho},
+ \qquad
+ |\psi_{+1}|^2=|\psi_{-1}|^2,\ \rho>0
+ \quad\Longrightarrow\quad J_\phi=0.
+ \label{eq:balanced_sideband_inactive}
+\end{equation}
+This \emph{specified} source cancellation is stronger than a bare parity-label
+argument and narrower than a theorem that all axial or odd sources vanish.
+Its sector/balance premises and the other tested boundary conditions are
+part of the specified source/scaffold scope; they do not derive a
+native weak chirality selector, full C/T/CPT behavior or parity of a complete
+unwritten interacting action.
+
+
+\newpage
+\printbibliography
+\end{document}

@@ -1,0 +1,1466 @@
+
+
+
+
+
+% !TeX program = pdflatex
+% !BIB program = biber
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,bm,mathtools}
+\usepackage{booktabs,array,tabularx,longtable}
+\usepackage{ragged2e}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[expansion=false]{microtype}
+\setlength{\emergencystretch}{3em}
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage[backend=biber,style=numeric,sorting=none,maxnames=6,
+            uniquename=false,url=false]{biblatex}
+\addbibresource{cmotion_foundational_general.bib}
+\addbibresource{cmotion_primary_research.bib}
+\addbibresource{cmotion_internal_manuscripts.bib}
+
+
+\AtEveryBibitem{\clearfield{note}\clearfield{annotation}\clearfield{keywords}}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\cmotion}{\mbox{C-Motion}}
+\newcommand{\ElEmEr}{\mbox{ElEmEr}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\kb}{k_{\mathrm B}}
+\newcommand{\GammaFine}{\Gamma_{\mathrm{fine}}}
+\newcommand{\GammaRed}{\Gamma_{\mathrm{red}}}
+\newcommand{\GammaM}{\Gamma_{M}}
+\newcommand{\LambdaC}{\Lambda_{C}}
+
+
+\newcommand{\statusStructural}{\textcolor{blue!55!black}{\textbf{Structural}}}
+\newcommand{\statusConditional}{\textcolor{yellow!60!black}{\textbf{Conditional}}}
+\newcommand{\statusConjectural}{\textcolor{magenta!65!black}{\textbf{Conjectural}}}
+\newcommand{\statusOpen}{\textcolor{red!75!black}{\textbf{Open}}}
+\newcommand{\statusDeferred}{\textcolor{gray!70!black}{\textbf{Deferred}}}
+\newcommand{\statusNegative}{\textcolor{red!65!black}{\textbf{Negative}}}
+
+
+\newcommand{\natNOne}{\textcolor{blue!70!black}{\textbf{N1}}}
+\newcommand{\natNTwo}{\textcolor{teal!70!black}{\textbf{N2}}}
+\newcommand{\natControl}{\textcolor{gray!75!black}{\textbf{C}}}
+\newcommand{\natOpen}{\textcolor{red!70!black}{\textbf{O}}}
+\newcommand{\statusSharpOpen}{\textcolor{red!35!black}{\textbf{Open (sharp)}}}
+
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{P}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black,
+  pdftitle={Thermodynamics in C-Motion: From Field States to Entropy, Temperature, and Equilibrium},
+  pdfauthor={Toma Kavonius}
+}
+
+
+\title{\textbf{Thermodynamics in \cmotion{}:}\\
+From Field States to Entropy, Temperature, and Equilibrium}
+\author{Toma Kavonius}
+\date{24 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\small\itshape
+Scope and limitations.  This manuscript develops a bounded thermodynamic interpretation
+within C-Motion.  The native state-space measure, transition dynamics, equilibrium
+selection, transport, quantum occupation, and microscopic arrow remain explicitly
+unresolved where stated.
+\end{center}
+\vspace{0.6em}
+
+\begin{abstract}
+C-Motion takes resolved primitive propagation of its proposed Elemental
+Motion Resonance (\ElEmEr{}) field to have local speed $c$.  Heating therefore
+cannot mean that the primitive field moves faster.  We instead describe thermodynamic
+variation through the organization of complete field states: recurrent closures,
+open propagation, collective motion, internal excitation, spectral populations,
+and correlations.  A macrostate discards selected fine-state distinctions;
+entropy quantifies weighted multiplicity only after a physical reduction and
+measure have been specified.
+
+We separate the measure problem into physical state-space support, kinematic
+reference weighting, dynamical invariance, and equilibrium weighting.  Neither
+an invariant measure nor stationary coarse dynamics alone selects thermodynamic
+equilibrium.  Temperature is the energy--entropy conjugate of the reduced
+description, not a microscopic speed.  We distinguish dephasing, scattering,
+energy exchange, occupation change, and full equilibration; repeated
+closure-mediated interaction provides a conditional mixing route, not an
+established microscopic thermalizer.
+
+Heat and work are process-dependent accounts of transfer on a common,
+conditionally conserved energy ledger; energy, action, and entropy remain
+distinct.  Standard gas and radiation laws serve as downstream consistency
+controls, with their kinetic, polarization, and occupation assumptions explicit.
+Successor-directed causal propagation does not by itself establish a
+thermodynamic arrow.  Native state-space measure selection, transition laws and
+rates, closure spectra, ultraviolet occupation physics, transport, and robust
+irreversibility remain open.
+\end{abstract}
+
+
+\section{Introduction: the fixed-\texorpdfstring{$c$}{c} thermodynamic puzzle}
+\label{sec:introduction}
+The primitive \ElEmEr{} propagation speed in \cmotion{} is fixed locally at
+$c$ \cite{CmotionMainFramework2026}.  Thermodynamic variation must therefore
+occur in the organization and statistical populations of complete field states,
+not in a spread of primitive speeds.  Open modes, persistent closures, their
+centre-of-momentum motion, internal excitations and correlations provide possible
+degrees of freedom.  This does not by itself establish which of those degrees of
+freedom are thermally active.
+
+The field-first ontology also changes the microscopic counting problem.
+The complete local field state is the interaction object, not a list of
+independently identifiable primitive packets \cite{CmotionMainFramework2026}.
+A physically reduced state space, coarse observables, and a justified measure
+must precede statistical entropy.  The subsequent question---how the dynamics
+redistributes energy and selects equilibrium---is distinct from the definition
+of entropy or temperature.  The paper organizes those requirements as
+\begin{equation}
+\boxed{
+\begin{aligned}
+\text{complete field/closure state}
+&\longrightarrow \text{coarse macrostate}
+\longrightarrow \text{entropy} \\
+&\longrightarrow \text{temperature}
+\longrightarrow \text{mixing dynamics}
+\longrightarrow \text{equilibrium}.
+\end{aligned}}
+\label{eq:reader-chain}
+\end{equation}
+The Main Framework supplies the local-$c$, complete-state and energy/action
+premises.  Quantum Foundations owns the status of $J_0$, $J_0=\hbar$ and
+$E=\hbar\omega$ used in later controls \cite{CmotionQuantumFoundations2026}.
+No native microscopic thermalizer or equilibrium measure is derived here.
+
+\section{From the physical fine state to a thermodynamic macrostate}
+\label{sec:fine-state}
+\subsection{What the fine physical state contains}
+
+A \emph{fine physical state} is the most detailed physical state being admitted before
+thermodynamic information is discarded.  Denote its state space by $\GammaFine$ and one
+fine state by $\gamma_{\mathrm f}\in\GammaFine$.  In the present framework this is not a
+list of independently persistent primitive particles.  It is the complete field/closure
+configuration at the chosen stage of physical succession.  Here a ``complete''
+configuration is complete relative to a specified admissible state representation:
+its field and closure data, constraints, and correlations must suffice for the
+proposed evolution in the domain being modelled.  Writing such a state does not
+itself supply a preferred physical global simultaneity slice, a universally
+aligned succession label $s$, or a native rule for comparing distant stages.
+The geometric and dynamical compatibility of local state descriptions remains
+part of the open microscopic evolution problem.
+
+Depending on the physical regime, that configuration can include open propagating
+modes; recurrent, localized organizations called \emph{closures}; the centre-of-momentum
+motion of closures; internal closure organization and internal modes; correlations
+between different regions or organizations; and extended interacting configurations.
+An \emph{internal closure mode} simply means a recurrent degree of freedom within a
+closure that can in principle carry or exchange energy without being identical to the
+motion of the closure as a whole.
+
+A simple reconstruction thought experiment shows why a scalar density is not enough to
+specify this fine state.  Reproduce the same local energy density everywhere but change the
+propagation directions, phases, or correlations.  The reconstructed state will in general
+evolve differently.  Likewise, two configurations can have the same total momentum---even
+$\bm P_{\rm tot}=0$---while one has strongly opposed directional structure and another is
+nearly isotropic.  Equal values of a few coarse observables do not imply the same physical
+microstate.
+
+Phase, polarization, direction, spectrum, internal organization, and correlations are
+therefore examples of fine-state distinctions.  They are not automatically separate entropy
+``channels.''  Whether a distinction contributes to thermodynamic multiplicity depends on
+what the macro-description resolves and on the physical weighting of the reduced state space.
+
+This distinction matters because two states can have the same total energy and still be
+physically organized very differently.  Schematically one may keep track of
+\begin{equation}
+  \mathcal E_{\rm open},\qquad
+  \mathcal E_{\rm closure\,COM},\qquad
+  \mathcal E_{\rm internal},\qquad
+  \mathcal E_{\rm corr},
+  \label{eq:organizational-ledger}
+\end{equation}
+without treating these labels as separately conserved forms of energy.  They are ways of
+asking where the energy and state information reside within one physical configuration.
+
+\subsection{When a closure coordinate is thermally active}
+\label{sec:thermal-activity-gate}
+
+An internal coordinate is not automatically a thermodynamic degree of freedom.
+For a proposed closure mode, the following tests supply a
+\emph{structural diagnostic}: (i) it must distinguish physical states
+rather than coordinate or gauge descriptions; (ii) redundancy must be removed;
+(iii) its variations must belong to the sector being counted rather than changing
+an exactly fixed charge, topology or representation label; (iv) accessible
+finite-energy excitations must exist without changing the closure species;
+(v) the coordinate needs genuine dynamical/conjugate response; and
+(vi) allowed interactions must connect the states whose thermal weights are
+being assigned. These tests do not independently derive a mode or an
+occupation probability.
+
+Thus centre-of-momentum motion is an external contribution, not an internal
+mode. Exact topological and action-like charges held fixed by a macrostate
+condition the sector rather than supplying freely mixed degeneracy. Relative
+phase, deformation/shape and branch imbalance are candidate internal modes
+only if their excitation and response are physical. Common phase, spatial
+orientation and director/frame texture require careful symmetry and
+redundancy tests; open-mode dressing and correlations may contribute to the
+full interacting state without being intrinsic isolated-closure levels.
+Consequently,
+\begin{equation}
+  \boxed{\text{distinguishable closure coordinate}
+  \;\not\Rightarrow\;\text{thermally accessible mode}.}
+  \label{eq:closure-thermal-activity-guard}
+\end{equation}
+
+Even the frequencies of a physical small-deformation sector are not fixed
+by its stiffness alone. As a \emph{standard quadratic control}, suppose
+physical perturbation coordinates $q^a$ admit
+\begin{equation}
+  L^{(2)}=\frac12 G_{ab}\,q^{\prime a}q^{\prime b}
+           -\frac12 H_{ab}\,q^a q^b,
+  \qquad
+  \det(H-\Omega^2G)=0.
+  \label{eq:closure-spectrum-control}
+\end{equation}
+Here prime labels differentiation in the stipulated evolution description;
+$H$ is the stiffness Hessian and $G$ the supplied nondegenerate kinetic
+metric. This is not a claim that native \ElEmEr{} dynamics must be a
+second-order quadratic system: a first-order/symplectic theory would require
+its own spectral problem. A positive stiffness Hessian cannot by itself
+supply the physical frequencies, their degeneracies or their thermal
+occupation. Native kinetic/action structure, mode selection and accessible
+excitation channels remain Open.
+
+An intermediate-temperature regime illustrates the distinction. In a supplied
+equilibrium model with internal gap $\Delta_{\rm int}$, a dilute gas can have
+$T_{\rm deg}\ll T\ll\Delta_{\rm int}/\kb$: internal excitations are suppressed
+while translational and configurational entropy can remain appreciable.
+Here $T_{\rm deg}$ denotes the scale below which quantum degeneracy invalidates
+the classical gas description; such a window need not exist for every model.
+This is not a $T\to0$ claim. For the standard equilibrium quantum ideal-gas
+control without extensive ground-state degeneracy, entropy tends to zero
+as $T\to0$. No native C-Motion third law follows.
+Slow or absent transitions imply kinetic arrest, not a third-law theorem;
+exact disconnected sectors must not be pooled into one accessible ground-state
+multiplicity without a justified physical mixing rule.
+
+\subsection{A macrostate is a deliberate loss of detail}
+
+Thermodynamics rarely tracks the fine state.  A \emph{macrostate} is a coarse description
+that declares many fine states equivalent because they agree on a chosen set of
+macroscopic observables.  We write this schematically as
+\begin{equation}
+  \GammaFine \xrightarrow{\ \mathcal C\ } \mathcal M,
+  \qquad
+  M=\mathcal C(\gamma_{\mathrm f}),
+  \label{eq:macro-map-simple}
+\end{equation}
+where $\mathcal C$ is the coarse description (or macro-map) and $M$ is the resulting
+macrostate.
+
+Coarse-graining discards distinctions not resolved by specified observables,
+controls and subsystem boundaries; it does not declare those distinctions
+physically nonexistent.  States with the same pressure or energy, for example,
+may still differ in phase, internal correlations or propagation structure.
+
+For \cmotion{}, the difficult physical question lies upstream of the familiar entropy
+formulas: which distinctions among open propagation, closures, internal modes,
+correlations, and extended configurations should survive in the physical thermodynamic
+state space?  The present framework has not yet derived a unique answer.
+
+\subsection{Why primitive ray, crest, or packet counts are not entropy}
+
+The field-first ontology rules out a tempting shortcut.  Historical or computational
+labels used to describe a wave---a ray, crest, preparation packet, or propagation
+segment---do not automatically remain independent physical identities after overlap,
+interaction, or reorganization.  If the complete local field state is the physical
+object, ancestry labels can cease to correspond to separately countable constituents.
+
+Hence a schematic expression such as
+\begin{equation}
+  S\propto \kb\ln N_{\rm primitive}
+  \label{eq:primitive-count-rejected}
+\end{equation}
+cannot be promoted to a physical entropy law merely because $N_{\rm primitive}$ can be
+introduced as descriptive bookkeeping.
+
+\begin{proposition}[No automatic primitive-count entropy]
+\label{prop:no-count-entropy}
+The field-first \cmotion{} ontology does not by itself supply a physically invariant,
+independently countable primitive ray/crest/packet number from which thermodynamic
+entropy can be defined.
+\end{proposition}
+
+This is a restriction, not a replacement entropy formula.  Counting can become
+meaningful once the theory identifies physical reduced states or excitations that really
+are distinct under the chosen thermodynamic description and supplies a rule for how
+those states are weighted.
+
+\section{Entropy begins with a physical reduction}
+\label{sec:entropy-gate}
+Entropy measures multiplicity or uncertainty only after the underlying alternatives have
+been specified.  In a field-first theory the construction therefore has an explicit
+physical order:
+\begin{equation}
+  \boxed{
+  \GammaFine
+  \longrightarrow
+  \GammaRed
+  \xrightarrow{\ \mathcal C\ }
+  \mathcal M
+  \longrightarrow
+  \{\mu\ \hbox{or weights}\}
+  \longrightarrow
+  S.}
+  \label{eq:entropy-pipeline}
+\end{equation}
+Here $\GammaRed$ is the physically reduced state space after genuine constraints and
+redundancies have been handled; $\mathcal C$ maps a reduced state to a macrostate; and
+$\mu$ is a physical measure or weighting rule.  The set of reduced states corresponding
+to a macrostate $M$ is
+\begin{equation}
+  \Gamma_M=\{\gamma\in\GammaRed:\mathcal C(\gamma)=M\}.
+  \label{eq:macroregion}
+\end{equation}
+A \emph{physical measure} here means the rule that says how much statistical weight is
+assigned to different admissible reduced states.  It is not supplied merely by writing
+down coordinates on state space.
+
+Phase, polarization, internal organization, correlations, and environmental records may
+all distinguish fine states.  Whether they remain thermodynamically distinct depends on
+the physical reduction.  Conversely, two mathematical descriptions related only by a
+true redundancy should not be counted twice.
+
+\paragraph{Recurrence is not an entropy formula.}
+A recurrent closure occupies a constrained class of configurations relative
+to some specified ambient comparison space. Its organization, codimension,
+or apparent geometric specialness does not by itself determine a lower
+thermodynamic entropy. It can still have physical internal excitations,
+orientations, sectors and correlations, with unknown statistical weights.
+If an exactly recurrent subspace has zero measure under an ambient continuous
+measure, substituting that zero into $\ln\mu(\Gamma_M)$ would not calculate
+its sector entropy. One first needs a justified \emph{induced or conditional
+measure on the physical constrained sector}, followed by the same fixed
+reference-normalization convention used below. Neither recurrence nor
+conditioning alone selects equilibrium weighting.
+
+Under a coarse description, fine-state information can move into
+correlations that the chosen macroscopic observables do not track, even when
+the underlying evolution preserves the complete state:
+\begin{equation}
+  \boxed{
+  \text{simple resolved organization}
+  \longrightarrow
+  \text{distributed fine correlations}.}
+  \label{eq:correlation-redistribution}
+\end{equation}
+A coarse entropy can then change even if the complete state remains, in principle,
+distinguishable.  That picture is an interpretation of coarse-graining, not a microscopic
+second-law theorem; a monotonic entropy law still requires the appropriate dynamics and
+boundary/statistical conditions.
+
+\begin{proposition}[Entropy requires a physical state space]
+\label{prop:reduction-gate}
+A \cmotion{} entropy construction requires a physically admissible reduced state space,
+a thermodynamic macro-map, and a physical measure or weighting rule.  These ingredients
+have not yet been derived uniquely from the microscopic framework.
+\end{proposition}
+
+Standard Boltzmann and Gibbs entropies apply once the physically reduced
+state space and weighting are supplied \cite{Boltzmann1877,Gibbs1902,Shannon1948Mathematical}.
+For a continuous measure, fix a common, macrostate-independent reference unit
+$\mu_*>0$ and write $\widehat\mu=\mu/\mu_*$ so the measure inside the
+logarithm is dimensionless; for dimensionless counting measure set $\mu_*=1$.
+For a macroregion of finite positive volume,
+\begin{equation}
+  S_{\rm B}(M)=\kb\ln\widehat\mu(\Gamma_M),
+  \label{eq:boltzmann-control}
+\end{equation}
+and for a normalized probability measure $P$ absolutely continuous with respect
+to $\widehat\mu$, let $p=\dd P/\dd\widehat\mu$ and $\int p\,\dd\widehat\mu=1$.
+The Gibbs/Shannon form, when the integral exists, is
+\begin{equation}
+  S_{\rm G}[P;\widehat\mu]
+  =-\kb\int_{\GammaRed}p(\gamma)\ln p(\gamma)\,
+  \dd\widehat\mu(\gamma),
+  \label{eq:gibbs-control}
+\end{equation}
+with the discrete sum used when appropriate
+\cite{Boltzmann1877,Gibbs1902,Shannon1948Mathematical}.  A common fixed reference-unit change shifts these entropy expressions by
+an additive constant; changes to relative state weights or energy-dependent
+reference conventions can alter physical predictions.  Neither the native
+weighting nor its cell/action normalization follows from the formulas.
+The reference measure $\widehat\mu$ is distinct from the invariant
+fine-state probability $\mu_Q$ used below.
+
+\subsection{What can be fixed before the microscopic thermalizer is known}
+\label{sec:prethermalizer-structure}
+
+The statement ``the measure is unknown'' hides several distinct physical questions.  It is
+useful to separate
+\begin{equation}
+  \boxed{
+  \begin{array}{ll}
+  \mathrm{M1}: & \text{physical state space/support: which states exist?}\\
+  \mathrm{M2}: & \text{kinematic reference measure: how is that space geometrically weighted?}\\
+  \mathrm{M3}: & \text{dynamically invariant measure: which weighting is preserved?}\\
+  \mathrm{M4}: & \text{thermodynamic equilibrium weighting: which weighting is physically realized?}
+  \end{array}}
+  \label{eq:measure-layers}
+\end{equation}
+The complete answers to M1, M3, and M4 remain open in \cmotion{}.
+Some aspects of M2 can be determined from the symmetries assumed in the
+effective models.  However, a measure preserved by the dynamics is not
+necessarily the distribution that a physical system reaches in thermal equilibrium.
+
+\begin{proposition}[Invariance alone does not select thermodynamic weighting]
+\label{prop:invariant-measure-no-go}
+For a deterministic evolution map $F$ with an invariant probability
+$F_*\mu=\mu$, the invariance equation and conserved-sector labels do not
+\emph{in general} identify a unique physically selected thermodynamic
+weighting. This does not assert that every evolution admits multiple invariant
+probability measures.
+\end{proposition}
+Fixed points, periodic orbits and mixtures of invariant measures provide
+conditional counterexamples to automatic selection.  Uniquely ergodic systems
+also exist, but uniqueness of an invariant probability does not alone identify
+it with physical thermal equilibrium.  Hence
+\begin{equation}
+  \boxed{
+  \text{dynamical invariance + conservation}
+  \not\Rightarrow
+  \text{unique thermodynamic measure}.}
+  \label{eq:invariant-measure-no-go}
+\end{equation}
+Even a future Hamiltonian realization with a preserved Liouville-type volume would therefore
+leave a separate physical question: why that weighting, rather than another invariant
+component or mixture, is the thermodynamic one.
+
+There is nevertheless a useful conditional kinematic result for closure centre-of-momentum
+motion.  In the already-Conditional effective massive-closure/Lorentz sector, write the
+operational four-momentum as $p^\mu=(p^0,\bm P)$, with $p^0=E/c$
+and metric signature $(+---)$ as in the Main Framework, so that
+\begin{equation}
+  p^\mu p_\mu=M^2c^2,\qquad p^0>0.
+  \label{eq:mass-shell-reference}
+\end{equation}
+The positive mass shell carries, up to normalization, the invariant reference element
+\begin{equation}
+  \dd\nu_M\propto\frac{\dd^3P}{p^0},
+  \qquad
+  \dd\nu_{\rm dir}=\frac{\dd\Omega}{4\pi}
+  \label{eq:com-reference-measures}
+\end{equation}
+for the momentum shell and isotropic direction respectively, while homogeneity supplies the
+ordinary physical-three-space element $\dd^3x$.  The four-component momentum notation is an
+effective Lorentz bookkeeping device; it does not change the framework's primitive spatial
+ontology from physical three-space.  The invariant element $\dd\nu_M$ and the
+rest-frame coordinate element $\dd^3P$ are not the same reference measure.  For any
+probability distribution described by densities $\rho_\nu$ relative to $\dd\nu_M$
+and $f_3$ relative to $\dd^3P$, their common probability element obeys, up to the
+normalization convention for $\dd\nu_M$,
+\begin{equation}
+  \rho_\nu(\bm P)\,\dd\nu_M
+  = f_3(\bm P)\,\dd^3P,
+  \qquad \rho_\nu(\bm P)\propto p^0 f_3(\bm P).
+  \label{eq:com-density-conversion}
+\end{equation}
+This is a change-of-reference-measure identity, not an equilibrium law.  In particular,
+the bare density $e^{-\beta E}$ relative to $\dd\nu_M$ would carry an extra
+$1/p^0$ factor when expressed relative to $\dd^3P$.  Which density is physically
+selected belongs to the separate statistical/equilibrium problem (M4).
+Most importantly,
+\begin{equation}
+  \boxed{
+  \text{kinematic reference measure}
+  \neq
+  \text{thermodynamic occupation weighting}.}
+  \label{eq:reference-not-thermal-weight}
+\end{equation}
+The Boltzmann factor or any other equilibrium weighting still requires the statistical and
+physical equilibrium argument.  Nor is a factorization of centre-of-momentum and internal
+structure assumed.  Schematically one may instead disintegrate a joint measure as
+\begin{equation}
+  \dd\mu(P,Y)=\dd\mu_{\rm COM}(P)\,\dd\mu(Y\mid P),
+  \label{eq:measure-disintegration}
+\end{equation}
+where $Y$ collects internal closure structure, dressing, and correlations.  The COM kinematic
+geometry is partly constrained in the conditional sector; the internal/correlation weighting
+remains open.
+
+A second structural result concerns occupation variables.  Let $N_i$ be coarse occupations
+and let $\nu_i^{(r)}$ denote an allowed reaction direction.  Chemical equilibrium at fixed
+exact conserved quantities requires
+\begin{equation}
+  \sum_i\nu_i^{(r)}\mu_i=0
+  \qquad\text{for every allowed reaction }r.
+  \label{eq:chemical-equilibrium-network}
+\end{equation}
+If the exact conserved charges are
+\begin{equation}
+  Q_\alpha=\sum_i q_{\alpha i}N_i
+  \label{eq:conserved-occupation-charges}
+\end{equation}
+and the charge map is $q:\mathbb R^{N}\to\mathbb R^{m}$,
+$(qv)_\alpha=\sum_iq_{\alpha i}v_i$, assume precisely
+$\operatorname{span}\{\nu^{(r)}\}=\ker q$ in the supplied finite occupation
+space. At an interior equilibrium where the stated reaction variations and
+chemical potentials are defined, $\mu$ annihilates $\ker q$ and hence belongs
+to $(\ker q)^\perp=\operatorname{im}q^{\mathsf T}$:
+\begin{equation}
+  \boxed{
+  \mu_i=\sum_\alpha\lambda_\alpha q_{\alpha i}.}
+  \label{eq:chemical-potential-charge-span}
+\end{equation}
+Thus equilibrium chemical potentials lie in the span of the exact conserved
+charge vectors under this full-span hypothesis. For a resolved open-mode
+occupation $N_{\rm o}$, it follows that $\mu_{\rm o}=0$ if
+$q_{\alpha{\rm o}}=0$ for every $\alpha$. This is a sufficient implication,
+not a necessary condition: charge multipliers may also cancel or vanish.
+Occupation-changing processes alone do not establish the full-span hypothesis.
+If an exact number or action-like charge protects that occupation, zero
+chemical potential is not generally forced.  This is an equilibrium constraint on a
+supplied reaction network, not a derivation of the native occupation law or of the required
+conversion dynamics.
+
+The same fine/coarse structure also sharpens what stochastic thermodynamics can mean in a
+deterministic field theory.  This is a conditional dynamical-systems construction:
+assume a compatible complete-state representation and a well-defined evolution
+update within it.  The update label $\Delta$ denotes a specified finite step in
+that representation; it is not thereby a universal $s$ increment, an observable
+clock reading, or a fourth physical coordinate.  The construction does not
+establish that a single global equal-$s$ state description exists in native
+\cmotion{}.  Fix exact conserved quantities $Q$, let $\Gamma_Q$ be the
+corresponding fine-state sector, let
+\begin{equation}
+  F_\Delta:\Gamma_Q\rightarrow\Gamma_Q
+  \label{eq:fine-map}
+\end{equation}
+be deterministic complete-state evolution over the stipulated coarse step, and let
+$C:\Gamma_Q\rightarrow\mathcal A$ define coarse cells $A_a=C^{-1}(a)$.  For this conditional construction, supply a normalized fine-state probability measure
+$\mu_Q(\Gamma_Q)=1$.  Let the $A_a$ form a measurable partition (up to null sets), and
+restrict the transition formula to cells with $\mu_Q(A_a)>0$.  The one-step conditional
+coarse transition weights are then
+\begin{equation}
+  \boxed{
+  W_{ab}
+  =\frac{\mu_Q\!\left(A_a\cap F_\Delta^{-1}A_b\right)}{\mu_Q(A_a)}}
+  \label{eq:coarse-one-step-kernel}
+\end{equation}
+with $W_{ab}\geq0$ and $\sum_bW_{ab}=1$.  The formula samples unresolved fine
+states using $\mu_Q$ conditioned on the starting cell; it does not derive that measure
+from native dynamics.  Such one-step stochasticity can arise even though the fine evolution
+is deterministic.  The randomness reflects unresolved fine-state distinctions rather than
+inserted microscopic noise.
+
+One-step stochasticity does not, however, imply an autonomous Markov process.  If the fine
+distribution at step $n$ is $\rho_n$, the exact projected transition can depend on the hidden
+conditional distribution inside $A_a$,
+\begin{equation}
+  W_{ab}^{(n)}
+  =\int_{A_a}\mathbf 1_{A_b}\!\left(F_\Delta(x)\right)\,\rho_n(\dd x\mid A_a).
+  \label{eq:history-dependent-coarse-kernel}
+\end{equation}
+That conditional distribution can retain preparation history.  Hence
+\begin{equation}
+  \boxed{
+  \text{coarse stochasticity}\neq\text{coarse Markovianity}.}
+  \label{eq:stochastic-not-markov}
+\end{equation}
+An \emph{autonomous Markov description of successive coarse histories},
+whose multi-step statistics are generated by one kernel, needs an additional
+justification. Exact lumpability is one sufficient condition; for a supplied
+finite fine-state Markov chain, the Kemeny--Snell criterion requires the same
+total transition probability into each target cell from every fine state in
+the same starting cell \cite{KemenySnell1960}. This finite-chain control is
+not a proof of lumpability for the native continuum field evolution. Rapid
+conditional mixing, timescale separation or bath resetting may support an
+approximation only under further stated conditions. The fixed fine map,
+partition and supplied fine-state probability $\mu_Q$ already specify the time-independent
+\emph{one-step} matrix in \cref{eq:coarse-one-step-kernel}, even when the
+actual multi-step histories retain memory. Whether physical closure
+dynamics supports Markov closure remains Open.
+
+If the normalized $\mu_Q$ is invariant under $F_\Delta$, then
+\begin{equation}
+  \pi_a=\mu_Q(A_a)
+  \label{eq:stationary-pushforward}
+\end{equation}
+is a probability vector satisfying the one-step identity
+\begin{equation}
+  \boxed{\pi W=\pi,}
+  \label{eq:global-stationarity}
+\end{equation}
+because $\sum_a\pi_aW_{ab}=\mu_Q(F_\Delta^{-1}A_b)=\mu_Q(A_b)$.
+This identity requires no autonomous Markov closure: the invariant fine ensemble has
+stationary coarse one-time marginals even when its multi-step coarse histories are
+non-Markovian.  Only if an autonomous kernel is additionally justified may successive
+coarse distributions generally be propagated as $P_{n+1}=P_nW$.  Pairwise detailed
+balance is not needed for the one-step stationarity identity.  Defining
+\begin{equation}
+  J_{ab}=\pi_aW_{ab}-\pi_bW_{ba},
+  \label{eq:coarse-probability-current}
+\end{equation}
+stationarity requires only zero net divergence, $\sum_bJ_{ab}=0$, not $J_{ab}=0$ on every
+edge.  A stationary distribution may therefore carry circulating probability currents,
+as in the cycle description of master-equation networks
+\cite{Schnakenberg1976}; the displayed $J_{ab}$ is its discrete-step counterpart.
+Pairwise detailed balance imposes the stronger condition
+\begin{equation}
+  \pi_aW_{ab}=\pi_bW_{ba}.
+  \label{eq:detailed-balance-control}
+\end{equation}
+Consequently,
+\begin{equation}
+  \boxed{
+  \text{preparation independence + stationarity}
+  \not\Rightarrow
+  \text{thermodynamic equilibrium}.}
+  \label{eq:stationary-not-equilibrium}
+\end{equation}
+The positive physical criterion distinguishing equilibrium from a nonequilibrium stationary
+state remains unresolved.
+
+For an autonomous Markov kernel with stationary $\pi$, the standard
+data-processing inequality \cite{KullbackLeibler1951,CoverThomas2006} gives
+\begin{equation}
+  D(PW\Vert\pi)\leq D(P\Vert\pi).
+  \label{eq:relative-entropy-contraction}
+\end{equation}
+Thus relative entropy is nonincreasing for distributions with finite defined $D$;
+it does not alone prove strict decrease or convergence $P_n\to\pi$.  For example,
+a deterministic three-state cycle has uniform stationary distribution
+$\pi=(1/3,1/3,1/3)$; starting at one state, the probability rotates forever while
+$D(P_n\Vert\pi)=\ln 3$ for every $n$.  Finite-state irreducibility together with
+aperiodicity is one sufficient additional condition for convergence, but is not obtained
+from stationarity alone.  Nor does this inequality prove that $\pi$ is Gibbs, that
+$\pi$ is thermodynamic equilibrium, that $D$ is the native thermodynamic entropy, or that
+a second law has been derived.  Likewise, conservation, an allowed transition graph, and
+connectivity do not select Gibbs weighting: even formal detailed-balance kernels can be built
+around different positive stationary distributions.  The energy dependence of the physical
+equilibrium weight must come from the physical measure/rate structure rather than from
+connectivity or balance terminology alone.
+
+These results narrow the microscopic problem without closing it.  The complete physical
+state space, internal/correlation measure, selected invariant/equilibrium weighting, actual
+transition law and rates, coarse memory-loss mechanism, physical connectivity, and positive
+equilibrium-selection criterion remain to be supplied by the underlying dynamics.
+
+\section{Temperature when primitive propagation is fixed}
+\label{sec:temperature}
+Return now to the motivating puzzle.  Fixing the characteristic propagation speed does not
+fix the distribution of energy.  Even a purely open-mode control can have the same dispersion
+speed $c$ with different spectral occupation functions; the two preparations then carry
+different energies and can belong to different thermodynamic states.  With closures present,
+the possibilities multiply: energy can reside in centre-of-momentum motion, internal
+excitation, open modes, correlations, or different accessible organizations.  One system can
+therefore be hotter than another without any primitive component ``speeding up.''
+
+\begin{proposition}[Primitive local $c$ does not determine temperature]
+\label{prop:c-not-temperature}
+Fixing the local characteristic speed of primitive \ElEmEr{} propagation does not fix a
+unique thermodynamic temperature.
+\end{proposition}
+
+The permitted temperature dependence must instead involve energy distribution,
+mode occupation, composite motion or correlations.  It cannot generally be
+identified with primitive speed, crest/ambient density or net momentum.
+
+Once an entropy function and internal energy $U$ have been defined for the chosen
+thermodynamic description, the usual conjugate definition applies:
+\begin{equation}
+  \boxed{
+  \frac{1}{T}
+  =\left(\frac{\partial S}{\partial U}\right)_{\{\mathcal X\}}.}
+  \label{eq:temperature-control}
+\end{equation}
+The variables $\{\mathcal X\}$ denote whatever other macroscopic constraints are held
+fixed.  The equation gives temperature its thermodynamic meaning: it describes how the
+entropy of the accessible macrostate structure changes when the system's energy changes.
+It is not a derivation of $T$ from the universal propagation speed.
+
+Populating closure modes, changing collective motion or redistributing spectral
+weight can change this derivative.  Which processes occur, and whether a thermal
+contact regime exists, depend on the as-yet-unselected microscopic dynamics.
+
+\paragraph{Operational thermometry.}
+A derived $T$ should not remain just a formal derivative or fitted width.
+In a specified equilibrium/contact regime, independently calibrated physical
+probes weakly coupled to the same system should agree on one temperature
+without a probe-dependent redefinition of the state measure. The native
+interaction and equilibration law needed to establish that operational
+agreement are still Open.
+
+\subsection{Massive closure motion is compatible with fixed primitive speed}
+
+A recurrent closure is an organized field pattern, not a single primitive ray.  Its
+centre of momentum can move subluminally even though the primitive propagation that
+sustains the pattern remains locally at $c$.  The closure may also possess internal modes
+whose occupations change with energy.  This separates three notions that are easily
+confused: primitive propagation, motion of the organized object as a whole, and internal
+excitation of that object.
+
+Consequently the ordinary kinetic intuition can reappear at the \emph{closure} level.
+If a stable closure sector is supplied with the timelike dispersion
+\begin{equation}
+  E(\bm P)=\sqrt{M^2c^4+P^2c^2},
+  \label{eq:timelike-control}
+\end{equation}
+then the conditional mass-shell geometry discussed in \cref{sec:prethermalizer-structure}
+constrains a kinematic reference measure, but it does not supply the thermal occupation.
+Once a standard \emph{rest-frame} equilibrium prescription is additionally supplied,
+the familiar classical J\"uttner density \cite{Juttner1911} with respect to the coordinate element
+$\dd^3P$ is
+\begin{equation}
+  f_3(\bm P)\propto
+  \exp\!\left[-\frac{\sqrt{M^2c^4+P^2c^2}}{\kb T}\right].
+  \label{eq:juttner-control}
+\end{equation}
+This is a density relative to $\dd^3P$, not relative to the invariant element
+$\dd\nu_M\propto\dd^3P/p^0$.  Describing the same distribution relative to
+$\dd\nu_M$ requires the $p^0$ conversion factor in
+\cref{eq:com-density-conversion}; postulating a bare Boltzmann density relative to
+$\dd\nu_M$ would define a different probability distribution.  The choice between
+such prescriptions is not fixed by kinematic mass-shell invariance.
+Cubero et al. compared the original and modified J\"uttner prescriptions
+using relativistic simulations of a confined one-dimensional two-component
+gas; their equal-laboratory-time velocity samples favored the original
+J\"uttner distribution \cite{Cubero2007RelativisticThermometers}.
+This is dynamical evidence in that specified model, not a kinematic selection
+theorem or a universal C-Motion equilibrium measure. Their confined setup
+also makes explicit that boundary and sampling conditions belong to the
+thermometry problem; it does not supply native closure thermometry.
+
+For an individual momentum $P\ll Mc$, the energy expands as
+$E(\bm P)=Mc^2+P^2/(2M)+O(P^4/(M^3c^2))$.  For that approximation to describe
+the bulk of a thermal ensemble in its rest frame, additionally assume a
+nondegenerate classical regime and the nonrelativistic thermal condition
+$\kb T\ll Mc^2$ (so typical populated momenta satisfy $P\ll Mc$).  After
+absorbing the common rest-energy factor into normalization, the distribution
+reduces to the Maxwell--Boltzmann momentum density
+\begin{equation}
+  f_{\rm MB}(\bm P)\propto
+  \exp\!\left[-\frac{P^2}{2M\kb T}\right].
+  \label{eq:maxwell-control}
+\end{equation}
+These distributions demonstrate compatibility, not a microscopic \cmotion{} derivation.  The
+closure dispersion, internal spectrum, and equilibrium measure remain upstream inputs.  Nor
+does every single isolated closure need to possess a sharp thermodynamic temperature.  That
+concept is naturally an ensemble, bath, or sufficiently dense internal-state description;
+a small closure with only a few resolved levels may instead be described by explicit state
+populations.
+
+\section{Thermalization is a process problem}
+\label{sec:hierarchy}
+Entropy and temperature definitions do not supply equilibration dynamics.
+Dephasing can suppress coarse interference without moving energy; directional
+scattering can produce isotropy without changing occupation; energy exchange
+can leave protected particle or mode numbers fixed.  The physical thermalizer
+must supply the relevant transitions and a justified equilibrium criterion.
+Preparation loss alone is insufficient, as the stationary-state controls in \cref{sec:prethermalizer-structure} show.  The different dynamical jobs can be summarized by the following hierarchy.  The labels
+are shorthand introduced only after the physical distinctions are clear:
+\begin{center}
+\renewcommand{\arraystretch}{1.24}
+\begin{tabularx}{\textwidth}{@{}P{0.08\textwidth}P{0.29\textwidth}Y@{}}
+\toprule
+Level & Physical process & What it accomplishes \\
+\midrule
+T0 & Free propagation
+& Carries the existing mode and correlation structure forward; no generic equilibration follows. \\
+T1 & Dephasing / correlation redistribution
+& Coarse coherences may relax while information survives in finer phase/correlation structure. \\
+T2 & Angular / directional scattering
+& Redistributes directions and can support isotropization. \\
+T3 & Spectral or energy exchange
+& Redistributes energy among frequencies, momenta, or internal levels. \\
+T4 & Occupation-changing processes where required
+& Changes the number or population of effective excitations when equilibrium requires such channels. \\
+T5 & Repeated connected mixing
+& Can erase preparation dependence only if the physical transition network is sufficiently connected; coarse closure, stationary weighting, and thermodynamic equilibrium identification are additional requirements. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Two negative statements follow immediately:
+\begin{equation}
+  \boxed{\text{dephasing}\neq\text{thermalization}},
+  \qquad
+  \boxed{\text{isotropy}\neq\text{full equilibrium}}.
+  \label{eq:dephasing-negative}
+\end{equation}
+Free local-$c$ propagation can therefore contribute to T0 and, through phase mixing, to
+some T1 behaviour without supplying the stronger redistribution required at T2--T5.  In
+particular,
+\begin{equation}
+  \boxed{
+  \text{loss of visible coherence}
+  \not\Rightarrow
+  \text{energy redistribution}
+  \not\Rightarrow
+  \text{full equilibrium}.}
+  \label{eq:thermalization-ladder-negative}
+\end{equation}
+The hierarchy itself is generic.  The \cmotion{} question is which physically admissible
+field and closure processes can actually perform each job.  The final step must now be read
+with a sharper separation:
+\begin{equation}
+  \boxed{
+  \text{physical connectivity}
+  \neq
+  \text{coarse Markov closure}
+  \neq
+  \text{stationarity}
+  \neq
+  \text{thermodynamic equilibrium}.}
+  \label{eq:t5-sharpened}
+\end{equation}
+Connectivity specifies permitted transitions; coarse Markov closure requires
+loss of relevant hidden memory; stationarity concerns a preserved distribution;
+equilibrium needs an additional physically selected thermodynamic criterion.
+
+\section{How closures could mediate equilibration}
+\label{sec:matter-mediated}
+One physically economical possibility is that freely propagating vacuum modes remain nearly
+transparent to one another while organized matter supplies most of the redistribution.  An
+incoming open mode can interact with a closure, transfer energy into collective or internal
+organization, and later return energy to one or more outgoing modes.  A representative
+sequence is
+\begin{equation}
+  \boxed{
+  \begin{aligned}
+  \text{open field mode}
+  &\longrightarrow \text{closure interaction} \\
+  &\longrightarrow \text{absorption / internal mixing / redirection} \\
+  &\longrightarrow \text{re-release or further interaction}.
+  \end{aligned}}
+  \label{eq:closure-cycle}
+\end{equation}
+
+Repeated closure encounters could redistribute direction, phase, polarization,
+frequency and, where allowed, mode occupations.  The proposed physical channels
+must nevertheless be demonstrated, not inferred from the number of internal modes.
+
+A useful schematic is
+\begin{equation}
+  \boxed{
+  \text{open mode}+C_a
+  \;\rightleftarrows\;
+  C_b
+  \;\rightleftarrows\;
+  C_c+\text{open mode(s)},}
+  \label{eq:closure-microcycle}
+\end{equation}
+where $C_a,C_b,C_c$ denote different closure microstates.  The diagram is only a process
+picture: it assumes no derived transition kernel or rate law.
+
+This closure-mediated mechanism remains conditional.  It identifies a plausible class of
+physical processes capable in principle of supplying angular scattering, spectral exchange,
+occupation change, and repeated mixing.  The actual transition map or generator, rates,
+physical connectivity, intra-cell memory loss or other coarse-closure mechanism, and the
+criterion selecting a thermodynamic equilibrium weighting are still unknown.  A large number
+of internal degrees of freedom does not by itself turn a closure into a memoryless random
+bath.
+
+Fine information need not be destroyed in such encounters: correlations with
+the closure and outgoing field can retain it even when the coarse subsystem
+appears relaxed.  This is an interpretation consistent with the proposed
+complete-field bookkeeping, not a derived thermalization law.
+
+\subsection{How transparent free propagation could coexist with thermal contact}
+
+The Main Framework allows a candidate picture in which ordinary free propagation can remain
+largely unaffected until a local configuration departs from the free-propagation class and a
+physical response channel becomes available \cite{CmotionMainFramework2026}.  In thermodynamic
+language, mutually compatible open propagation could therefore remain comparatively
+transparent, while encounters with recurrent or sufficiently reorganized field structure
+could provide opportunities for redirection and energy exchange.
+
+Such a picture would explain how an apparently transparent vacuum can coexist with efficient
+thermalization inside matter.  It remains conjectural.  The framework does not show that
+every non-null, non-collinear, or overlapping configuration interacts; it does not derive the
+rates; and it does not establish that the same microscopic response forms closures, thermalizes
+matter, or supplies a universal force.
+
+\section{Energy transfer: heat, work, action, and entropy}
+\label{sec:bookkeeping}
+Thermodynamics does not introduce a second kind of physical energy.  The internal energy
+$U$ of a thermodynamic subsystem is booked on the same physical energy ledger used by the
+underlying framework.  The Main Framework separately distinguishes energy from action:
+an independently conserved action charge requires the corresponding exact phase/action
+symmetry \cite{CmotionMainFramework2026}.  The normalization slot $J_0$ belongs to that
+action layer.  Its empirical identification with $\hbar$ is a Quantum-Foundations issue,
+not a thermodynamic derivation \cite{CmotionQuantumFoundations2026}.
+
+This common energy ledger is a \emph{conditional conservation and exchange premise},
+not a microscopic energy-conservation theorem already derived from the native \ElEmEr{}
+field law.  For a supplied compatible complete-state evolution $F_\Delta$ and an
+isolated complete field-plus-environment state $\gamma$, assume there exists a
+well-defined total-energy functional $\mathcal E$ such that
+\begin{equation}
+  \mathcal E(F_\Delta\gamma)=\mathcal E(\gamma)
+  \qquad\text{(isolated-system energy control).}
+  \label{eq:energy-conservation-control}
+\end{equation}
+The subsystem energy $U$ and its changes must then be defined by a specified boundary
+and an accounting of the corresponding energy transfers.  Neither the full native
+functional $\mathcal E$ nor its exact local transfer law has yet been supplied;
+$F_\Delta$ remains a stipulated evolution in a compatible state representation, not a
+globally established succession clock.  This premise is distinct from conservation
+of the action charge associated with a separate symmetry.
+
+Entropy belongs to a third layer.  It characterizes the multiplicity or uncertainty of a
+reduced thermodynamic description.  It is therefore neither energy nor action, and an
+action normalization cannot simply be reinterpreted as an entropy measure.
+
+Under the supplied energy-conservation and boundary-accounting premise, with all
+energy exchanges grouped into the selected heat and work channels, the first law
+for the sign convention used here is
+\begin{equation}
+  \boxed{\dd U=\delta Q+\delta W.}
+  \label{eq:first-law}
+\end{equation}
+If the chosen macroscopic description retains additional transfer channels separately,
+the corresponding terms must be included.  The displayed two-term form is standard
+bookkeeping, not a derivation of the native energy functional.  Its physical reading
+is the important part.\ \emph{Work}
+classifies energy transfer associated with controlled generalized changes of the chosen
+system.\ \emph{Heat} classifies energy transfer through the remaining thermodynamic
+interaction channels under that same coarse description.  The split depends on the
+system boundary, the controls, and the macroscopic variables being tracked; heat and
+work are not different substances stored inside the system.
+
+Controlled boundary motion or coherent driving is work-like; unresolved
+closure-mode redistribution is heat-like under a suitable subsystem reduction.
+The classification depends on the controls and boundaries, not on an intrinsic
+``heat'' label attached to an open field mode.
+
+For the same reason,
+\begin{equation}
+  \boxed{\text{radiated energy}\not\equiv\text{heat}.}
+  \label{eq:radiation-not-heat}
+\end{equation}
+A coherent outgoing field can remain work-capable, and energy released by an interaction
+can remain correlated and nonthermal.  Radiation becomes heat-like only relative to a
+specified thermodynamic process and reduction.
+
+\section{Equilibrium and the downstream statistical description}
+\label{sec:controls}
+A stationary coarse distribution is not automatically thermal equilibrium;
+it may retain currents or depend on unmodelled history.  A native equilibrium
+claim must separately supply physical weighting, dynamically accessible
+transitions and a criterion distinguishing thermal equilibrium from another
+stationary state.
+
+Once the physical state space, reference measure, conserved quantities, and
+equilibrium antecedents have been specified, familiar statistical mechanics
+provides the downstream language.  For example, maximizing the Gibbs entropy
+of \cref{eq:gibbs-control} at fixed mean energy, with the same fixed
+\emph{dimensionless} reference measure $\widehat\mu$, gives a density relative
+to that measure:
+\begin{equation}
+  p_\beta(\gamma)
+  =\frac{1}{Z(\beta)}\exp[-\beta H(\gamma)],
+  \qquad
+  Z(\beta)=\int\exp[-\beta H] \,\dd\widehat\mu,
+  \qquad
+  \beta=\frac{1}{\kb T},
+  \label{eq:canonical-control}
+\end{equation}
+under the usual assumptions and for finite $Z$ \cite{Jaynes1957}.  The calculation does not determine the
+microscopic \cmotion{} Hamiltonian, reduced state space, physical measure, or equilibrium
+selection rule; those remain upstream.
+
+
+Consider two weakly coupled systems with
+\begin{equation}
+  E_A+E_B=E_{\rm tot},
+\end{equation}
+and supplied physical multiplicities $\Omega_A(E_A)$ and $\Omega_B(E_B)$,
+\begin{equation}
+  P(E_A)\propto\Omega_A(E_A)\Omega_B(E_{\rm tot}-E_A).
+  \label{eq:two-bath-weight}
+\end{equation}
+Writing $S=\kb\ln\Omega$, the most probable energy partition satisfies
+\begin{equation}
+  \frac{1}{T_A}=\frac{1}{T_B},
+  \qquad\text{hence}\qquad
+  \boxed{T_A=T_B}.
+  \label{eq:equal-temperature-control}
+\end{equation}
+For positive heat capacities,
+\begin{equation}
+  \frac{\dd^2S_{\rm tot}}{\dd E_A^2}
+  =-\frac{1}{T_A^2C_A}-\frac{1}{T_B^2C_B}<0,
+  \label{eq:two-bath-stability}
+\end{equation}
+so the equal-temperature partition is a local entropy maximum.  For a small subsystem in a
+large bath, the same multiplicity argument gives the standard canonical or grand-canonical
+weighting
+\begin{equation}
+  P_a\propto
+  \exp\!\left[-\beta\left(E_a-\sum_r\mu_rQ_{r,a}\right)\right].
+  \label{eq:bath-canonical-control}
+\end{equation}
+These are standard equilibrium controls, conditional on a physical state measure;
+they do not yield native transition rates or measure selection.
+
+The stationarity, current and data-processing controls are established in
+\cref{sec:prethermalizer-structure}; see
+\cref{eq:global-stationarity,eq:coarse-probability-current,eq:detailed-balance-control,eq:relative-entropy-contraction}.
+They distinguish invariant one-time marginals from autonomous Markov histories,
+and stationarity from equilibrium. The three-state cycle there shows why
+relative-entropy nonincrease need not give convergence. None of these controls
+selects Gibbs weighting or supplies a native second law. The physical mixing,
+rate and measure requirements remain independent completion tasks.
+
+
+The paper therefore uses standard equilibrium formulas only after a physical state/measure
+gate.  The actual \cmotion{} completion still requires the microscopic closure/open-mode
+dynamics, the coarse memory-loss condition if a Markov limit is used, the physical transition
+connectivity, and a positive criterion distinguishing thermodynamic equilibrium from other
+stationary states.
+
+\section{Radiation as a quantum-statistical control}
+\label{sec:radiation}
+Radiation tests whether a local-$c$ field theory can recover observed
+spectral equilibrium without importing its outcome as a native derivation.
+A possible closure-mediated redistribution process is
+\begin{equation}
+  \boxed{
+  \text{radiation mode}
+  \;\rightleftarrows\;
+  \text{closure internal state}
+  \;\rightleftarrows\;
+  \text{other radiation modes}.}
+  \label{eq:radiation-matter-cycle}
+\end{equation}
+Such encounters may redistribute frequencies and occupations while preserving
+primitive local $c$; they do not select quantum occupation probabilities.
+
+For a standard three-spatial-dimensional free radiation control with linear
+dispersion $\omega=c|\mathbf k|$ and $g_{\mathrm{pol}}$ independent polarization
+states per wavevector, the density of modes per unit volume and angular-frequency
+interval is
+\begin{equation}
+  g(\omega)\,\dd\omega
+  =\frac{g_{\mathrm{pol}}\omega^2}{2\pi^2c^3}\,\dd\omega,
+  \qquad g_{\mathrm{pol}}=2\quad\text{(electromagnetic control)}.
+  \label{eq:mode-density-control}
+\end{equation}
+The two electromagnetic polarizations are imported from established physics,
+not derived from the primitive \ElEmEr{} propagation premise.  This mode
+count is not a count of conserved primitive wave parcels.
+\paragraph{The ultraviolet/equipartition gate.}
+The same standard mode count exposes why fixed primitive $c$ does not cure
+the classical radiation problem. If every independent transverse harmonic
+mode instead receives classical equipartition energy $\kb T$, the
+electromagnetic ($g_{\mathrm{pol}}=2$) control yields
+\begin{equation}
+  u_{\omega}^{\mathrm{RJ}}(T)
+  =\frac{\kb T\,\omega^2}{\pi^2c^3},\qquad
+  \int_0^\infty u_{\omega}^{\mathrm{RJ}}(T)\,\dd\omega=\infty
+  \quad(T>0).
+  \label{eq:rayleigh-jeans-uv-gate}
+\end{equation}
+The Rayleigh--Jeans divergence \cite{Rayleigh1900,Jeans1905} comes from unbounded mode count and classical
+equipartition, not from variable primitive speed.  Planck's suppression of
+high-frequency occupation is an empirical recovery requirement
+\cite{Planck1900}.  C-Motion has not derived the requisite occupation,
+accessibility or ultraviolet law.  Merely imposing a cutoff or restricting
+accessible states would not establish the observed equilibrium distribution.
+
+Suppose additionally that a mode carries the energy increment
+\begin{equation}
+  \varepsilon_\omega=J_0\omega,
+  \label{eq:mode-energy-control}
+\end{equation}
+and that standard bosonic state counting applies. For a free linear mode at
+fixed wavevector, frequency is independent of its occupation/action amplitude.
+The assumed increment is therefore compatible with the constant-frequency
+exception to the Main Framework's generic nonlinear product-law negative
+control, with the vacuum energy subtracted; it is not a product law for a
+nonlinear recurrent closure family \cite{CmotionMainFramework2026}.  If the relevant open-mode occupation can
+change through a physical reaction network satisfying the full-span hypothesis,
+and every exact conserved charge has $q_{\alpha{\rm o}}=0$, the chemical-equilibrium result
+\cref{eq:chemical-potential-charge-span} gives zero chemical potential.  The exact phase symmetry stipulated for the Main Framework's recurrent
+families is a separate sector assumption: it does not establish an independent
+open-mode action charge conserved through closure--radiation conversion.
+If a conserved charge of the full coupled system does protect the open-mode
+occupation, the zero-chemical-potential control must be reconsidered.
+Under the stated additional control assumptions,
+\begin{equation}
+  \bar n(\omega)
+  =\frac{1}{\exp[J_0\omega/(\kb T)]-1},
+  \label{eq:planck-occ-control}
+\end{equation}
+and
+\begin{equation}
+  u_\omega(T)
+  =\frac{J_0\omega^3}{\pi^2c^3}
+  \frac{1}{\exp[J_0\omega/(\kb T)]-1}.
+  \label{eq:planck-control}
+\end{equation}
+The displayed spectral density specializes to the electromagnetic control
+$g_{\mathrm{pol}}=2$; under otherwise unchanged assumptions a different independent
+mode degeneracy would multiply it by $g_{\mathrm{pol}}/2$.
+With the empirical Quantum-Foundations identification $J_0=\hbar$, this is the standard
+Planck form.  Thermodynamics does not derive that identification, the two-polarization
+mode structure, the bosonic occupation law, the required occupation-changing network,
+the absence of an independently conserved open-mode action/number, or the physical
+mode measure \cite{CmotionQuantumFoundations2026}.
+
+These are recovery controls, not native photon-mode, polarization or thermal
+occupation derivations.  No independent carrier frequency, ambient-density
+scale or ultraviolet cutoff is calibrated here.
+
+\section{Causal order and the thermodynamic arrow are different questions}
+\label{sec:arrows}
+The Main Framework uses primitive succession $s$ to express the before--after ordering of
+physical change while keeping it distinct from operational clock time
+\cite{CmotionMainFramework2026}.  Any entropy derivative $\dd S/\dd s$ below is
+schematic along a stipulated ordered physical history; it does not assume that
+an observer can read $s$, or that a global equal-$s$ foliation has been derived.
+A candidate successor-directed propagation rule says
+which later changes can be influenced by a locally generated change.  That is a causal
+statement.  It is not yet a statistical statement about entropy.
+
+\begin{proposition}[Successor order does not imply entropy increase]
+\label{prop:arrow-separation}
+Primitive successor ordering, including a candidate successor-directed propagation
+clause for newly generated changes, does not by itself imply
+\begin{equation}
+  \frac{\dd S}{\dd s}\geq0.
+  \label{eq:not-second-law}
+\end{equation}
+A thermodynamic arrow requires additional reduced-state, statistical, dynamical, and
+boundary conditions.
+\end{proposition}
+
+Successor order constrains causal influence; a thermodynamic arrow concerns
+the behavior of a chosen coarse entropy under physical dynamics and boundary
+conditions.  Neither statement is a substitute for the other.
+
+There is nevertheless a useful physical connection that does not collapse the two questions.
+An interaction can take compact, easily described incoming organization and distribute its
+records into outgoing radiation, closure recoil, internal excitations, and environmental
+correlations.  A local subsystem can then look relaxed while the complete extended field
+state still carries information about what happened.  Successor-directed propagation helps
+move those records away from the subsystem; coarse-graining decides whether they are retained
+in the thermodynamic description.  This can contribute to practical macroscopic
+irreversibility, but it is not a derivation of entropy increase.
+
+Reversing only the centre-of-momentum motion of a localized system does not
+reverse disturbances already propagating outward.  Along the same straight
+propagation path, an original outgoing disturbance and a later source-generated
+change travelling at the same primitive speed $c$ retain their separation:
+the later change cannot overtake the earlier one.  This is a same-path statement,
+not a general no-overtaking theorem for different admissible routes.  Reversing
+the complete history would require the corresponding distant field structure
+and correlations to form a precisely coordinated incoming state.
+
+The Main Framework treats the resulting causal-reachability question as open: a formal
+time-reversed field configuration need not be physically reachable from the original
+history merely because it satisfies the same mathematical equations.  The required
+incoming configuration would itself need a lawful causal ancestry.  A future reachability
+constraint could restrict which microscopic histories or transition edges are admissible,
+but causal non-reachability by itself does not determine the thermodynamic measure, Gibbs
+weighting, the stationary distribution, coarse Markov closure, or an entropy theorem.  It may
+therefore constrain the support of thermodynamic dynamics without becoming the second law.
+
+The microscopic reversal/reachability problem is thus separate from selecting
+the statistical measure, transition law and conditions for entropy increase.
+
+\section{What remains to complete the thermodynamic bridge}
+\label{sec:open}
+The present construction already explains why fixed primitive local-$c$ propagation is
+compatible with thermodynamics: macroscopic state variables live on the organization and
+statistical description of field/closure degrees of freedom rather than on the primitive
+speed itself.  A microscopic completion must now supply the parts that the present paper
+has deliberately left open.
+
+First, the theory must complete the thermodynamic state-space/measure construction.  The
+structural split in \cref{eq:measure-layers} shows that this means more than one task:
+the physical support and macro-map, the internal/correlation weighting, the physically
+relevant invariant measure, and the equilibrium-selection weighting remain unresolved even
+though some closure centre-of-momentum kinematic reference geometry is conditionally constrained.  Second,
+the theory must derive the actual closure/open-mode transition map or generator and rates.
+It must then establish which kinematically allowed transitions are physically present, whether
+unresolved variables lose enough memory for an autonomous coarse closure, and what positive
+criterion distinguishes thermodynamic equilibrium from another stationary state.  Third, a
+thermal theory of matter requires the closure centre-of-momentum dispersion, the
+thermal-activity gates in \cref{sec:thermal-activity-gate}, the kinetic/action
+structure and internal excitation spectrum, degeneracies, and occupation-changing
+channels.  From the same dynamics
+one would then seek fluctuation--dissipation relations and transport coefficients such as
+diffusion, viscosity, conductivity, and heat transport.
+
+Quantum radiation adds a further layer: the microscopic occupation law and the observed
+Planck spectrum must be recovered without treating the downstream control formulas as a
+microscopic derivation.  Finally, a complete thermodynamic arrow requires the statistical,
+dynamical, and boundary antecedents of a second law, while third-law and cosmological
+thermal questions remain later extensions.
+
+No independent thermodynamic \cmotion{} scale is introduced to bypass these problems.
+Any framework-scale input must obey the common one-scale policy of the Main Framework;
+this paper does not calibrate a separate carrier frequency, wavelength, density scale,
+cutoff, or closure thermal scale.
+
+\section{Conclusion}
+\label{sec:conclusion}
+The primitive local-$c$ constraint is compatible with thermodynamics because
+thermal variation concerns collective closure motion, internal excitations,
+open-mode spectra, correlations and the statistical weights of admissible
+physical configurations, not a distribution of primitive speeds.
+
+The field-first ontology rules out treating arbitrary ray, crest or preparation
+labels as independent entropy constituents.  The M1--M4 decomposition isolates
+the physical state-space, kinematic reference, invariant-measure and equilibrium
+weighting questions.  Conditional effective Lorentz symmetry constrains a
+closure centre-of-momentum reference measure, but neither this measure nor
+invariance itself selects thermodynamic weighting.  Recurrent closure geometry
+also does not determine its entropy without a physical sector measure.
+
+The T0--T5 hierarchy distinguishes dephasing, scattering, energy exchange,
+occupation change and sustained mixing.  Closure-mediated interactions are a
+candidate way of realizing these processes; their native generator, rates,
+connectivity, coarse memory loss and equilibrium selector remain unresolved.
+A deterministic complete-state evolution can yield stochastic coarse transitions,
+but a fixed one-step kernel does not establish Markovian multi-step histories.
+Stationarity, even with preparation loss, does not by itself identify thermal
+equilibrium.
+
+Energy, action and entropy remain distinct accounts.  Conventional heat/work,
+kinetic-gas and radiation formulas apply only after their conservation,
+measure, dispersion, mode-counting and occupation assumptions are supplied.
+In particular, fixed primitive $c$ does not remove the classical ultraviolet
+radiation problem, and the Planck distribution is a downstream control rather
+than a native derivation.  Causal succession and the thermodynamic arrow are
+likewise different: outgoing correlations may disperse records without proving
+a second-law inequality.
+
+The outstanding task is to derive from the microscopic \ElEmEr{} dynamics the
+physical reduction and weighting, active closure spectrum, allowed transitions
+and rates, justified coarse evolution and equilibrium selection, quantum
+occupation law, transport and robust macroscopic irreversibility.  These remain
+Open/Conditional/Deferred at the scopes recorded in the formal register.  The
+paper's result is a constrained thermodynamic research framework, not a
+completed microscopic derivation of equilibrium or entropy production.
+
+\newpage
+
+\appendix
+
+\section{Formal nativity and claim register}
+\label{sec:register}
+This register records scientific status and nativity independently.  Standard
+controls, model assumptions and inherited results are identified separately;
+no native Open or Conditional result is promoted.
+
+\paragraph{How to read the register.}
+Scientific status follows the Derivation Ledger's vocabulary:
+\emph{Structural} denotes exact or banked organizational/accounting statements,
+not a microscopic law; \emph{Conditional} denotes conclusions from explicit
+premises or model classes not themselves derived; \emph{Negative} excludes an
+identification or mechanism only within its stated scope. \emph{Conjectural}
+denotes a motivated but underived interpretation; \emph{Open} is unresolved,
+and \emph{Open (sharp)} isolates a missing bridge rather than greater confidence.
+\emph{Deferred} places work outside the present publication critical path
+without resolving its scientific status.
+
+The independent provenance shorthand is read locally as follows:
+\emph{N1} identifies direct use of the stated C-Motion physical/organizational
+premises, not a derivation of those premises; \emph{N2} identifies calculations
+or applications in an explicitly assumed C-Motion-motivated model class;
+\emph{C} denotes a downstream standard or externally supplied mathematical or
+physical control; \emph{O} marks an open native input or completion.
+The notation \emph{N2 $\to$ C} means that a conditional C-Motion-motivated
+setup is followed by standard mathematics, not a scientific-status promotion.
+Provenance codes do not establish native microscopic dynamics.
+
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.20}
+\begin{longtable}{@{}P{3.5cm}P{1.7cm}P{2.5cm}P{5.6cm}@{}}
+\toprule
+Result & Nativity & Scientific status & Scope / limitations \\
+\midrule
+\endfirsthead
+\toprule
+Result & Nativity & Scientific status & Scope / limitations \\
+\midrule
+\endhead
+Field-first fine physical state
+& \natNOne{} & \statusStructural{}
+& The physical microstate is a complete field/closure configuration, not an immutable parcel list. \\
+No automatic primitive crest/ray/packet-count entropy
+& \natNOne{} & \statusNegative{}
+& Primitive descriptive labels do not supply a physical entropy count without a derived reduced state space and measure. \\
+Open/closed/extended organizational distinction
+& \natNOne{} & \statusStructural{}
+& Thermodynamic reduction may depend on organization; the full reduced state space is not yet derived. \\
+Closure thermal-activity diagnostic
+& \natNTwo{} / \natControl{} & \statusStructural{} / \statusOpen{}
+& A physical coordinate counts as thermally active only with redundancy and sector guards, finite excitation, dynamics and interaction connectivity; the native closure spectrum remains Open. \\
+Quadratic closure-spectrum test
+& \natControl{} & \statusConditional{}
+& In a supplied second-order quadratic model $\det(H-\Omega^2G)=0$; the Hessian alone does not fix frequencies, and no native kinetic/action metric is derived. \\
+Recurrent organization directly fixes closure entropy
+& \natControl{} & \statusNegative{}
+& Codimension or zero ambient measure is not an entropy calculation; a justified induced/conditional sector measure and fixed reference normalization are required. \\
+Physical reduced-state / macro-map / measure gate
+& \natNTwo{} & \statusConditional{} / \statusOpen{}
+& Generic statistical requirements are applied only after \cmotion{} ontology constrains the admissible state space. \\
+Measure problem decomposition (M1--M4)
+& \natNTwo{} / \natControl{} & \statusStructural{} / \statusOpen{}
+& Separates physical support, kinematic reference measure, dynamically invariant measure, and thermodynamic equilibrium weighting.  Some COM kinematic geometry is conditionally constrained; the full physical/equilibrium measure is not. \\
+Invariant measure uniquely selects thermodynamic weighting
+& \natControl{} & \statusNegative{}
+& Examples with fixed points, periodic orbits or mixtures show generic nonselection; uniqueness of an invariant probability in some systems does not itself give a physical equilibrium interpretation. \\
+Conditional closure-COM kinematic reference measure
+& \natNTwo{} $\to$ \natControl{} & \statusConditional{}
+& In the already-Conditional effective massive/Lorentz sector, the positive mass shell carries $\dd^3P/p^0$ up to normalization.  Densities relative to this measure and to $\dd^3P$ differ by the $p^0$ factor; neither convention alone selects equilibrium. \\
+Chemical-potential structure from conserved charges
+& \natControl{}; application \natNTwo{} & \statusConditional{}
+& Allowed reaction directions imply $\sum_i\nu_i^{(r)}\mu_i=0$; under $\operatorname{span}\{\nu^{(r)}\}=\ker q$, $\mu\in\operatorname{im}q^{\mathsf T}$. If every $q_{\alpha{\rm o}}=0$, then $\mu_{\rm o}=0$; occupation change alone is insufficient. \\
+Deterministic-fine to coarse-stochastic bridge
+& \natNTwo{} $\to$ \natControl{} & \statusConditional{}
+& In a supplied compatible complete-state/evolution representation, a normalized fine-state probability measure and measurable positive-weight cells define a row-stochastic one-step kernel; neither global succession alignment nor autonomous multi-step coarse dynamics follows. \\
+Coarse Markovianity is automatic after projection
+& \natControl{} & \statusNegative{}
+& A fixed one-step matrix does not imply autonomous multi-step Markov histories; exact lumpability or justified approximate memory loss must be established separately. \\
+Stationarity/preparation independence identifies equilibrium
+& \natControl{} & \statusNegative{}
+& $\pi W=\pi$ and even $P_n\to\pi$ do not by themselves identify thermodynamic equilibrium; stationary circulating currents are possible. \\
+Connectivity/balance does not select Gibbs
+& \natControl{} & \statusNegative{}
+& Abstract connectivity or balance structure can support different stationary weights; the physical measure/rate structure must supply the equilibrium energy dependence. \\
+
+Two-bath equal temperature and stability
+& \natControl{} & \statusConditional{}
+& Supplied weak-coupling multiplicity product and differentiable entropies give equal temperature at an interior stationary partition; positive heat capacities make it a local maximum, not a global uniqueness theorem. \\
+Data processing and contraction $\neq$ second law
+& \natControl{} & \statusConditional{} / \statusNegative{}
+& For an autonomous Markov kernel with stationary $\pi$ and defined finite relative entropy, $D(PW\Vert\pi)\leq D(P\Vert\pi)$; neither strict contraction, convergence, Gibbs selection nor a native second law follows. \\
+Kinetic arrest $\neq$ third law
+& \natControl{} & \statusNegative{}
+& Slow or absent transitions do not establish equilibrium ground-state entropy or a native third law; disconnected sectors need a justified physical counting rule. \\
+Coarse-graining correlation redistribution
+& \natControl{}; application \natNTwo{} & \statusConditional{}
+& \Cref{eq:correlation-redistribution} interprets information discarded by a supplied macro-description; it is not a native monotonic-entropy theorem. \\
+
+Boltzmann/Gibbs entropy forms
+& \natControl{} & \statusConditional{}
+& Standard formulas given a reduced state space, fixed dimensionless reference-measure convention and normalized probability density; native physical weighting and state-cell normalization remain open. \\
+Primitive local $c$ does not determine temperature
+& \natNOne{} & \statusNegative{}
+& Thermodynamic variation resides in energy distribution, organization, correlations, composite motion, and occupation, not primitive speed. \\
+$1/T=\left(\partial S/\partial U\right)_{\{\mathcal X\}}$
+& \natControl{} & \statusStructural{}
+& Introduced after the native fixed-$c$ restriction; not derived from $c$. \\
+Operational thermometer agreement
+& \natControl{} & \statusOpen{}
+& Independent weakly coupled probes must agree in a specified contact/equilibrium regime; no native thermalizer or thermometer response is supplied. \\
+T0--T5 generic hierarchy
+& \natControl{} & \statusStructural{}
+& Diagnostic taxonomy; not by itself native evidence. \\
+Assignment of open/closure processes to T0--T5
+& \natNTwo{} & \statusConditional{} / \statusOpen{}
+& Native process classes constrain which dynamical jobs can be performed. \\
+Free propagation/dephasing gives full thermalization
+& \natControl{} & \statusNegative{}
+& T0/T1 can relax selected coarse observables but do not establish generic T2--T5; T5 additionally does not collapse connectivity, coarse closure, stationarity, and equilibrium into one condition. \\
+Closure/matter-mediated equilibration route
+& \natNTwo{} & \statusConditional{}
+& Process-sufficiency class only; transition law/rates, physical connectivity, coarse memory-loss/closure, and equilibrium selection remain Open. \\
+Free-propagation class / interaction-opportunity thermalizer architecture
+& \natNTwo{} candidate & \statusConjectural{} / \statusOpen{}
+& Possible microscopic realization; not shown to supply T1--T5, detailed balance, or binding. \\
+One physical energy ledger; energy/action/entropy distinct
+& \natNTwo{} & \statusStructural{} / \statusConditional{}
+& A common conserved energy functional and complete-system exchange balance are conditional inputs, not a derived native field law; $J_0$ is not entropy or temperature. \\
+First-law algebra $\dd U=\delta Q+\delta W$
+& \natControl{} & \statusStructural{}
+& Exact two-term accounting identity within the conditionally supplied conserved energy ledger, specified boundary and complete allocation to heat/work (or additional explicit terms); Structural classifies the algebra, not native energy conservation. \\
+Radiated energy is automatically heat
+& \natControl{} & \statusNegative{}
+& Radiation can be coherent/work-capable or correlated; ``heat'' depends on subsystem and macro-description. \\
+Canonical weighting
+& \natControl{} & \statusConditional{}
+& Requires specified $H$, measure and equilibrium antecedents. \\
+Standard gas distribution controls
+& \natControl{} & \statusConditional{}
+& Downstream of assumed timelike closure dispersion and a supplied rest-frame equilibrium prescription; the Maxwell--Boltzmann limit additionally requires a nondegenerate classical and $\kb T\ll Mc^2$ thermal regime. \\
+Detailed/global balance controls
+& \natControl{} & \statusStructural{} / \statusOpen{}
+& A normalized invariant fine measure yields the one-step identity $\pi W=\pi$ even without autonomous coarse Markov closure; physical multi-step propagation requires additional closure assumptions.  Pairwise detailed balance and thermodynamic equilibrium remain separate questions. \\
+Classical equipartition cures ultraviolet radiation
+& \natControl{} & \statusNegative{}
+& For imported two-polarization, unbounded linear-mode counting, $u_\omega^{\rm RJ}=\kb T\omega^2/(\pi^2c^3)$ diverges on integration; a native occupation/UV/accessibility mechanism remains Open. \\
+Planck/radiation formulas
+& \natControl{} & \statusConditional{}
+& Requires imported two-transverse-polarization electromagnetic mode count $g_{\mathrm{pol}}=2$, $J_0\omega$, bosonic occupation statistics and the normalization status in Quantum Foundations; not a native ElEmEr photon-mode derivation. \\
+Causal/successor orientation is not the thermodynamic arrow
+& \natNOne{} & \statusStructural{}
+& Primitive succession does not imply $\dd S/\dd s\ge0$; second-law antecedents remain Open. \\
+Native reduced state space and physical thermodynamic measure
+& \natOpen{} & \statusSharpOpen{}
+& Physical support, internal/correlation weighting, selected invariant measure, and equilibrium weighting remain unresolved; symmetry constrains only some conditional kinematic reference measures. \\
+Native transition dynamics, coarse closure, connectivity, rates, and equilibrium selection
+& \natOpen{} & \statusOpen{}
+& Distinct unresolved requirements: actual physical edges/rates, loss of dynamically relevant hidden memory, connected exploration, and the positive criterion selecting thermodynamic equilibrium rather than another stationary state. \\
+Closure internal spectrum and transport coefficients
+& \natOpen{} & \statusOpen{} / \statusDeferred{}
+& Genuine completion work; may remain unresolved in this explicitly work-in-progress manuscript. \\
+Native quantum occupation law / Planck recovery
+& \natOpen{} & \statusOpen{} / \statusDeferred{}
+& Must not be inferred from primitive $c$, recurrence, or downstream controls. \\
+Arrow, third-law and cosmological completion
+& \natOpen{} & \statusOpen{} / \statusDeferred{}
+& Explicitly outside the scope required for the present work-in-progress manuscript. \\
+\bottomrule
+\end{longtable}
+\normalsize
+\end{center}
+
+\subsection{Status note}
+The register separates scoped standard controls, conditional applications and negative results;
+no pre-existing Open or Conditional native thermodynamic result is promoted.  The complete
+physical state space/support, internal/correlation measure, physical invariant/equilibrium
+weighting, actual transition map and rates, coarse memory-loss/closure mechanism, physical
+connectivity, positive equilibrium-selection criterion, closure spectrum, transport
+coefficients, quantum occupation law, Planck recovery, rigorous second-law theorem,
+microscopic irreversibility account, low-entropy boundary, third-law completion, and
+cosmological thermal history remain unresolved.  The closure/matter-mediated equilibration
+picture remains Conditional, and the free-propagation/interaction-opportunity realization remains
+Conjectural/Open.  The status of $J_0=\hbar$ remains inherited from Quantum Foundations
+rather than rederived here.
+
+\newpage
+
+\printbibliography[title={References}]
+
+\end{document}

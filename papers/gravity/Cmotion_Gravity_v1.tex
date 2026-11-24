@@ -1,0 +1,1770 @@
+
+
+% !TeX program = pdflatex
+% !BIB program = biber
+
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+\usepackage{amsmath,amssymb,amsthm,bm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage[expansion=false]{microtype}
+\setlength{\emergencystretch}{3em}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black,
+  pdftitle={Weak-field gravity in C-Motion: scalar failure and conditional tensor recovery},
+  pdfauthor={Toma Kavonius}
+}
+
+\usepackage[backend=biber,style=numeric,sorting=none,maxnames=6,uniquename=false,url=false]{biblatex}
+\addbibresource{cmotion_foundational_general.bib}
+\addbibresource{cmotion_primary_research.bib}
+\addbibresource{cmotion_internal_manuscripts.bib}
+
+\AtEveryBibitem{\clearfield{note}\clearfield{annotation}\clearfield{keywords}\clearfield{file}}
+
+
+\newcommand{\cmotion}{\mbox{C-Motion}}
+\newcommand{\ElEmEr}{\mbox{ElEmEr}}
+\newcommand{\cmc}{c}
+
+
+\newcommand{\statusNegative}{\textcolor{red!65!black}{\textbf{Negative}}}
+\newcommand{\statusStructural}{\textcolor{blue!55!black}{\textbf{Structural}}}
+\newcommand{\statusConditional}{\textcolor{yellow!60!black}{\textbf{Conditional}}}
+\newcommand{\statusAssumed}{\textcolor{orange!80!black}{\textbf{Assumed}}}
+\newcommand{\statusOpen}{\textcolor{red!75!black}{\textbf{Open}}}
+\newcommand{\statusConjectural}{\textcolor{magenta!65!black}{\textbf{Conjectural}}}
+\newcommand{\statusDeferred}{\textcolor{gray!70!black}{\textbf{Deferred}}}
+\newcommand{\statusModelDerived}{\textcolor{cyan!55!black}{\textbf{Model-derived}}}
+
+
+\newcommand{\NOne}{\textbf{N1}}
+\newcommand{\NTwo}{\textbf{N2}}
+\newcommand{\Control}{\textbf{C}}
+\newcommand{\OpenBridge}{\textbf{O}}
+\newcommand{\RenameRisk}{\textbf{R}}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\title{\textbf{Weak-field gravity in \cmotion{}:\\scalar failure and conditional tensor recovery}}
+\author{Toma Kavonius}
+\date{24 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\small\itshape
+Scope and limitations.  This manuscript tests weak-field gravitational structures under
+explicitly stated C-Motion antecedents.  The scalar/rate-only route is excluded within
+its stated model, while the successful rank-2/helicity-2 route remains Conditional on
+vacuum, source, universality, coupling, and nonlinear-completion assumptions that are
+not yet derived from native ElEmEr dynamics.
+\end{center}
+\vspace{0.6em}
+
+\begin{abstract}
+This paper investigates whether weak-field gravity can emerge from an
+underlying field/state in physical three-space, with locally $c$-limited
+change and recurrent closures. The metric formulation is used as the successful effective
+benchmark, not as a prescribed microscopic ontology. We test a minimal
+scalar/rate-only response against a conditional massless rank-2 completion.
+Under the stated optical assumptions, pure scalar/rate loading yields
+$\gamma=0$ and half the observed leading light deflection, despite capturing
+aspects of Newtonian response and gravitational clock shifts. This is a
+restricted negative result, not a no-go theorem for all scalar extensions.
+With independently supplied vacuum, conserved-source, universal-coupling,
+common probe-response and linear gauge antecedents, the standard rank-2
+completion gives $\gamma=1$, leading light bending, Shapiro delay and two
+luminal transverse tensor polarizations. The GR value $\beta=1$ and standard
+first post-Newtonian behavior further require the specified nonlinear
+completion. Multimessenger GW170817 observations constrain propagation speed
+\cite{Abbott2017GW170817Gamma}. These are conditional compatibility results, not a native derivation
+of general relativity. We examine a candidate interpretation in which
+source-dependent field/stress organization redirects open propagation and
+changes recurrent-return conditions, and we calculate bounded closure-projection
+diagnostics that test proposed scalar-response alternatives. Native mode
+selection, gravitational sources and coupling, finite-closure universality,
+field self-stress, the strength $G$, and strong-field dynamics remain open.
+Acceleration-induced closure instability is a separate conjecture requiring a
+stability calculation.
+\end{abstract}
+
+
+%======================================================================
+\section{Introduction: what gravity asks of a field-first theory}
+\label{sec:introduction}
+
+General relativity provides the benchmark that any alternative microscopic account of
+gravity must meet; weak-field and post-Newtonian tests provide a compact empirical control framework \cite{Will2014Confrontation}.  In its standard formulation, gravitational phenomena are represented
+geometrically by a metric and its curvature.  \cmotion{} asks a different microscopic
+question: if the underlying physical picture is instead a dynamical field/state in
+physical three-space, what must that field be able to do so that the same tested
+weak-field phenomena emerge?
+
+The distinction is ontological rather than observational.  A successful \cmotion{}
+gravity sector may admit the usual metric description at the effective level.  Nothing
+in this paper requires the standard geometric mathematics to be discarded.  The narrower
+claim is that such mathematics need not be taken as the primitive material ontology of
+the underlying theory.
+
+The shared \cmotion{} framework begins from physical three-space, an underlying dynamical
+field/state called \ElEmEr{}, and primitive physical changes that propagate locally at the
+universal speed $c$.  Localized recurrent organizations of that field are called
+\emph{closures}.  Primitive succession orders physical change, while ordinary time is
+operationally read from recurrent physical processes and signalling.  Thus when standard
+gravity notation uses a four-coordinate interval or a metric, this paper treats that
+structure as an effective/operational comparison language.  Primitive succession is not
+being promoted to a fourth spatial dimension.
+
+The gravity problem can then be stated simply:
+\begin{quote}
+\emph{Can a local-$c$, field-first theory in physical three-space reproduce the observed
+weak-field behavior of gravity, and what additional gravitational structure is required
+for that to happen?}
+\end{quote}
+
+The answer developed below has two parts.  First, the simplest scalar/rate-only route
+fails a decisive relativistic test: light bending.  Second, a massless rank-2 completion
+with universal stress coupling reproduces the required weak-field tensor structure, but
+only under explicit antecedents whose microscopic \ElEmEr{} origin remains open.
+
+Alongside that mathematical argument, the paper keeps one candidate physical reading in
+view.  A source-dependent gravitational environment may reorganize the local conditions
+under which open propagation is redirected and recurrent closures complete their return
+cycles.  The resulting trajectories and clock relations can then acquire an effective
+geometry even though primitive propagation remains local at $c$ in physical three-space.
+This is an interpretation of the conditional weak-field structure, not an additional
+derivation of it.
+
+%======================================================================
+\section{What the gravitational sector must reproduce}
+\label{sec:targets}
+
+Before choosing a field representation, it is useful to separate the observational target
+from the microscopic explanation.  In the weak-field regime relevant here, a viable
+gravity sector must reproduce at least the following structures within the scope of this
+paper:
+\begin{itemize}[leftmargin=*]
+  \item Newtonian attraction for slowly moving bodies;
+  \item an approximately composition-independent free-fall response, tested
+        for specified materials by MICROSCOPE \cite{Touboul2022MICROSCOPE};
+  \item the full leading deflection of light and the corresponding Shapiro time
+        delay; Cassini radio-link timing constrains their common PPN coefficient
+        $1+\gamma$ through the delay \cite{Bertotti2003Cassini};
+  \item weak-field clock-rate behavior compatible with gravitational redshift;
+  \item the standard parametrized post-Newtonian values $\gamma=1$ and $\beta=1$ where
+        the necessary linear and nonlinear antecedents are supplied; lunar laser
+        ranging constrains equivalence-principle/PPN combinations, including
+        $4\beta-\gamma-3$ in the stated conservative PPN class, rather than
+        measuring $\beta$ independently \cite{Williams2004LLR};
+  \item gravitational disturbances propagating at $c$ in the admitted massless branch;
+  \item two physical transverse tensor polarizations of those disturbances.
+\end{itemize}
+
+These are not independent \cmotion{} discoveries.  They are empirical or standard-GR
+benchmarks.  None of these measurements identifies a native C-Motion
+source or mediator, proves exact equality of a PPN coefficient to unity,
+or establishes universal microscopic closure response.  Their value here is discriminatory: they tell us which candidate
+realizations of gravity are too simple and which effective field structures remain
+compatible with observation.
+
+A few terms will recur.  A \emph{scalar field} assigns one number to each point.  A
+\emph{tensor field} carries several linked components; a rank-2 tensor has two indices and
+can therefore encode directional and stress-like information unavailable to one scalar.
+A \emph{massless mediator} is a propagating field mode without a mass gap in the admitted
+effective description, allowing long-range propagation with the relevant relativistic
+characteristic structure.  \emph{Universal coupling} means that the gravitational field
+couples in the same structural way to the appropriate total source rather than to an
+arbitrary composition-specific label.
+
+%======================================================================
+\section{C-Motion constraints before choosing a gravity field}
+\label{sec:constraints}
+
+\subsection{Local-\texorpdfstring{$c$}{c} causal propagation}
+
+The first inherited constraint is kinematic.  When a physical field/state change is
+generated locally and propagates openly, the shared \cmotion{} framework requires that
+change to extend along successor-directed local-$c$ characteristics.  Any genuine open
+gravity influence realized in the same underlying field must therefore respect the same
+local propagation speed.
+
+This condition says nothing by itself about the identity of the gravity mode.  In
+particular,
+\begin{equation}
+\boxed{
+\text{primitive local }c
+\;\not\Rightarrow\;
+\text{massless rank-2 gravity or GR}.}
+\label{eq:localc-not-rank2}
+\end{equation}
+It constrains propagation after a gravitational response exists; it does not derive the
+source, rank, helicity, coupling, universality, or field equation.
+
+\subsection{Local source, field reorganization, and compound response}
+
+The second inherited constraint is dynamical in form but not yet sector-specific.  The
+shared candidate interaction architecture is
+\begin{equation}
+\boxed{
+\begin{gathered}
+\text{gravity-sector source}
+\longrightarrow\text{local field/stress reorganization}\\
+\longrightarrow\text{steering or compound response}
+\end{gathered}}
+\label{eq:response-template}
+\end{equation}
+This is useful because it identifies the physical jobs a gravity theory must perform.  A
+source must alter the local complete field state; the altered field/stress structure must
+then change the motion or internal organization of an open mode or finite closure; and
+any newly generated change must propagate causally at local $c$.
+
+The Main Framework supplies this response template only as a bounded
+architectural guide \cite{CmotionMainFramework2026}, not as a gravity law.
+It does not identify a gravity source or an overlap of configurations as gravity,
+and does not turn a non-null invariant into an activation law.  Overlap is a
+geometric/state relation; non-nullness is an invariant property in a specified
+field representation.  Cross terms of overlapping individually null components
+can be non-null in such a model, but this is not true of every overlap.
+Departure from a locally valid free-propagation class provides an interaction
+opportunity, while actual dynamical activation still requires its sector's
+constitutive response and physical conditions.  These distinctions do not
+supply $G$, select a rank-2 mediator, or derive universal coupling.
+It describes the shape of the missing bridge, not its solution.
+
+\subsection{The vacuum antecedent}
+\label{sec:vacuum}
+
+The conditional construction below uses F to denote the genuinely
+emergent/background-independent vacuum branch, with Lorentz-invariant effective
+local propagation.  Absence of an observable preferred inertial direction or
+velocity is an operational requirement of the tested effective Lorentz sector;
+it does not by itself establish F.  A fixed, locally undetectable
+Lorentz-compatible background can share that same local propagation law.
+
+The choice between these branches is not derived from local $c$.  F therefore
+remains an explicit Open antecedent of the conditional gravity route.
+Operational Lorentz compatibility, genuine background independence, native
+gauge redundancy, and the successful weak-field calculation are distinct
+questions; the latter does not settle the former.
+In particular, the standard effective Fierz--Pauli calculation can be
+formulated on a fixed Minkowski background.  F specifies the proposed
+C-Motion realization selected for investigation, not an additional
+background-independence requirement of that mathematical control.
+Assuming F also supplies no native proof of M, S, U, P, L or N below.
+
+%======================================================================
+\section{The simplest route: scalar/rate loading}
+\label{sec:scalar}
+
+The most economical possibility is to let gravity alter only one scalar quantity: the
+local propagation or clocking rate.  This is physically attractive because it tries to
+connect two familiar weak-field effects with one local environmental factor: slowly
+moving matter responds to the gravitational potential, while recurrent physical clocks
+change rate relative to clocks elsewhere.  The candidate therefore deserves to be tested
+before richer field structure is introduced.  Light provides the sharper test.
+
+\subsection{Exact scope of the tested model}
+\label{sec:scalar-scope}
+
+The calculation assumes a static dimensionless scalar load $U(\mathbf x)$,
+normalized in the isolated weak-field Newtonian comparison as
+\begin{equation}
+U(\mathbf x)=-\frac{\Phi_N(\mathbf x)}{\cmc^2},
+\qquad \Phi_N=-\frac{GM}{r}
+\quad\text{outside a spherical source},
+\label{eq:scalar-U-Newton}
+\end{equation}
+with $U>0$ for the attractive potential in that exterior convention.
+Here $\Phi_N$ is the Newtonian potential per unit mass, vanishing at spatial
+infinity, and $U$ is dimensionless.  Throughout the observational comparison,
+$G>0$ is the externally measured Newton constant.  It normalizes an imported
+effective control; neither its attractive sign nor its value is derived from
+native ElEmEr dynamics.  Native source, coupling and normalization remain Open.
+This is a measured comparison constant under the framework-wide one-scale
+policy, not a second independently fitted native sector scale.
+No gravity-sector calibration of $\Lambda_C$ is performed here; a future
+native completion must account for its coupling within the shared scale policy
+rather than relabel an independently fitted parameter as a comparison input.
+The
+model lets this load act only through one local rate factor
+\begin{equation}
+N=e^{-U}.
+\label{eq:Nscalar}
+\end{equation}
+The corresponding open-mode propagation speed and optical index are
+\begin{equation}
+v=\cmc N,
+\qquad
+n=\frac{\cmc}{v}=e^U.
+\label{eq:scalar-index}
+\end{equation}
+Here $v=\cmc N$ denotes an \emph{effective coordinate/optical speed} in the
+chosen static weak-field chart, not the locally measured primitive speed of an
+open \ElEmEr{} propagation segment, which remains $\cmc$.  The associated
+optical index is likewise a coordinate comparison device, not a primitive
+constitutive refractive medium.  No independent spatial or routing tensor
+response is added.  The result is read only in the weak-field
+geometric-optics/post-Newtonian regime.  It is therefore a test of this
+pure scalar/rate-loading class, not a theorem against every scalar--tensor, multichannel,
+nonlocal, or strongly nonlinear gravity theory.
+
+\subsection{What the scalar control captures}
+
+Within this restricted weak-field control, the same position-dependent factor can play
+two useful roles.  It can encode a Newtonian-like response for slowly moving matter, and
+it can change the recurrence rate of a physical clock or closure cycle.  In \cmotion{}
+language this makes the scalar picture an attractive first approximation: primitive
+segments still propagate locally at $c$, while the organization of a recurrent process
+can respond to its environment.
+
+This is not yet a microscopic derivation of either universal free fall or gravitational
+redshift.  It says only that a rate-like gravitational sector can account for part of the
+observed weak-field behavior without changing the primitive local propagation speed.  The
+light-bending calculation tests whether that one scalar is enough.
+
+\subsection{Why light bending exposes the failure}
+\label{sec:scalar-failure}
+
+For $U\ll1$,
+\begin{equation}
+n=e^U=1+U+O(U^2).
+\end{equation}
+In the standard \emph{isotropic spatial-coordinate} weak-field PPN convention,
+we use metric signature $(-+++)$ and $x^0=ct$.  This is a declared convention
+change from the Main Framework's $(+---)$ stress convention, not a physical
+disagreement.  With $U=-\Phi_N/c^2$ as defined above, the effective metric has $g_{00}=-(1-2U+O(U^2))$ and
+$g_{ij}=(1+2\gamma U+O(U^2))\delta_{ij}$, the comparison optical form is
+\begin{equation}
+n_{\rm PPN}=1+(1+\gamma)U+O(U^2),
+\label{eq:ppn-index}
+\end{equation}
+The index follows from the static null condition as
+$n=\sqrt{(1+2\gamma U+\cdots)/(1-2U+\cdots)}$.
+Here $\gamma$ is the parametrized post-Newtonian coefficient that measures the spatial
+part of the gravitational response relative to the Newtonian potential.  Matching the
+pure rate-loaded model to Eq.~\eqref{eq:ppn-index} gives
+\begin{equation}
+\boxed{\gamma=0.}
+\label{eq:gamma0}
+\end{equation}
+The corresponding leading deflection of a light ray with impact parameter $b$ is
+\begin{equation}
+\boxed{
+\Delta\theta_{\rm scalar}
+=\frac{2GM}{b\cmc^2},}
+\label{eq:half-bending}
+\end{equation}
+only half of the $\gamma=1$ value.
+
+\begin{proposition}[Scoped scalar/rate-loading no-go]
+Within the model class of Section~\ref{sec:scalar-scope}, pure scalar/rate loading implies
+$\gamma=0$ and therefore insufficient leading light bending.
+\end{proposition}
+
+The physical lesson is more important than the label.  Correct Newtonian attraction for
+slow bodies does not guarantee correct relativistic gravity.  In the standard weak-field
+PPN bookkeeping, the rate/temporal contribution supplies only part of the light
+deflection; the coefficient $\gamma$ measures the additional spatial/tensor response.
+The tested scalar supplies the first part but no independent spatial response, leaving
+the familiar ``half-bending'' result.  This ``two halves'' language is only a weak-field
+PPN intuition, not a decomposition theorem for arbitrary gravity theories.
+
+The observed bending of light therefore requires additional independent spatial/directional
+response information that the tested single scalar does not contain:
+\begin{equation}
+\boxed{
+\text{correct Newtonian attraction}
+\;\not\Rightarrow\;
+\text{correct relativistic gravity}.}
+\end{equation}
+This statement deliberately stops at information content.  It does not by itself identify a
+shear or trace-free channel, and it does not uniquely select a rank-2 representation.  Those
+are possible realizations of the missing information, not consequences of the scalar no-go.
+
+The same scalar control would also give only one third of the standard perihelion
+coefficient if one inserts $\gamma=0$ and $\beta=1$ into
+\begin{equation}
+R_{\rm peri}=\frac{2+2\gamma-\beta}{3}.
+\end{equation}
+That is a downstream consistency check on the same missing spatial response, not an
+independent \cmotion{} perihelion prediction.
+
+%======================================================================
+\section{What the scalar failure tells us}
+\label{sec:lesson}
+
+The negative result narrows the gravity problem without solving it.  A viable \cmotion{}
+gravity sector must carry more spatial or relational information than a single rate
+scalar.  That additional structure must affect the propagation of light and must be able
+to respond to more than a scalar rest-mass label.
+
+This conclusion does not uniquely prove that gravity must be rank 2.  It tells us why
+the \emph{tested amount/rate-only coupling} is insufficient.  A scalar field in a more
+general theory may have gradients, derivative couplings, extra source data, or
+nontrivial finite-closure projection rules; the negative result does not exclude
+those possibilities.  A separate restricted source-capacity test assumes a
+rotationally scalar, linear, first-order source depending only on the local
+amount $U_0$ (and any already specified flux), without independent angular
+stress data, derivative reconstruction or nonlocal information.  It fails to distinguish an equal-budget isotropic radiation bath
+from oppositely directed radiation streams: their energy-like scalar totals can
+agree, with both fluxes zero, while their second directional moments differ.
+Under these assumptions a scalar linear functional of the angular distribution
+has rotation-invariant weight and therefore accesses only its total amount.
+It cannot distinguish these equal-input configurations.  That is a separate
+source-capacity restriction on the \emph{amount-only} model, not a no-go theorem
+for all scalar-mediated models.  A symmetric rank-2 field is the standard effective
+completion tested here because it can accommodate the additional direction-sensitive
+stress/source data while coupling to a relativistic source.
+
+The scalar failure therefore motivates the tensor test without making it a native
+uniqueness theorem.
+
+A separate negative result is also important for the broader closure framework.  Gravity
+with the observed Newton coupling $G$ is far too weak at elementary-particle scales to be
+the universal microscopic binder that maintains an elemental closure.  Thus
+\begin{equation}
+\boxed{
+\text{observed }G\text{-strength gravity}
+\neq
+\text{universal elementary-closure binder}.}
+\label{eq:not-binder}
+\end{equation}
+This does not prevent gravity from acting on already formed closures.  It only excludes
+ordinary observed gravity from doing a different microscopic job for which it is far too
+weak.  The actual closure binder remains outside the present Gravity paper.
+
+\subsection{A tested closure-projection alternative and its limits}
+\label{sec:closure-projection}
+The scalar/rate exclusion does not directly cover a direction-sensitive
+scalar steering law followed by a dynamical projection onto a recurrent
+closure's collective motion.  The following self-contained projector tests
+examine this alternative without establishing its native dynamics.  Assume
+unit local directions $\mathbf n$, a positive normalized cycle measure,
+and a weak external response approximately uniform across the closure.
+Define only a \emph{dimensionless diagnostic response}
+\begin{equation}
+ \mathbf r(\mathbf n;\hat{\mathbf a})
+ =(I-\mathbf n\mathbf n^{\mathsf T})\hat{\mathbf a},
+ \qquad
+ C_{ij}=\langle n_i n_j\rangle,\qquad
+ \overline{\mathbf r}=(I-C)\hat{\mathbf a}.
+ \label{eq:projection-diagnostic}
+\end{equation}
+The unit direction $\hat{\mathbf a}$ and cycle measure are supplied model
+inputs.  Equation \eqref{eq:projection-diagnostic} specifies neither a
+physical source nor a dimensionful force/response law.  Its identification
+with a physical closure-centre response is an additional control assumption.
+
+For a uniformly sampled planar cycle with unit normal $\mathbf N$,
+$C=(I-\mathbf N\mathbf N^{\mathsf T})/2$, and the longitudinal diagnostic
+coefficient is
+\begin{equation}
+ \lambda(\mu)
+ =\hat{\mathbf a}\cdot\overline{\mathbf r}
+ =\frac{1+\mu^2}{2},
+ \qquad \mu=\mathbf N\cdot\hat{\mathbf a}.
+ \label{eq:projection-planar-coefficient}
+\end{equation}
+A ray with $\mathbf n_{\rm ray}\cdot\hat{\mathbf a}=0$ has pointwise
+longitudinal coefficient
+$\hat{\mathbf a}\cdot(I-\mathbf n_{\rm ray}\mathbf n_{\rm ray}^{\mathsf T})
+\hat{\mathbf a}=1$ in this projector control, whereas a closure locked
+to $\mu=0$ has coefficient $1/2$.
+\emph{If} one additionally supplies a common physical coefficient,
+compatible operational maps from cycle response to matter acceleration
+and ray steering, and a universal half-response lock, calibration on slow
+matter leaves a factor-two comparison of these pointwise geometric
+coefficients.  It is not a complete integrated bending calculation:
+the ray direction and its transverse relation to the field vary along
+the trajectory.  A physical deflection angle requires a specified
+response law integrated along that trajectory; the matter comparison
+also requires a centre-of-energy evolution equation.  This remains a
+narrow Conditional diagnostic.
+It does not derive the lock, the source, optical-path or clock laws,
+$\gamma$ in a complete PPN theory, tensor radiation, or a universal
+equivalence principle.  It also does not remedy the independent amount-only
+source-capacity restriction: response projection and source law are distinct.
+
+Four narrowing tests follow:
+\begin{enumerate}[leftmargin=*]
+ \item \textbf{Raw isotropic averaging.}
+ Since $\operatorname{tr}C=1$, a universal isotropic raw response
+ $I-C=\lambda I$ obeys $3\lambda=2$.  Thus
+ \begin{equation}
+  \boxed{\lambda_{\rm raw,iso}=\frac23\ne\frac12.}
+  \label{eq:projection-two-thirds}
+ \end{equation}
+ This is exact algebra for the supplied projector and normalized cycle
+ measure, not a theorem about every physical closure response.
+ \item \textbf{Minimum differential steering strain.}
+ In the tested planar diagnostic, the simplest strain criterion prefers
+ $|\mu|=1$, the full-response orientation, rather than the half-response
+ orientation $\mu=0$.  Appendix~\ref{app:projection-strain} defines
+ the variance criterion and evaluates it explicitly.
+ \item \textbf{Finite-size tides.}
+ In the symmetric circular counterflow diagnostic, first-gradient forcing
+ leaves internal tidal strain while its first-order collective average
+ cancels.  It does not supply the missing half-response coefficient.
+ The spatial expansion and opposite-point symmetry are stated in
+ Appendix~\ref{app:projection-tidal}.
+ \item \textbf{Retarded first-hit timing.}
+ A settled static field has no continuing changing-field first-hit term.
+ For changing fields, the tested leading odd timing/memory correction
+ produces internal phase strain but no first-order symmetric collective
+ coefficient.  Appendix~\ref{app:projection-retarded} gives the timing
+ model, expansion and cancellation conditions.
+\end{enumerate}
+
+These are scoped Structural/Conditional diagnostics and Negative tests of
+particular rescue mechanisms.  A surviving scalar route would require a
+native non-raw collective projection, closure-memory law, different local
+response, or additional directional sector, together with the other gravity
+obligations.  The qualitative cycle-projection interpretation in
+Section~\ref{sec:budget} remains Conjectural; recurrence alone does not earn
+a universal half-response or universal free fall.
+
+%======================================================================
+\section{A conditional massless rank-2 completion}
+\label{sec:rank2}
+
+Once the pure scalar route has failed, the constructive question is whether a richer
+relativistic field can meet the observational target while remaining compatible with the
+shared \cmotion{} constraints.  The completion studied here is a massless symmetric
+rank-2 field, using the standard massless kinetic limit of the Fierz--Pauli Lagrangian
+(linearized Einstein--Hilbert), as an effective control class
+\cite{FierzPauli1939}.
+
+``Rank 2'' means that the effective field carries two indices, $B_{\mu\nu}$.  This gives
+it enough component structure to represent a coupled response of energy density,
+momentum density, stresses, and directional relations rather than only one scalar
+potential.  ``Massless'' means that the admitted weak-field gravitational mode has no
+mass gap.  A mass gap would in general modify the long-range behavior and the wave
+dispersion, so masslessness is part of the tested long-range completion rather than a
+consequence of primitive local $c$.
+
+At the present interpretive level, an unscreened massless gravitational mode fits
+naturally on the \emph{open-propagation} side of the \cmotion{} open/closed taxonomy,
+whereas massive matter is represented by recurrent closed organization.  This is a
+useful ontology picture, not a theorem that every open mode is massless, every massless
+mode is open, or gravity is natively selected by that taxonomy.
+
+\subsection{What is assumed before the recovery works}
+\label{sec:antecedents}
+
+The conditional chain is easiest to read if its ingredients are separated explicitly.
+\begin{longtable}{@{}P{1.2cm}P{4.3cm}P{3.0cm}P{5.0cm}@{}}
+\toprule
+\textbf{Label} & \textbf{Antecedent} & \textbf{Status} & \textbf{Role} \\
+\midrule
+\endhead
+F & Frameless Lorentz-invariant vacuum / emergent-background branch & \statusOpen{} & Selected C-Motion realization; not an independent requirement for the fixed-Minkowski effective Fierz--Pauli control. \\
+M & Massless symmetric rank-2/helicity-2 gravitational mediator & \statusConditional{} & The effective tensor field class whose weak radiative sector is tested; native selection remains Open. \\
+S & Suitable symmetric conserved total matter--radiation--interaction source, supplied by an action or equivalent native conservation/source structure & \statusConditional{} & A conserved relativistic source $\mathcal T^{\mu\nu}$ is supplied for the rank-2 control; native source structure remains Open. \\
+U & Universal coupling to that total source, with the effective attractive sign and normalization supplied by the external Newtonian comparison using measured $G$ & \statusAssumed{} & Universality is an active antecedent; its native derivation, sign, source identity, and normalization remain Open. \\
+P & Common effective metric/probe response for matter, clocks and light & \statusConditional{} & Standard minimal probe-response control in an isotropic weak-field chart; the native response of finite closures remains Open. \\
+L & Local two-derivative massless rank-2 gauge/Fierz--Pauli linear class & \statusConditional{} & The standard ghost-free linear tensor structure and its two helicity-2 modes. \\
+N & Nonlinear GR-class self-coupling completion, including consistent gauge/constraint structure and field self-source & \statusOpen{} & A generic nonlinear interaction is insufficient for $\beta=1$; the required GR-class completion is not native-derived. \\
+\bottomrule
+\end{longtable}
+
+The table is the scientific boundary of the positive result.  Local $c$ does not derive M;
+the generic interaction architecture does not derive S, U or the probe-response
+premise P; and the scalar failure does not prove that L is the unique microscopic
+completion.  The result is instead a precise
+compatibility statement: if these antecedents are available, the familiar weak-field
+tensor phenomenology follows.
+
+\paragraph{Selected realization versus effective control.}
+F specifies the proposed C-Motion route with an emergent vacuum and
+background independence; that realization remains Open.  The effective comparison instead
+supplies M, S, U, P and L on a Lorentz-compatible background, which may
+be fixed Minkowski space, with the stated exclusion of extra relevant
+scalar modes.  Standard Fierz--Pauli mathematics neither establishes F
+nor independently requires proof of microscopic background independence.
+The chains below retain F to identify the selected C-Motion route, not
+to assert that F is a necessary premise of every effective spin-2 model.
+
+\paragraph{Probe response is not source universality.}
+The effective PPN reading also supplies a common operational metric coupling:
+with a suitable normalization $g^{\rm eff}_{\mu\nu}=\eta_{\mu\nu}
++\kappa_G B_{\mu\nu}+O(B^2)$, the comparison dynamics of light, clocks,
+and slow matter is governed by that same effective metric.  This is P, distinct
+from the source-coupling premise U.  The sign and normalization are fixed by
+the Newtonian comparison, not by a native derivation.  In particular,
+the finite internal return dynamics of a physical closure has not been proved
+to follow this metric universally; P is imported solely for the effective
+weak-field/PPN control.
+
+\subsection{The linear tensor structure}
+
+With a symmetric weak field $B_{\mu\nu}$, the standard linear gauge redundancy is
+\begin{equation}
+B_{\mu\nu}\sim B_{\mu\nu}
++\partial_\mu\xi_\nu+\partial_\nu\xi_\mu.
+\label{eq:linear-gauge}
+\end{equation}
+For a local quadratic two-derivative action, write the explicit coefficient
+basis, with $B=\eta^{\mu\nu}B_{\mu\nu}$ and all contractions performed
+with $\eta_{\mu\nu}=\operatorname{diag}(-1,1,1,1)$.
+Thus $\partial^0=-\partial_0$, and raising both indices of $B_{\mu\nu}$
+uses two factors of $\eta$, not an independent Euclidean convention:
+\begin{align}
+\mathcal L_2={}&a\,\partial_\lambda B_{\mu\nu}
+                  \partial^\lambda B^{\mu\nu}
++b\,(\partial_\mu B^{\mu\nu})(\partial^\lambda B_{\lambda\nu})
+\notag\\
+&+c\,(\partial_\mu B^{\mu\nu})\partial_\nu B
++d\,\partial_\lambda B\,\partial^\lambda B.
+\label{eq:FP-quadratic-basis}
+\end{align}
+Requiring gauge variations to leave the action invariant, up to boundary terms,
+fixes the coefficient ratios in this basis:
+\begin{equation}
+2a+b=0,\qquad b+c=0,\qquad c+2d=0,
+\label{eq:FP-kinetic-relations}
+\end{equation}
+so $(a,b,c,d)\propto(1,-2,2,-1)$, up to an overall normalization and
+equivalent integrations by parts.  Reversing the metric signature changes
+the overall sign of this kinetic basis, not these coefficient ratios.
+For the present signature the healthy TT kinetic term requires $a<0$,
+so the coefficient of $(\partial_0 B^{\rm TT}_{ij})^2$ is positive.
+The absolute normalization and source-coupling sign are additional inputs,
+not predictions of gauge invariance.
+
+For curvature comparisons we take
+$R^\rho{}_{\sigma\mu\nu}=\partial_\mu\Gamma^\rho_{\nu\sigma}
+-\partial_\nu\Gamma^\rho_{\mu\sigma}
++\Gamma^\rho_{\mu\lambda}\Gamma^\lambda_{\nu\sigma}
+-\Gamma^\rho_{\nu\lambda}\Gamma^\lambda_{\mu\sigma}$,
+$R_{\sigma\nu}=R^\rho{}_{\sigma\rho\nu}$, and the corresponding Einstein
+equation $G_{\mu\nu}=8\pi G\mathcal T_{\mu\nu}/c^4$ in the supplied GR
+control.  The PPN and optical formulas above require no imported curvature
+sign; the tidal discussion below is qualitative and does not import an
+oppositely signed component formula.
+The radiative sector then contains two physical helicity-2 modes.  This mathematics is a
+standard consequence of the assumed effective field class.  Its role here is to show
+that such a class is compatible with the \cmotion{} constraints, not to claim that the
+microscopic \ElEmEr{} dynamics has already selected it.
+
+\subsection{Why the source must be more than rest mass}
+\label{sec:source}
+
+Relativistic gravity must respond not only to rest-mass density but to the appropriate
+total energy--momentum/stress structure.  The effective source is therefore a symmetric
+tensor $\mathcal T^{\mu\nu}$ containing energy density, momentum density, momentum flux,
+and stresses.  In the $x^0=ct$, $(-+++)$ comparison,
+$\mathcal T^{00}$ is energy density,
+$\mathcal T^{0i}$ is energy flux divided by $c$, and
+$\mathcal T^{ij}$ is spatial momentum flux/stress.  In particular
+$\mathcal T=\eta_{\mu\nu}\mathcal T^{\mu\nu}
+=-\mathcal T^{00}+\sum_i\mathcal T^{ii}$.
+No $(+---)$ trace identity is inserted without this conversion.
+
+If the complete effective system admits one suitable autonomous local Poincar\'e-invariant
+action, translation invariance supplies a conserved energy--momentum current and Lorentz
+invariance permits its symmetric Belinfante--Rosenfeld form.  Under that standard control
+premise,
+\begin{equation}
+\partial_\mu \mathcal T^{\mu\nu}=0.
+\label{eq:source-conservation}
+\end{equation}
+An action is a strong route to this structure, but the public claim does not require the
+stronger assertion that only a variational formulation could ever provide it.  An equivalent
+native conservation/source construction would serve the same linear role if it supplied the
+required local object consistently.
+
+The conservation law is important both for consistent coupling to the gauge-redundant
+rank-2 field and for the radiation multipole structure discussed later.  Physically, this
+also explains why ``mass causes gravity'' is too narrow a slogan: radiation, momentum
+flow, pressure, and stress belong to the relativistic source accounting as well as rest
+energy.  One \cmotion{} reading is to call this the complete budget/stress accounting of
+the organized field.  That wording is mnemonic only; it does not derive
+$\mathcal T^{\mu\nu}$ from a microscopic propagation budget.
+
+The remaining native problem is sharper than the phrase ``gravity couples to stress-energy.''
+\cmotion{} still needs a local source functional: a rule that takes a generic localized
+\ElEmEr{} organization and tells the gravitational response which source information it
+presents.  Conserved total energy and momentum may be usable as coarse black-box exterior data
+when they are independently available, but those totals do not determine the complete local
+stress and flux structure.  The native source functional, its conservation law, and its map
+into the long-range gravitational response remain open.
+
+\subsection{Universal coupling}
+\label{sec:universal}
+
+Universal coupling means that the same gravitational field responds to the appropriate
+total source in the same leading way for different forms of matter.  That is what allows
+a gravitational response to be approximately composition independent rather than tied
+to an arbitrary particle label.
+
+A candidate physical reading is that if gravity responds to the complete organization of
+energy, momentum, and stress rather than to a material-specific label, composition
+independence becomes understandable.  That intuition is useful, but it does not prove the
+weak equivalence principle.
+
+The Main Framework supplies a useful prior distinction
+\cite{CmotionMainFramework2026}.  Given a complete isolated recurrent
+organization with conserved total energy and momentum and a physical rest
+frame, the further effective Lorentz relation
+$E^2-c^2|\mathbf P|^2=M^2c^4$ identifies $Mc^2=E_{\rm rest}$.
+Its small-momentum expansion then supplies the usual inertial coefficient
+within that Conditional effective description.  Neither step derives the
+recurrent solution, establishes its gravitational source identity, or proves
+composition-independent free fall.  Rest energy, inertial response, and
+gravitational source/response universality are separate obligations.
+
+The present paper requires such coupling in the successful weak-field completion, but it
+does not derive why \ElEmEr{} realizes it.  The source identity, sign, universality, and
+the normalization measured as $G$ remain open microscopic questions.
+
+A second obligation is logically separate:
+\begin{equation}
+\boxed{
+\text{universal gravitational sourcing}
+\;\neq\;
+\text{universal response of finite closures}.}
+\label{eq:sourcing-vs-response}
+\end{equation}
+Even if every localized organization excites the same gravitational sector with one coupling,
+it does not yet follow that differently structured recurrent closures acquire exactly the same
+center-of-energy acceleration in a slowly varying field.  A native equivalence-principle
+result therefore needs both a universal source/coupling law and a finite-closure response
+statement controlling internal-structure corrections.  Assuming the first and recovering
+universal free fall in the effective theory is not a derivation of either native obligation.
+
+%======================================================================
+\section{Weak-field recovery}
+\label{sec:weakfield}
+
+The positive result of the conditional tensor route is that it reproduces the same
+weak-field structure that distinguishes general relativity from the failed pure-scalar
+candidate.
+
+\subsection{PPN in plain language: \texorpdfstring{$\gamma$ and $\beta$}{gamma and beta}}
+
+The parametrized post-Newtonian (PPN) framework is a standard way to compare weak-field
+gravity theories without committing to their microscopic interpretation.  Two parameters
+are especially relevant here.  The parameter $\gamma$ measures the spatial/tensor
+response associated with a Newtonian potential.  The parameter $\beta$ measures the
+leading nonlinear gravitational self-interaction contribution.
+
+For the admitted linear tensor sector within the selected C-Motion route,
+\begin{equation}
+\boxed{
+\mathrm F+\mathrm M+\mathrm S+\mathrm U+\mathrm P+\mathrm L
++\text{no relevant extra scalar admixture}
+\Longrightarrow \gamma=1.}
+\label{eq:gamma1}
+\end{equation}
+F labels the route selection in this sufficient chain; the standard
+effective calculation does not establish its microscopic vacuum premise.
+This is the universally coupled, common-metric massless spin-2
+weak-field control; it is not a claim that sourcing alone determines how
+\ElEmEr{} closures or light probes respond.  The leading light deflection is then
+\begin{equation}
+\boxed{
+\Delta\theta=\frac{4GM}{b\cmc^2},}
+\label{eq:full-bending}
+\end{equation}
+and the standard leading Shapiro delay coefficient follows from the same weak-field
+structure.  The contrast with Section~\ref{sec:scalar-failure} is the central comparison
+of the paper: the tested scalar/rate candidate gives $\gamma=0$, whereas the admitted
+rank-2 class gives $\gamma=1$.
+
+The linear theory does not by itself fix $\beta$.  Here N is the
+\emph{specific} nonlinear GR-class completion of the universally coupled
+massless spin-2 theory, with appropriate constraint/gauge consistency, the
+same physical coupling normalization and no extra relevant gravitational
+sector.  A generic nonlinear self-interaction is not enough.  The standard
+self-coupling consistency construction \cite{Deser1970SelfInteraction}
+is used only within its specified local, gauge-consistent spin-2 and
+conserved-source class; it does not establish that native \ElEmEr{}
+realizes those premises.  If N holds,
+\begin{equation}
+\boxed{
+\mathrm F+\mathrm M+\mathrm S+\mathrm U+\mathrm P+\mathrm L+\mathrm N_{\rm GR}
+\Longrightarrow \beta=1.}
+\label{eq:beta1}
+\end{equation}
+With $\gamma=\beta=1$, the standard first post-Newtonian perihelion coefficient follows.
+A future quadratic action, Hamiltonian, or equivalent conserved-energy seed would still not
+be enough to establish this nonlinear step.  Such a structure could support linear mode
+dynamics, linear source coupling, and a quadratic field-energy/stress definition, whereas
+$\beta$ probes how the gravitational field's own source modifies the static field.  The
+nonlinear self-source---equivalently cubic or higher-order data in an action formulation---is
+therefore a distinct open gate.
+
+Numerical integrations that are seeded with the standard GR/PPN equations are therefore
+implementation controls, not independent evidence for a microscopic \cmotion{} gravity
+law.
+
+PPN agreement has a precise but limited meaning.  It says that the admitted effective
+weak-field sector reproduces the corresponding tested coefficients.  It does not show
+that the full nonlinear Einstein equations have been derived from \ElEmEr{}, nor does it
+settle strong-field interiors, mergers, cosmology, or the microscopic source law.
+
+\subsection{Clock behavior without treating time as a substance}
+\label{sec:clocks}
+
+Weak gravitational fields also change the relative rates of physical clocks.  In the
+standard metric description this effect is encoded in the time-time part of the weak
+metric and is described as gravitational redshift or time dilation.  In \cmotion{}, the
+operational reading is different: clocks are recurrent physical processes, so a
+gravity-dependent change in clock rate means that the gravitational environment changes
+the recurrence/return rate of one physical clock relative to another.
+
+This does not mean that a fundamental time substance literally flows more slowly in one
+place.  A candidate \cmotion{} interpretation is instead that the gravitational
+environment changes the conditions under which a recurrent organization completes one
+cycle.  The scalar/rate control of Section~\ref{sec:scalar} shows why such a reading is
+natural: a local rate factor can reproduce the leading clock-rate tendency while
+primitive propagation remains local at $c$.  The same restricted picture is not enough
+for light bending, which is exactly where the missing spatial/tensor response appears.
+
+The effective metric description remains a valid comparison language for the observed
+clock relation, while the microscopic \ElEmEr{} mechanism that produces the universal
+gravitational clock response remains part of the open source-to-response bridge.
+
+%======================================================================
+\section{Gravitational waves}
+\label{sec:gw}
+
+A successful gravity theory must also support propagating disturbances, not only a static
+field around matter.  In the admitted massless rank-2 sector, small disturbances of the
+effective gravitational field propagate as tensor waves.
+
+The field-first picture makes the causal story concrete without supplying a new gravity
+law.  A changing source first generates a local gravitational response; the generated
+field/state disturbance then propagates outward through physical three-space along the
+same successor-directed local-$c$ characteristics used for other open changes.  This
+generation-versus-propagation distinction is inherited from the shared framework and does
+not determine the source equation.
+
+The \cmotion{} framework therefore supplies one independent kinematic restriction: a
+genuine open field/state change must propagate locally at $c$.  The identification of the
+physical gravity wave as a massless rank-2 mode, however, additionally requires the M/L
+antecedents.  Gravitational-wave speed alone does not select rank 2.
+The GW170817/GRB 170817A timing analysis in ApJL \textbf{848}, L13
+\cite{Abbott2017GW170817Gamma} constrains propagation-speed differences
+under its emission-delay and propagation assumptions.  It does not establish
+an exact zero difference, a native gravity source, or the polarization count.
+
+\subsection{Transverse-traceless structure and polarization}
+
+A wave is \emph{transverse} when its physical deformation acts in directions perpendicular
+to its propagation direction.  In the rank-2 gauge class, residual gauge freedom removes
+nonphysical components and leaves a \emph{transverse-traceless} (TT) radiative field.  The
+traceless condition removes the scalar-like trace component.  Two independent physical
+tensor polarization patterns remain, corresponding to the two helicity-2 states.
+
+Thus, under M+L,
+\begin{equation}
+\boxed{
+\text{massless rank-2 linear sector}
+\Longrightarrow
+\text{two TT tensor polarizations}.}
+\end{equation}
+The physical picture in \cmotion{} is a propagating gravitational field/state change in
+physical three-space whose weak-field mathematical description is equivalent to the usual
+tensor metric perturbation.  The paper does not treat ``ripples in a material spacetime
+fabric'' as the primitive \cmotion{} ontology.
+
+\subsection{Why quadrupole radiation is leading}
+\label{sec:quadrupole}
+
+Radiation also tests the source structure.  In the admitted massless helicity-2
+control, take an isolated, spatially localized source in the weak-field,
+slow-motion regime, use appropriate outgoing far-zone boundary conditions,
+and assume no additional light radiative scalar/vector charges.  Then source
+conservation implies a constant monopole and nonradiating mass dipole at
+leading order, so the first ordinary tensor-radiative multipole is quadrupolar:
+\begin{equation}
+\boxed{\begin{gathered}
+\text{conserved, localized slow source}\\
++\ \text{far-zone pure helicity-2 sector}\\
+\Longrightarrow\ \text{quadrupole-leading radiation.}
+\end{gathered}}
+\label{eq:quadrupole-conditional}
+\end{equation}
+In standard leading-order notation, the trace-free source quadrupole is
+$I_{ij}^{\rm TF}=\int\rho\,(x_i x_j-\delta_{ij}r^2/3)\,\mathrm d^3x$,
+with radiative amplitude controlled by its second time derivative.
+Here $\rho$ is the effective slow-source mass density in a spatial volume
+integral, not the direction-resolved energy/budget density used in
+Section~\ref{sec:micro-effective-energy}.
+These conditions belong to the effective radiation control and are not
+consequences of primitive local $c$ or a native closure-source calculation.
+
+%======================================================================
+\section{Free fall, support, tides, and the equivalence-principle boundary}
+\label{sec:freefall}
+
+In an effective GR description, freely falling bodies follow geodesics---paths that are
+locally straight with respect to the effective gravitational geometry.  That is the
+successful macroscopic representation.  The microscopic \cmotion{} question is what
+field response of an extended recurrent closure could have that geodesic limit.
+
+One candidate physical reading separates three situations.  A freely falling closure
+follows the local gravitational response without a supporting force continually opposing
+that motion.  A supported or stationary closure does the opposite: some non-gravitational
+interaction must continually resist the local free-fall response, and the body therefore
+has nonzero proper acceleration.  Neither statement derives the microscopic gravitational
+coupling; it only translates the effective distinction into the field-first ontology.
+
+A second useful distinction is between an approximately uniform response across a small
+closure and spatial variation of that response across its finite extent.  In a weak-field
+potential notation the first is associated schematically with a local gradient,
+$\nabla U$, while the leading differential effect involves variation of that gradient,
+schematically $\nabla\nabla U$.  Following the local free-fall response can remove the
+uniform part from the immediate experience of a small body; it cannot remove a
+difference between the near and far sides of an extended body.  That residual is the
+weak-field intuition behind tidal response.
+
+This is not a theorem that closure averaging derives universal free fall, and the Hessian
+of one scalar potential is not being identified with the full relativistic Riemann
+tensor.  Standard GR packages the general tidal residue in curvature/geodesic-deviation
+language.  The \cmotion{} microscopic source-to-field map and the finite-closure response
+law remain open, so a native equivalence-principle derivation remains open as well.
+
+The distinction nevertheless matters later: \emph{proper acceleration} of a supported
+closure and \emph{tidal variation} across a freely falling closure are different physical
+stress questions and must not be conflated.
+
+%======================================================================
+\section{A candidate physical reading: budget geometry}
+\label{sec:budget}
+
+The weak-field mathematics above can be given a specifically \cmotion{} interpretation
+without promoting that interpretation into evidence.  We use ``budget geometry''
+here as an interpretive term for the proposed organization of propagation and
+return conditions.  Primitive propagation remains locally at $c$, while
+recurrence, translation and collective response describe the organization of
+the field.  This wording is not attributed to the current Main Framework and
+does not supply a conserved scalar substance or a native metric law.
+
+At the present interpretive level, a source-dependent gravitational environment changes
+the local conditions under which propagation is redirected and recurrent closures
+complete their return.  Schematically,
+\begin{equation}
+\boxed{
+\begin{gathered}
+\text{source}
+\longrightarrow
+\text{local field/stress organization}\\
+\longrightarrow
+\text{changed propagation/return conditions}
+\longrightarrow
+\text{compound response}
+\end{gathered}}
+\end{equation}
+
+A particularly economical microscopic realization would keep the local gravitational
+response independent of whether the affected ElEmEr propagation belongs to an open mode
+or to a recurrent closure.  On this reading, each locally propagating part of the field
+responds to the same gravitational organization according to the same local law.  The
+difference appears only at the level of the organized response.  An open mode carries
+that local response directly into its continuing propagation, whereas a recurrent
+closure samples the response through many internally directed segments of its return
+cycle.  Its observable centre-of-organization response could therefore contain only the
+part that survives projection or cancellation over the complete recurrence:
+
+\[
+\boxed{
+  \text{same local gravitational response}
+  \longrightarrow
+  \begin{cases}
+    \text{open propagation: direct propagated response},\\[2pt]
+    \text{recurrent closure: cycle-projected net response}.
+\end{cases}}
+\]
+
+This possibility would not require gravity to distinguish microscopically between
+\emph{open} and \emph{closed} ElEmEr.  Openness or recurrence would instead determine how one
+common local response appears after the field organization is coarse-grained to an
+observable trajectory or closure motion.  It could also provide a route by which a
+deformation of the recurrent return pattern under proper acceleration changes the
+cycle projection before any eventual loss of closure stability.  At present this is
+only a candidate realization: no universal physical closure-cycle averaging law,
+physical cancellation factor, acceleration dependence, or equivalence-principle
+theorem has been derived.  The diagnostic coefficients and failed simple
+mechanisms in Section~\ref{sec:closure-projection} constrain this proposal;
+they do not supply its native projection law.
+
+
+In this picture gravity is not a Newtonian force acting on primitive point-particles.
+Free fall is the natural collective response to the local gravitational organization;
+weight corresponds to support resisting that response; clock shifts reflect altered
+recurrence conditions; and tides reflect spatial variation of the response across an
+extended body.
+
+This also gives a careful sense in which gravity can be ``geometric'' without requiring
+four-dimensional metric geometry to be the primitive material ontology.  If the local
+rules governing propagation and recurrent organization vary with source and position,
+the resulting trajectories and clock comparisons acquire an effective geometry.  The
+standard metric then remains the precise weak-field mathematical description of that
+sector.
+
+No independent derivation follows from this language.  A single universal scalar
+``budget substance'' has not been established, microscopic \cmotion{} variables have not
+been mapped uniquely into metric variables, and the Candidate Interaction--Response
+architecture does not supply the gravitational source or field equation.  The paper's
+evidential weight remains the scoped scalar exclusion and the explicit conditional
+rank-2 completion.  Budget geometry is a candidate physical reading of those results.
+
+%======================================================================
+\section{Acceleration-induced closure instability}
+\label{sec:acceleration}
+
+The current Gravity scope also contains a conjectural finite-closure stability lead.  It
+is logically separate from the weak-field tensor recovery.  The physical idea is simple:
+a recurrent closure must continually maintain a self-consistent return organization, so
+sufficiently strong \emph{proper acceleration} might stress, de-lock, reorganize, or
+destabilize that recurrence.  This is a candidate interpretation, not an established
+effect.
+
+Dimensional reasoning identifies a possible scale, not a proof that a
+physical instability occurs at any finite acceleration.  Only a native
+accelerated-closure stability calculation could establish a threshold.
+The candidate scale is
+\begin{equation}
+\boxed{
+a_{\rm break}\sim C_{\rm dyn}\frac{\cmc^2}{R},}
+\label{eq:abreak-R}
+\end{equation}
+where $R$ is the closure size and $C_{\rm dyn}$ is an unknown dimensionless coefficient.
+The physical breakdown hypothesis is Conjectural; the encompassing
+native instability problem remains Open (sharp).  Promoting this beyond a
+conjectural scale requires an accelerated-closure return,
+monodromy/Floquet, or leakage-mode stability calculation.
+
+Only if an independent mass--radius relation
+\begin{equation}
+R=C_R\frac{\hbar}{m\cmc}
+\label{eq:mass-radius}
+\end{equation}
+is independently supplied, with positive $m$ and $C_R$, does
+Eq.~\eqref{eq:abreak-R} become the following Conditional algebraic rewriting
+\begin{equation}
+\boxed{
+a_{\rm break}
+\sim
+\frac{C_{\rm dyn}}{C_R}\frac{m\cmc^3}{\hbar}
+\equiv C_a\frac{m\cmc^3}{\hbar}.}
+\label{eq:abreak-m}
+\end{equation}
+Neither $C_R$, $C_{\rm dyn}$, nor $C_a$ is presently derived.  No value $C_a=1$, no bound
+$0<C_a<1$, and no Unruh $2\pi$ coefficient is claimed here.
+The use of $\hbar$ in the possible mass--radius bridge adopts the empirical
+action-scale identification discussed in Quantum Foundations; it neither
+derives the action quantum nor supplies a universal nonlinear
+energy--frequency product law.
+
+The Conditional label applies to the substitution of the stated premises,
+not to an independently established physical acceleration threshold.  It does
+not strengthen the Conjectural physical antecedent.
+
+\paragraph{An idealized nonadiabatic mixing control.}
+A distinct effective two-state calculation assumes the Hamiltonian
+$H(t)=cp(t)\sigma_3+\Delta_{\rm cl}\sigma_1$, a constant positive
+energy gap parameter $\Delta_{\rm cl}$ (level separation $2\Delta_{\rm cl}$
+at $p=0$), the supplied rule $i\hbar\partial_t\psi=H\psi$, and prescribed
+one-dimensional constant-proper-acceleration kinematics
+$dp/dt=Ma_{\rm prop}$ with $M=\Delta_{\rm cl}/c^2$.
+The parameter $\Delta_{\rm cl}$ has units of energy.  By contrast,
+the gap parameter $\Delta$ in the Quantum Foundations effective
+operator has units of angular frequency.  If the two descriptions
+refer to the same normalized effective gap, their parameters obey
+$\Delta_{\rm cl}=J_0\Delta$; this correspondence is not a native
+identification of the two models.
+Here $t$ is the effective coordinate time of the control, not primitive
+succession promoted to a universal clock.  Setting $p(0)=0$ gives the
+linear avoided-crossing sweep
+$H(t)=(\Delta_{\rm cl}a_{\rm prop}/c)t\sigma_3+\Delta_{\rm cl}\sigma_1$.
+For the ideal full sweep $t:-\infty\to+\infty$, the Model-derived
+probability of not remaining on the same instantaneous energy branch is
+\[
+ P_{\rm LZ}=\exp\!\left[-\pi\frac{a_*}{a_{\rm prop}}\right],
+ \qquad a_*:=\frac{\Delta_{\rm cl}c}{\hbar}=\frac{Mc^3}{\hbar}.
+\]
+
+This is the standard Landau--Zener transition formula
+\cite{Landau1932EnergyTransferII,Zener1932NonAdiabatic},
+evaluated for the specified two-state Hamiltonian
+and idealized full-sweep protocol.
+
+This analytic control needs no mass--radius premise.  It assumes the
+Hamiltonian, gap, phase normalization and entire acceleration protocol;
+it does not derive the force coupling or an accelerated self-bound closure.
+Branch mixing is not physical closure destruction, stability loss, or
+a universal finite breakdown threshold.  Finite pulses, half-sweeps and
+different response laws can change the transition history.  This result
+fixes neither $C_{\rm dyn}$, $C_R$ nor a universal breakdown coefficient.
+
+Proper acceleration and free-fall tides are different physical questions.  Ideal free
+fall does not carry the same proper acceleration as a supported body.  Any disruption of
+a freely falling finite closure would instead have to arise from spatial variation of
+the gravitational response across the closure---a tidal/gradient effect requiring its
+own calculation:
+\begin{equation}
+\boxed{
+\text{proper-acceleration breakdown}
+\neq
+\text{tidal breakdown}.}
+\end{equation}
+
+A genuine accelerated-closure instability would also need to be distinguished
+from the standard accelerated-detector Unruh effect \cite{Unruh1976}
+and Hawking radiation \cite{Hawking1975}.
+The present paper neither answers that comparison nor reinterprets these
+standard quantum-field results.  A physical comparison requires the missing
+accelerated-closure spectrum first.
+
+%======================================================================
+\section{What remains to be derived}
+\label{sec:open}
+
+The weak-field result is coherent at its stated conditional level.  Its premises
+make the remaining native problem specific.  The missing physics is no longer usefully summarized as ``derive the full
+\ElEmEr{} action.''  The open bridge can be organized as
+\begin{equation}
+\boxed{
+\begin{array}{c}
+\text{physical vacuum perturbation variables}\\[2pt]
+\downarrow\\[-1pt]
+\text{local response law and supported mode content}\\[2pt]
+\downarrow\\[-1pt]
+\text{generic localized source functional}\\[2pt]
+\downarrow\\[-1pt]
+\text{universal source coupling}\\[2pt]
+\downarrow\\[-1pt]
+\text{universal finite-closure response}\\[2pt]
+\downarrow\\[-1pt]
+\text{field energy/stress and self-source}\\[2pt]
+\downarrow\\[-1pt]
+\text{nonlinear completion}
+\end{array}}
+\label{eq:missing-bridge-hierarchy}
+\end{equation}
+
+\subsection{What is actually propagating?}
+
+Primitive local $c$ tells us how an already identified generated disturbance propagates.  It
+does not tell us what the disturbance is.  Before a native gravity mode can be classified,
+\cmotion{} must identify a physical perturbation of the unexcited \ElEmEr{} state, schematically
+\begin{equation}
+X=X_0+\delta X,
+\end{equation}
+and a local response law for that perturbation.  A compact diagnostic notation is
+\begin{equation}
+\mathcal D_{AB}\,\xi^B=\mathcal J_A,
+\label{eq:diagnostic-native-response}
+\end{equation}
+where $\xi^A$ stands only for as-yet-unidentified physical perturbation variables.  Neither
+$\mathcal D$ nor $\mathcal J$ is a proposed final field equation.  The notation exposes what
+is missing: without a native local response operator the framework cannot determine the
+vacuum spectrum, mass gap, component count, constraints or redundancies, tensor rank,
+helicity, or number of physical polarizations.  Local-$c$ propagation constrains the
+characteristics only after such a mode has been physically defined.
+
+This also sharpens the scalar result.  The tested scalar/rate variable is insufficient, so an
+admissible theory needs additional independent spatial/directional response information.
+Shear, trace-free tensor response, or a rank-2 variable are possible mathematical
+realizations, but the negative result does not choose among them.
+
+\paragraph{A physical-characteristic test.}
+A future loaded response operator should be checked on its physical
+polarizations after the relevant constraints and gauge redundancies have
+been handled.  Does its characteristic polynomial retain one common
+Lorentzian quadratic cone, schematically
+\begin{equation}
+ P_{\rm phys}(x,k;U)
+ \propto \bigl[\mathcal{G}^{\mu\nu}(x;U)k_\mu k_\nu\bigr]^m,
+ \label{eq:physical-cone-test}
+\end{equation}
+
+Here $\mathcal{G}^{\mu\nu}$ denotes a candidate effective inverse
+cone metric, not an independently derived native gravitational metric.
+
+with $m$ the physical multiplicity, or does loading split the mode cones?
+An unloaded Maxwell-like control illustrates a common-cone
+case, not a native gravity derivation.  The loaded constitutive law and its
+physical characteristic structure remain Open.  A single cone would
+establish neither a spin-2 degree-of-freedom count nor common matter/clock
+coupling P, and would not fix a conformal factor or nonlinear dynamics.
+
+A separate limitation concerns circular matching.  Prescribing the
+optical index that yields full bending, or choosing equivalent reciprocal
+routing and constitutive coefficients, restates the missing spatial
+response unless those coefficients follow from independently specified
+dynamics.  Agreement after that choice is a control, not a new derivation.
+
+\subsection{Source, universality, and finite closures}
+
+Once the response variables are known, a second problem is to say what a generic localized
+\ElEmEr{} organization presents to them.  Writing a schematic source functional
+\begin{equation}
+\mathcal J_A[\mathcal O]
+\end{equation}
+is useful only as a placeholder for that missing constitutive law.  Rest mass is too little
+information for relativistic gravity, while coarse total energy and momentum alone do not
+supply the full local stress and flux structure.  The native source object, its conservation
+law, coupling sign, and normalization observed as $G$ remain open.
+
+The equivalence-principle residue then divides into two independent questions.  First, does
+one source law couple all localized organizations universally to the gravitational response?
+Second, do different finite recurrent closures respond universally to a slowly varying field?
+The second question can require genuine closure dynamics even if the first has been solved.
+This is why Eq.~\eqref{eq:sourcing-vs-response} is more informative than simply saying that
+``WEP remains open.''
+
+\subsection{Microscopic budget accounting versus effective gravitational energy}
+\label{sec:micro-effective-energy}
+
+An underlying local field might admit genuine local energy, momentum, stress
+and flux bookkeeping without its effective massless spin-2 description
+possessing a local gauge-invariant gravitational stress tensor.  These are
+different propositions.  Angular integration gives the following identities,
+\emph{conditional on an assigned conserved exterior budget density} $\rho$
+and source-free direction-resolved propagation in physical three-space,
+\begin{equation}
+\partial_s\rho+\cmc N_i\partial_i\rho=0,\qquad|\mathbf N|=1.
+\label{eq:conditional-free-transport}
+\end{equation}
+For $U_0=\int\rho\,\mathrm d\Omega$,
+$F_i=\cmc\int\rho N_i\,\mathrm d\Omega$, and
+$M_{ij}=\int\rho N_iN_j\,\mathrm d\Omega$, angular integration yields
+\begin{equation}
+\boxed{\partial_s U_0+\partial_iF_i=0,\qquad
+\partial_s F_i+\cmc^2\partial_jM_{ij}=0.}
+\label{eq:free-transport-moments}
+\end{equation}
+Here $\rho=\rho(\mathbf x,\mathbf N,s)$ is a direction-resolved budget/energy
+density per solid angle, $U_0$ its scalar amount per volume, $F_i$ its flux,
+and $M_{ij}$ its angular stress moment.  They are not four names for the
+same scalar information.  Spatial components and angular moments use the
+Euclidean metric of physical three-space, not Lorentzian index raising.
+Here $s$ is the compatible succession/evolution label, not a universal
+observer clock or a fourth spatial-like dimension.  The moment identities
+are exact within this \emph{free-transport model}; they do not identify
+$\rho$ as the complete interacting \ElEmEr{} energy density, nor do they
+derive closure conversion, a gravitational source operator, or conserved
+interacting self-stress.
+
+The dynamical role of directional information is explicit on writing
+\begin{equation}
+ M_{ij}=\frac{U_0}{3}\delta_{ij}+Q_{ij},\qquad
+ \partial_sF_i
+ =-\frac{\cmc^2}{3}\partial_iU_0-\cmc^2\partial_jQ_{ij}.
+ \label{eq:source-anisotropy-moment}
+\end{equation}
+Here $Q_{ij}$ is the trace-free \emph{local angular second moment},
+not the spatial radiating quadrupole $I_{ij}^{\rm TF}$ of
+Section~\ref{sec:quadrupole}.  An isotropic radiation bath and balanced
+counterstreams can share $U_0$ and $F_i=0$ while differing in $Q_{ij}$.
+When its divergence or boundary flux matters, an amount-only description
+therefore loses information needed even for this supplied transport model.
+The Negative source-capacity conclusion is restricted to the rotationally
+scalar, linear, first-order amount-only class stated in Section~\ref{sec:lesson}.
+It does not forbid nonlinear, derivative, nonlocal or additional-state scalar
+models, and does not select a native rank-2 source.  Identification of these
+free-transport moments with a complete interacting gravitational source
+remains Open.
+
+At the \emph{effective rank-2} level, ordinary GR-class gravitational
+self-energy is not generally an independent local gauge-invariant,
+Lorentz-covariant tensor of the same kind as the matter source.  Gauge-
+dependent stress descriptions, fluxes and boundary charges can still carry
+physical energy information.  This effective limitation does \emph{not}
+prohibit microscopic ElEmEr local energy/stress, but a projection from one
+level to the other has not been constructed.
+
+There is a further precise compatibility test: the Weinberg--Witten
+energy--momentum obstruction \cite{WeinbergWitten1980} concerns massless
+helicity-2 states and an
+appropriate conserved Lorentz-covariant stress tensor under its quantum
+field-theoretic hypotheses.  The standard effective gauge/GR description
+avoids this obstruction through its gravitational energy representation;
+that does not establish the same escape for a prospective microscopic
+ElEmEr theory.  The native Lorentz symmetry, physical state space,
+energy--momentum operator and relevant matrix elements are not derived.
+Consequently neither an unavoidable contradiction nor a native evasion of
+the theorem has been demonstrated.  In particular, a posited frameless
+vacuum or the word ``emergent'' is not on its own an evasion proof.
+
+\subsection{The nonlinear stress/self-coupling gate}
+
+A linear response law does not by itself say how much energy, momentum, or stress belongs to
+the gravitational disturbance.  Nonlinear self-coupling therefore needs a consistent native energy,
+source and self-response structure.  It need not make the \emph{effective}
+gravity self-energy an ordinary local gauge-invariant tensor; see
+Section~\ref{sec:micro-effective-energy}.  Schematically, the target would have the form
+\begin{equation}
+\mathcal D\xi
+=\kappa_G\Big(\mathcal J_{\rm matter}+\tau[\xi]\Big),
+\label{eq:diagnostic-self-source}
+\end{equation}
+where $\tau[\xi]$ denotes the gravitational field's own source contribution.  Equation
+\eqref{eq:diagnostic-self-source} is a completion target, not a derived \cmotion{} equation:
+$\kappa_G$, $\mathcal J_{\rm matter}$, and $\tau$ are all unresolved natively.
+
+An arbitrary operator $\mathcal D$ does not uniquely define $\tau[\xi]$.  One possible route
+is an action-integrable response with a native pairing; another is a Hamiltonian/symplectic
+construction; an equivalent conserved stress-functional structure could in principle serve
+the same physical role.  The important requirement is not the word ``action'' but a
+consistent definition of field energy/stress from the same native dynamics that defines the
+response and source, together with its compatibility with the effective
+gauge/constraint representation.  If a variational or Hamiltonian route is pursued, the next targets are a
+physical perturbation variable, a native pairing or symplectic structure, and a compatible
+response operator.  None has yet been obtained.
+
+Three consistency tests make this target more concrete: the matter source
+and field self-source must belong to a compatible source/conservation and
+transformation structure; their coupling must use the same physical
+normalization; and nonlinear evolution must preserve the constraints that
+removed unwanted propagating modes in the admitted linear sector.
+These are obligations, not tests already passed by native gravity.
+
+A separate selection issue remains.  Within reduced constitutive controls,
+the stated kinematic, conservation, symmetry and consistency constraints
+admit inequivalent laws; admitting a class of laws is not yet physical selection.
+Merely replacing an arbitrary response operator by an arbitrary action,
+Hamiltonian, stress functional, or memory kernel can relocate that freedom.
+The native theory must therefore explain the physical selection of the
+constitutive structure and its normalization.  This selection requirement does not
+exclude a future physical identity or a specifically GR-class
+consistency theorem within independently justified premises.
+
+Even a quadratic action/energy structure would close only part of the problem.  It could seed
+linear dynamics and quadratic field stress, but $\beta=1$ depends on nonlinear self-source
+information---cubic or higher-order structure in an action language, or its equivalent.  Thus
+\begin{equation}
+\boxed{
+\text{linear native gravity completion}
+\;\neq\;
+\text{nonlinear native gravity completion}.}
+\end{equation}
+
+\subsection{Remaining native obligations}
+
+At the scientific statuses used in this manuscript, the remaining obligations are:
+\begin{enumerate}[leftmargin=*]
+  \item whether the Lorentz-compatible vacuum is genuinely emergent/frameless rather than
+        a fixed but locally undetectable background;
+  \item the physical vacuum perturbation variables and native local response/evolution law;
+  \item native selection of the long-range gravitational mode, including its gaplessness,
+        rank/helicity, constraints or redundancies, and physical polarization count;
+  \item the generic localized source functional and a consistent conserved source structure;
+  \item universal gravitational coupling, its sign, source identity, and normalization as $G$;
+  \item a universal finite-closure response theorem and any resulting native
+        equivalence-principle statement;
+  \item native interacting field energy/stress and the source/projection map to a
+        gauge-consistent effective gravitational self-source, including a specific
+        Weinberg--Witten applicability/evasion analysis and the nonlinear GR-class
+        completion required for $\beta=1$;
+  \item strong-field gravity, including horizon/interior structure, singularity behavior,
+        mergers, ringdown, and compact-object response;
+  \item a microscopic map, if one exists, between \cmotion{} budget variables and the
+        effective metric geometry;
+  \item the universal mass--radius bridge and accelerated-closure stability spectrum needed
+        to determine any defensible acceleration coefficient.
+\end{enumerate}
+
+A complete microscopic action could in principle organize several of these structures at
+once, but it is not logically required merely to formulate and test the first linear
+vacuum-mode problem.  Conversely, the nonlinear self-source problem cannot be closed by an
+arbitrary response operator alone; it needs a deeper conserved field-energy/stress structure.
+These sharpened open gates are not publication blockers for the present weak-field companion.
+
+None of these open problems is repaired by repeating standard GR mathematics in \cmotion{}
+terminology.  Conversely, their existence does not erase the two useful results already
+established within scope: the pure scalar/rate route fails, and an explicitly assumed massless
+rank-2 completion is compatible with the required weak-field phenomenology.
+
+\subsection{Conditional observational tests and later strong-field work}
+\label{sec:conditional-tests}
+
+The admitted pure massless helicity-2 completion has identifiable tests.
+A reproducible additional radiative polarization, or a propagation law
+incompatible with its assumed local-$c$ massless branch, would reject that
+completion under its stated antecedents.  Locally measured propagation
+must be distinguished from coordinate speeds and from source/emission
+delays.  Such a failure would identify a failed branch or premise; it would
+not by itself adjudicate every possible microscopic realization.
+
+Possible nonlinear extensions include source saturation and regular
+compact interiors.  These remain Conjectural mechanisms requiring a
+specified nonlinear source/evolution law, conserved exchange, stable
+solutions, and exterior matching.  Only after those steps could tidal
+deformability, ringdown, or near-horizon lensing become quantitative
+discriminators of a particular model.  Regularity alone supplies neither
+a definite Love number nor a unique observational signature.  None of
+these strong-field hypotheses is used to establish the present weak-field
+results.
+
+%======================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+Gravity is a nontrivial test of \cmotion{} precisely because Newtonian attraction and
+clock-rate change are not enough.  The simplest candidate---one scalar gravitational load
+that changes only local propagation/rate---captures part of the weak-field intuition but
+fails the relativistic light-bending requirement.  In the tested class it gives
+$\gamma=0$ and therefore half the observed leading deflection.  The missing piece is a
+spatial or directional response.
+
+A massless symmetric rank-2 field supplies that structure in a controlled effective
+completion.  Within the selected vacuum route, with the stated source,
+universal-coupling, common
+probe-response, and linear-gauge antecedents, and no relevant extra scalar
+admixture, it reproduces $\gamma=1$, full leading bending and Shapiro delay,
+and the two luminal tensor gravity-wave polarizations.  Under the stated
+localized slow-source and far-zone conditions, quadrupole radiation is
+leading; with the additional specified GR-class nonlinear completion,
+$\beta=1$ and the standard first post-Newtonian behavior follow.  These positive results show compatibility with the
+observed weak-field gravity sector.  They do not amount to a first-principles derivation
+of general relativity from \ElEmEr{}.
+
+The candidate interpretation suggests a physical picture for what that
+effective structure might mean.  A gravitational source may reorganize the local
+field/stress state so that open propagation and recurrent return conditions vary with
+position and source structure.  Free fall can then be read as the natural collective
+response to that organization, support as resistance to it, clock shifts as changes of
+physical recurrence, and tides as differential response across an extended body.  The
+usual metric/geodesic description is the precise weak-field geometry of the resulting
+motion.  This is a candidate \cmotion{} reading, not the missing microscopic law.
+
+The closure-projection tests also preserve a useful boundary.  A scalar
+steering model with an assumed universal half-response can produce a
+pointwise geometric ray/matter coefficient ratio of two, but this alone
+is not an integrated deflection prediction.  Raw isotropic averaging and the tested
+strain, tidal, and retarded mechanisms do not derive that response.
+The successful Conditional tensor comparison is therefore not a native
+uniqueness proof.
+
+The remaining question is sharper than at the start: what microscopic
+\cmotion{} dynamics could realize the massless, universally coupled
+tensor sector tested here, or another completion satisfying the same
+observational requirements?  The open bridge is now localized: identify the
+physical vacuum perturbation variables and their local response law; derive the generic
+localized source and its universal coupling; establish how finite recurrent closures respond;
+and obtain a self-consistent native energy/source law together with a
+microscopic-to-effective gravitational stress/self-source projection so that
+nonlinear completion can begin.  A full microscopic action is one possible route through several of
+these stages, but the linear mode problem can be posed before that if a native constitutive
+response law is found.  The separate acceleration-instability idea additionally requires a
+solved accelerated closure and its stability spectrum.  Until those are known, the effective
+geometric description remains the successful gravitational language while the field-first
+interpretation remains an explicitly ongoing microscopic research problem.
+
+%======================================================================
+\newpage
+\appendix
+\section{Formal claim-status and evidential-role register}
+\label{app:status}
+
+The body of the paper is organized by the physical argument rather than by status
+bookkeeping.  This appendix records the claim status of the
+results used in this manuscript.  The scientific-status column uses the synchronized
+C-Motion vocabulary.  Conditional means a conclusion follows from an explicit
+premise or model class not itself derived; Structural means an exact or banked
+organizational/accounting result without a supplied microscopic law;
+Model-derived means rigorously derived within a specified effective/analogue
+model, never native Derived.  Assumed denotes a provisional active premise;
+Conjectural a motivated but unestablished mechanism or interpretation; Open an
+unresolved question, with Open (sharp) marking an isolated missing bridge rather
+than greater confidence.  Negative excludes only the stated identification,
+mechanism or branch.  Publication deferral leaves the scientific status intact.
+
+The role column is separate: N1 is an inherited native premise/constraint route;
+N2 a C-Motion-constrained effective bridge; C a supplied standard/control
+calculation; O an unresolved physical bridge.  The scalar/rate Negative retains
+its N1 provenance flag for the framework-motivated restriction being tested;
+this does not promote its supplied scalar ansatz or PPN comparison to native
+dynamics.  Its mathematical comparison remains a scoped control.
+R is a local rename-risk warning, not a status or an evidential upgrade:
+rephrasing an effective geometry as a physical ``budget'' does not derive it.
+It appears only on that interpretation when treated as evidence and is
+unrelated to the radius $R$ in Section~\ref{sec:acceleration}.
+
+{\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}P{3.8cm}P{2.8cm}P{1.5cm}P{5.3cm}@{}}
+\toprule
+\textbf{Claim / result} & \textbf{Scientific status} & \textbf{Role} & \textbf{Exact scope / dependency} \\
+\midrule
+\endhead
+Primitive local-$c$ restriction on an open gravity influence & \statusAssumed{} framework premise & \NOne{} & Openly propagated generated change respects local $c$; does not identify gravity source, rank, or coupling. \\
+Complete-field source $\to$ local field/stress reorganization $\to$ response architecture & \statusConjectural{} & \NTwo{} & Common architecture only; Structural bookkeeping is carried in the scope, while the proposed sector realization is Conjectural. It does not derive the gravity source, mediator, $G$, or universal coupling. \\
+Frameless Lorentz-invariant vacuum branch & \statusOpen{} & \OpenBridge{} & F selects the proposed native realization; effective fixed-background Fierz--Pauli mathematics neither proves nor independently requires it. \\
+Scalar/rate-only loading gives $\gamma=0$ and half bending & \statusNegative{} & \NOne{} & Isotropic weak-field optical $v=cN$ (not primitive local $c$), $U=-\Phi_N/c^2$, no independent spatial response. \\
+Viable gravity needs more than pure scalar rate loading & \statusStructural{} & \NTwo{} & Restricted rate/amount-only model fails; scalar derivative/projection alternatives remain open; rank 2 not uniquely selected. \\
+Amount-only source-capacity restriction & \statusNegative{} & \NTwo{} & Rotationally scalar, linear, first-order local amount-only source with no independent angular-stress or reconstruction data cannot distinguish equal-$U_0$, zero-flux configurations with different $Q_{ij}$; not a general scalar no-go or rank-2 derivation. \\
+Observed $G$-strength gravity is not the universal elementary closure binder & \statusNegative{} & \NTwo{} & Excludes ordinary gravity as universal elementary binder; actual binder remains open. \\
+Massless symmetric rank-2/helicity-2 mediator M & \statusConditional{} & \OpenBridge{} / \Control{} & Not derived by local $c$, scalar failure, or common response architecture. \\
+Native perturbation variables and local vacuum-response operator & \statusOpen{} & \OpenBridge{} & Local $c$ constrains characteristics only after a physical mode exists; component count, gap, rank, helicity and constraints remain undetermined natively. \\
+Symmetric conserved total source S & \statusConditional{} & \OpenBridge{} / \Control{} & Effective rank-2 control requires a conserved symmetric source; a local native source functional/conservation law remains missing. An action is one route, not the only logically possible route. \\
+Universal coupling and $G$ normalization U & \statusAssumed{} & \OpenBridge{} & Universality is used here as an Assumed antecedent; its native derivation, sign, source identity, and normalization remain Open. \\
+Common effective probe-metric response P & \statusConditional{} & \Control{} & Standard comparison premise for light/clock/matter response; a native closure response theorem remains Open. \\
+Universal finite-closure response & \statusOpen{} & \OpenBridge{} & Universal sourcing does not by itself prove composition-independent center response of differently structured recurrent closures. \\
+Linear Fierz--Pauli class L & \statusConditional{} & \Control{} & Standard local two-derivative massless rank-2 gauge completion. \\
+Closure-projector cycle-average and isotropic $2/3$ identity &
+\statusStructural{} & \Control{} &
+Exact within the assumed normalized cycle measure and projector;
+not a native closure-response law. \\
+Scalar steering plus universal half-response lock &
+\statusConditional{} & \OpenBridge{} / \Control{} &
+Pointwise geometric ray/matter ratio only; transverse ray, half-lock and
+observable map supplied; no integrated bending, complete PPN, clock,
+source or WEP derivation. \\
+Tested strain/tidal/retarded half-lock rescue mechanisms &
+\statusNegative{} & \Control{} &
+Scoped failures derived in Appendix~\ref{app:projection-diagnostics};
+not exclusions of every dynamical scalar or closure-memory model. \\
+Native physical closure-centre projection and memory law &
+\statusOpen{} & \OpenBridge{} &
+No universal native averaging measure, non-raw projection, or closure-memory
+law is supplied; recurrence does not establish a universal half-lock. \\
+Rest-energy/inertial-mass bridge &
+\statusConditional{} & \NTwo{} &
+Complete isolated recurrent solution, conserved total energy--momentum,
+rest frame and effective Lorentz dispersion; no gravitational equivalence
+result. \\
+Restricted extra scalar/vector source-class observations & \statusConditional{} & \Control{} & Not general no-go theorems and not part of the central reader-facing spine. \\
+$\gamma=1$ & \statusConditional{} & \Control{} & Selected route F+M+S+U+P+L, with no relevant extra scalar; fixed-background effective control does not independently require F. \\
+Full leading light bending and Shapiro delay & \statusConditional{} & \Control{} & Downstream of $\gamma=1$. \\
+Luminal gravitational-wave propagation & \statusConditional{} & \NOne{} + \Control{} & Local $c$ constrains propagation; physical rank-2 wave additionally requires M/L. \\
+Two TT/helicity-2 gravitational-wave polarizations & \statusConditional{} & \Control{} & M+L. \\
+Quadrupole-leading radiation & \statusConditional{} & \Control{} & Isolated localized weak-field/slow-motion source, far-zone conditions, conserved source S, no extra radiative charges, and pure helicity-2 sector. \\
+$\beta=1$ & \statusConditional{} & \Control{} & Requires specifically GR-class nonlinear N, correct constraints and same coupling, plus P; generic nonlinear self-interaction and quadratic seed are insufficient. \\
+Free-transport budget/flux moment identities & \statusConditional{} & \NTwo{} & Exact within supplied source-free $\rho$ transport; not interacting field-energy conservation or gravitational source derivation. \\
+Microscopic/effective gravitational stress bridge & \statusOpen{} & \OpenBridge{} & Native interacting energy/source, gauge-consistent effective self-source projection and Weinberg--Witten compatibility unproved; native local stress is not forbidden. \\
+Native field-energy/stress/self-source structure & \statusOpen{} & \OpenBridge{} & Required for nonlinear gravitational self-coupling; an action/Hamiltonian/equivalent consistent route remains unclosed. \\
+Standard 1PN perihelion consequence & \statusConditional{} & \Control{} & Follows after $\gamma=\beta=1$; GR/PPN-seeded numerics are controls only. \\
+Native equivalence principle & \statusOpen{} & \OpenBridge{} & Requires universal coupling, source-to-response map, finite-closure response, and control of internal-structure corrections. \\
+Budget geometry & \statusConjectural{} & \RenameRisk{} if treated as evidence & Interpretive provenance only; no native budget-to-metric derivation is claimed. \\
+Open/massless-sector reading of the admitted gravity mode & \statusConjectural{} & \OpenBridge{} & Interpretive provenance only. The conditional massless mediator fits the open-propagation taxonomy; taxonomy does not derive M or establish a universal open$\leftrightarrow$massless equivalence. \\
+Free-fall/support/tidal physical reading & \statusConjectural{} with native EP \statusOpen{} & \OpenBridge{} & Interpretive provenance only. Uniform-response and differential-response intuition does not supply a finite-closure averaging theorem or native WEP derivation; native EP remains Open. \\
+Universal local-response / closure-cycle projection realization &
+\statusConjectural{} &
+\OpenBridge{} &
+Candidate microscopic realization in which the same local gravitational response acts on
+open and recurrent ElEmEr propagation, while recurrence changes only the net organized
+response through cycle projection/cancellation.  No universal physical averaging law,
+physical projection factor, acceleration dependence, or native equivalence-principle result is
+derived. \\
+
+Full nonlinear GR and strong-field completion & \statusOpen{} & \OpenBridge{} & Publication-deferred; scientifically Open. Requires N plus source/action/coupling completion. \\
+Idealized two-state full-sweep branch mixing & \statusModelDerived{} & \Control{} & Supplied constant-gap Hamiltonian, phase rule and prescribed effective acceleration give $P_{\rm LZ}=e^{-\pi a_*/a_{\rm prop}}$; not physical closure destruction or a universal threshold. \\
+Proper-acceleration closure breakdown $\sim C_{\rm dyn}c^2/R$ & \statusConjectural{} & \OpenBridge{} & Dimensional candidate scale only, not an instability theorem; requires an accelerated-closure stability calculation. \\
+$a_c\sim mc^3/\hbar$ & \statusConditional{} & \OpenBridge{} & Conditional algebraic form of the Conjectural physical scale only: additionally requires $R=C_R\hbar/(mc)$; $C_a=C_{\rm dyn}/C_R$ remains unknown. \\
+\bottomrule
+\end{longtable}
+}
+
+\subsection*{Restricted source-class observations}
+Two bounded observations concern simple additional long-range channels.  Given F, S, U, linear weak-field superposition, and no independent gravity
+charge, a trace-coupled scalar is not sourced by traceless radiation, while a direct
+$T^{00}$ scalar source selects a time direction and conflicts with F.  For a simple
+vector source, $J^\mu=\mathcal T^{\mu\nu}n_\nu$ requires a preferred vector $n_\nu$,
+whereas $J^\mu=\partial_\nu\mathcal T^{\mu\nu}$ vanishes by conservation.  These remain
+conditional observations inside that restricted source-construction class.  They are not
+general no-go theorems for scalar--tensor, vector--tensor, nonlocal, or additional-field
+completions and are intentionally kept out of the main narrative.
+
+\section{Definitions and derivations of the projection diagnostics}
+\label{app:projection-diagnostics}
+
+This appendix defines and derives the three summarized tests in
+Section~\ref{sec:closure-projection}.  All conclusions are confined to the
+specified projector, cycle measure and expansions.  They are analytical
+diagnostics, not independent validation of physical closure response.
+No native force law, elastic energy, closure stability theorem or universal
+centre-response map is derived.
+
+\subsection{Minimum differential steering strain}
+\label{app:projection-strain}
+
+Let $\mathbf g_0\ne0$ be a prescribed uniform
+\emph{acceleration-valued diagnostic drive}.  The diagnostic forcing is
+$\mathbf f(\mathbf n)=P(\mathbf n)\mathbf g_0$, with
+$P(\mathbf n)=I-\mathbf n\mathbf n^{\mathsf T}$.
+This definition supplies units consistently; it does not identify
+$\mathbf f$ with a native force law or with $\mathrm d\mathbf n/\mathrm ds$.
+For unit directions sampled uniformly in a plane with unit normal
+$\mathbf N$, define
+\begin{equation}
+ C_N=\frac12(I-\mathbf N\mathbf N^{\mathsf T}),\qquad
+ \mu=\mathbf N\cdot\widehat{\mathbf g}_0,\qquad
+ \langle\mathbf f\rangle=(I-C_N)\mathbf g_0 .
+ \label{eq:diag-plane-drive}
+\end{equation}
+Choose, solely as a tested orientation criterion, the residual variance
+\begin{equation}
+ \mathcal V_N
+ :=\left\langle|\mathbf f-\langle\mathbf f\rangle|^2\right\rangle
+ =\langle|\mathbf f|^2\rangle-|\langle\mathbf f\rangle|^2 .
+ \label{eq:diag-variance-definition}
+\end{equation}
+Since $P^{\mathsf T}P=P$, direct angular averaging gives
+\begin{align}
+ \langle|\mathbf f|^2\rangle
+ &=|\mathbf g_0|^2-\mathbf g_0^{\mathsf T}C_N\mathbf g_0
+   =\frac{|\mathbf g_0|^2}{2}(1+\mu^2),\\
+ |\langle\mathbf f\rangle|^2
+ &=\frac{|\mathbf g_0|^2}{4}(1+3\mu^2).
+\end{align}
+Consequently
+\begin{equation}
+ \boxed{\mathcal V_N=\frac{|\mathbf g_0|^2}{4}(1-\mu^2).}
+ \label{eq:diag-variance-result}
+\end{equation}
+Minimizing this particular variance favors $|\mu|=1$, where the
+longitudinal response coefficient is one and $\mathcal V_N=0$.
+The desired half-response orientation $\mu=0$ instead has variance
+$|\mathbf g_0|^2/4$.  Thus the proposed minimum-variance criterion
+does not select half-lock.  The criterion is not a derived physical
+energy or stability functional, so this calculation excludes that
+criterion as the claimed rescue, not every possible orientation law.
+
+
+
+\subsection{Symmetric first-gradient tidal cancellation}
+\label{app:projection-tidal}
+
+Take orthonormal $\mathbf e_1,\mathbf e_2$, radius $R>0$, and
+$\mathbf N=\mathbf e_1\times\mathbf e_2$.  Use the circular diagnostic
+\begin{align}
+ \mathbf y(\theta)&=R(\cos\theta\,\mathbf e_1+\sin\theta\,\mathbf e_2),\\
+ \mathbf t(\theta)&=-\sin\theta\,\mathbf e_1+\cos\theta\,\mathbf e_2,
+ \qquad \mathbf n_\pm(\theta)=\pm\mathbf t(\theta),\\
+ P(\theta)&=I-\mathbf t(\theta)\mathbf t(\theta)^{\mathsf T}.
+ \label{eq:diag-ring}
+\end{align}
+Here $\mathbf y$ is displacement from the closure centre; it is not the
+dimensionless response $\mathbf r$ of
+Eq.~\eqref{eq:projection-diagnostic}.  At each position the two directions
+have equal counterflow weights.  The spatial cycle average also uses a
+positive normalized weight $w$ with
+$w(\theta+\pi)=w(\theta)$; opposite propagation directions alone would
+not ensure this opposite-point symmetry.
+
+At fixed evolution parameter, let a smooth prescribed external drive
+vary on a scale $L\gg R$.  Retaining only first spatial order gives
+\begin{equation}
+ \mathbf g(\mathbf x_c+\mathbf y)
+ =\mathbf g_0+\mathsf K\mathbf y+\cdots,\qquad
+ K_{ij}=\partial_jg_i\big|_{\mathbf x_c}.
+ \label{eq:diag-gradient-expansion}
+\end{equation}
+$\mathsf K$ is constant across this first-order calculation and has
+units of acceleration per length; the omitted terms involve higher
+spatial derivatives.  The identities
+\begin{equation}
+ \mathbf y(\theta+\pi)=-\mathbf y(\theta),\qquad
+ P(\theta+\pi)=P(\theta)
+\end{equation}
+make $P(\theta)\mathsf K\mathbf y(\theta)$ odd under a half-turn.
+Pairing opposite points in the weighted integral therefore gives
+\begin{equation}
+ \boxed{\left\langle P(\theta)\mathsf K\mathbf y(\theta)
+ \right\rangle_w=0.}
+ \label{eq:diag-gradient-zero}
+\end{equation}
+The first-gradient collective forcing cancels within this symmetric
+diagnostic; the local differential forcing need not vanish and can
+remain as internal tidal strain.  This calculation does not cancel
+higher spatial orders or asymmetric cycle weights, nor does it prove
+how an actual closure converts local forcing into centre motion.
+
+
+
+\subsection{Retarded first-hit timing and odd memory}
+\label{app:projection-retarded}
+
+Use the same ring and opposite-point weighting.  Scale the compatible
+evolution label $s$ so that $\cmc\,\Delta s$ is a propagation distance;
+it is not a universal observer-clock reading.  Model an incident change
+with approximately planar arrival surfaces across the ring, whose
+source separation $L$ is much larger than $R$.  For a fixed unit
+arrival axis $\hat{\mathbf a}$, the relative arrival model is
+\begin{equation}
+ s_{\rm ret}(\mathbf y)
+ =s_0-\frac{\hat{\mathbf a}\cdot\mathbf y}{\cmc}
+   +O\!\left(\frac{R^2}{L\cmc}\right).
+ \label{eq:diag-arrival-time}
+\end{equation}
+The sign depends on the chosen direction of the arrival axis and does
+not affect the symmetry cancellation.  Let $\mathbf g$ describe the
+prescribed driving profile before this relative arrival shift, with
+variation time $T$ satisfying $R/(\cmc T)\ll1$.  Taylor expansion to
+first order in spatial displacement and arrival delay yields
+\begin{equation}
+ \mathbf g(\mathbf x_c+\mathbf y,s_{\rm ret})
+ =\mathbf g_0+\mathsf K\mathbf y
+  -\frac{\hat{\mathbf a}\cdot\mathbf y}{\cmc}\,
+    \partial_s\mathbf g_0+\cdots .
+ \label{eq:diag-arrival-expansion}
+\end{equation}
+All coefficients are evaluated at $(\mathbf x_c,s_0)$.
+The ellipsis denotes omitted higher spatial/time Taylor terms, front-curvature
+corrections and mixed higher orders.  The arrival shift must not be
+applied again to driving data already evaluated with their full
+retarded spatial dependence.
+
+The changing-field diagnostic forcing is
+\begin{equation}
+ \mathbf f_{\rm ret}(\theta)
+ =-\frac{\hat{\mathbf a}\cdot\mathbf y(\theta)}{\cmc}
+    P(\theta)\partial_s\mathbf g_0,\qquad
+ \boxed{\langle\mathbf f_{\rm ret}\rangle_w=0.}
+ \label{eq:diag-retarded-zero}
+\end{equation}
+It vanishes pointwise for a settled static drive,
+$\partial_s\mathbf g_0=0$.  For a changing drive its average still
+vanishes because the scalar arrival delay is odd under a half-turn,
+$P$ is even, and $w$ has the stated symmetry.  Internal differential
+forcing can remain even when the collective average is zero.
+
+The separate first-order memory test uses a dimensionless parameter
+$\epsilon$ and an explicitly odd leading weight
+$\chi(\theta+\pi)=-\chi(\theta)$:
+\begin{equation}
+ \mathcal R_{\rm mem}
+ =\left\langle[1+\epsilon\chi(\theta)+O(\epsilon^2)]P(\theta)
+   \right\rangle_w,\qquad
+ \boxed{\langle\chi P\rangle_w=0.}
+ \label{eq:diag-odd-memory-zero}
+\end{equation}
+Odd arrival weighting thus leaves the response tensor for the
+\emph{uniform base drive} unchanged at first order.  Even memory,
+broken cycle symmetry, nonlinear response and mixed memory--gradient
+terms such as $\epsilon\langle\chi P\mathsf K\mathbf y\rangle_w$
+are outside this cancellation and may survive.  None is fixed by the
+timing model alone.  The result excludes the specified leading
+first-hit/odd-memory rescue, not every retarded closure-response law.
+
+
+
+
+\newpage
+\printbibliography
+
+\end{document}

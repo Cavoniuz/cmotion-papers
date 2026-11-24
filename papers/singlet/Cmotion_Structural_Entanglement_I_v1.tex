@@ -1,0 +1,1015 @@
+% !TeX program = pdflatex
+% !BIB program = biber
+
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,bm,mathtools}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{xurl}
+\usepackage[expansion=false]{microtype}
+\setlength{\emergencystretch}{3em}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\usepackage[backend=biber,style=numeric,sorting=none,maxnames=6,uniquename=false,url=false]{biblatex}
+\addbibresource{cmotion_foundational_general.bib}
+\addbibresource{cmotion_primary_research.bib}
+\addbibresource{cmotion_internal_manuscripts.bib}
+
+\AtEveryBibitem{\clearfield{note}\clearfield{annotation}\clearfield{keywords}\clearfield{file}}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\cmotion}{\mbox{C-Motion}}
+\newcommand{\ElEmEr}{\mbox{ElEmEr}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\SSph}{\mathbb{S}^{2}}
+\newcommand{\SU}{\mathrm{SU}(2)}
+\newcommand{\SO}{\mathrm{SO}(3)}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\ahat}{\hat{\bm a}}
+\newcommand{\bhat}{\hat{\bm b}}
+\newcommand{\nhat}{\hat{\bm n}}
+\newcommand{\bsigma}{\bm\sigma}
+\newcommand{\epsm}{\varepsilon}
+\newcommand{\Jmap}{\mathcal J}
+\newcommand{\Crel}{C^{\mathrm{rel}}}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black,
+  pdftitle={Structural Entanglement in C-Motion I: Common-Source Pairing and the Singlet Preparation Kernel},
+  pdfauthor={Toma Kavonius}
+}
+
+\title{\textbf{Structural Entanglement in \cmotion{} I:}\\
+Common-Source Pairing and the Singlet Preparation Kernel}
+\author{Toma Kavonius}
+\date{24 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\small\itshape
+Scope and limitations.  This manuscript isolates a bounded common-source preparation
+result for singlet-type correlations.  The physical analyzer-transduction law,
+native Born weighting, single-trial outcome dynamics, exchange statistics, and
+full operator microcausality remain unresolved where stated.
+\end{center}
+\vspace{0.6em}
+
+\begin{abstract}
+Two closures formed by one source may retain a relational structure before
+measurement. This paper asks what common-source preparation can establish
+independently of analyzer response and outcome selection. In a specified
+Conditional C-Motion effective sector, a rotationally scalar parent creates
+two positive-frequency rotational doublets through a leading local
+complex-bilinear formation vertex. Rotational covariance selects the unique
+nontrivial alternating pairing $a^T\epsm b$, with $\epsm=i\sigma_2$, up to
+overall strength. Its anti-linear preparation map $\Jmap=\epsm K$,
+where $K$ denotes complex conjugation, intertwines
+the $\SU$ rotation action while reversing Pauli-vector orientation. In
+matched prepared daughter frames this yields the Conditional relational
+tensor $\Crel_{ij}=-\delta_{ij}$. It is not a measured covariance, and
+physical doublet selection, the microscopic source law, and separated-frame
+transport remain unestablished.
+
+Even when isotropy, continuity, signed-axis symmetry, equal-setting
+anticorrelation, unbiased marginals and no-signalling are supplied,
+two-analyzer correlations need only have the form
+$E(\ahat,\bhat)=f(\ahat\cdot\bhat)$; the singlet function $f(x)=-x$
+is not selected. An additional physical analyzer-transduction law is needed;
+a bilinear law would conditionally recover the singlet angular dependence.
+Standard singlet probabilities and Bell/CHSH bounds serve as downstream
+controls, not native preparation or measurement dynamics. Native Born
+weighting, single-trial outcomes, exchange statistics and full operator
+microcausality remain Open.
+\end{abstract}
+
+
+% =====================================================================
+\section{The physical question}
+\label{sec:physical_question}
+% =====================================================================
+
+Consider one preparation event that produces two localized closures and sends them toward two later
+measurement stations.  After separation, the closures occupy different regions of physical
+three-space, but spatial separation alone does not require their complete physical description to be
+the sum of two independent local descriptions.  In the field-first \cmotion{} ontology, both are
+organizations of one complete \ElEmEr{} field state, and a common source can prepare a relation
+between them before the analyzer settings are chosen.
+
+The proposal is therefore not that one wing sends information to the other during measurement.  The
+physical picture is instead
+\begin{equation}
+  \boxed{\text{one source event prepares one relationally constrained two-closure state}.}
+  \label{eq:common_source_picture}
+\end{equation}
+A relation written at preparation may persist as part of the state carried into the two separated
+regions.  Whether that relation has the right form for singlet correlations is a separate question;
+common ancestry by itself is not enough.
+
+Three layers must be kept distinct from the start:
+\begin{equation}
+\boxed{
+\begin{array}{ll}
+1.&\text{prepared relational structure},\\
+2.&\text{local analyzer transduction},\\
+3.&\text{single-trial outcome selection}.
+\end{array}}
+\label{eq:three_layers}
+\end{equation}
+Preparation asks what relation the common source creates.  Analyzer transduction asks how a chosen
+laboratory direction probes that relation.  Outcome selection asks why one particular detector
+record occurs in one run.  Structural Entanglement I is primarily about the first layer.  It reaches
+the second only far enough to isolate the exact missing law.  The third belongs to the separate measurement-completion problem, which remains scientifically open in \cmotion{} and is outside the scope of this paper.
+
+This ordering also prevents a circular argument.  The paper does not begin by assuming the
+ideal singlet law
+\begin{equation}
+  E(\ahat,\bhat)=-\ahat\cdot\bhat
+  \label{eq:target_law}
+\end{equation}
+and then rename its mathematical structure in \cmotion{} language.  Instead it asks what relation a
+specified common-source process can prepare before \eqref{eq:target_law} is supplied.
+
+The central reader question is therefore:
+\begin{quote}
+\emph{What does \cmotion{} contribute to the singlet problem before the standard quantum measurement
+law is supplied?}
+\end{quote}
+The answer developed below is bounded but nontrivial: within a specified Conditional two-daughter
+sector, the source/process symmetry selects an alternating relational pairing and hence an isotropic
+negative Pauli-orientation transport relation in matched daughter frames.  The physical
+rules for transporting that relation and converting it into exact analyzer statistics remain Open.
+
+% =====================================================================
+\section{What is assumed before the preparation calculation}
+\label{sec:conditional_sector}
+% =====================================================================
+
+The preparation theorem does not start from primitive \ElEmEr{} dynamics alone.  It uses a bounded
+effective sector whose physical selection is not yet derived.
+
+\subsection{Two effective rotational components}
+
+Let the two daughter channels be represented by amplitudes
+\begin{equation}
+  a,b\in\CC^2.
+  \label{eq:doublets}
+\end{equation}
+The symbols \(a\) and \(b\) denote the two-component internal amplitudes assigned to the two daughter
+slots.  Under a common lifted spatial rotation they transform together as
+\begin{equation}
+  a\mapsto Ua,
+  \qquad
+  b\mapsto Ub,
+  \qquad
+  U\in\SU.
+  \label{eq:doublet_rotation}
+\end{equation}
+A ``doublet'' here simply means that two effective internal components transform together under this
+two-component rotational representation.  The calculation tests what follows \emph{if} the physical
+daughter closures occupy such a sector.  A representation-theoretic observation provides
+a conditional motivation for testing this sector: if a returned
+amplitude must distinguish the two signs of lifted director/frame
+$\mathbb Z_2$ holonomy, the minimal readable \(\SU\) carrier has
+$j=\frac12$ and is a doublet.  Indeed, the central element $-I\in\SU$
+acts in the spin-$j$ irreducible representation as $(-1)^{2j}I$.
+Distinguishing its sign requires half-integer $j$; the smallest such
+representation has $j=\tfrac12$ and dimension $2j+1=2$.
+That representation-theoretic observation
+does not establish that actual matter closures require such readability or
+select and populate this sector dynamically.  \cmotion{} has not yet
+derived from primitive closure dynamics why these daughter modes are realized.  The Pauli matrices below provide a Hermitian basis for this effective rotational
+representation; its anti-Hermitian rotation generators are \(T_j=-\ii\sigma_j/2\).
+Before the standard-control section, these are not assumed to be laboratory
+spin-measurement operators.
+
+\subsection{Why the positive-frequency complex sector matters}
+
+The effective description also selects positive-frequency daughter modes.  Physically, this
+specifies one orientation of local phase evolution in the mode decomposition and distinguishes
+outgoing daughter content from its conjugate-frequency partner.  Complex notation then packages the
+corresponding real quadratures efficiently.  This is more than decorative notation because the
+frequency orientation distinguishes the formation process from a conversion process below.
+
+The physical origin of the global complex structure and positive-frequency/positive-energy
+selection remains upstream Open/Conditional in the Quantum Foundations companion paper
+\cite{CmotionQuantumFoundations2026}.  Nothing in this paper promotes that
+selection to a native result.
+
+\subsection{Two useful representation negatives}
+
+Simpler orientation objects do not already provide the needed signed relation.  A headless director
+obeys \([d]=\{d,-d\}\) and therefore has the natural nematic representative
+\begin{equation}
+  Q_{ij}=d_i d_j-\frac13\delta_{ij}.
+  \label{eq:nematic}
+\end{equation}
+Because \(d\) and \(-d\) are physically identified, this representation does not by itself supply a
+signed rank-one spin-like relation.
+
+Ordinary spatial inversion is also insufficient.  An axial vector transforms under an orthogonal
+map \(O\) as \(\bm s\mapsto(\det O)O\bm s\); for \(O=-I\), the two minus signs cancel.  The negative
+relation derived below is therefore not an ordinary parity flip.  These are scoped representation
+negatives, not general no-go theorems for closure geometry.
+
+% =====================================================================
+\section{The source process selects the relevant pairing class}
+\label{sec:process_class}
+% =====================================================================
+
+The process-class question ``why \(\mathcal J\) rather than \(I\)?'' sounds arbitrary if the two maps are
+presented as competing mathematical choices.  In the bounded effective model they correspond to
+different physical process structures.
+
+Let a scalar source mode and the two daughter modes have harmonic dependence
+\begin{equation}
+\begin{split}
+  S(s)&=S_0\ee^{-\ii\Omega_S s},\\
+  f_A(s)&=a\,\ee^{-\ii\Omega_A s},\\
+  f_B(s)&=b\,\ee^{-\ii\Omega_B s}.
+\end{split}
+\label{eq:harmonic_modes}
+\end{equation}
+Here \(s\) is the succession/evolution parameter used by the effective description.  It is not
+introduced as a fourth spatial-like dimension or as a directly readable universal clock.
+
+A conversion or mixing process acts on already existing mode content.  Its natural invariant is
+sesquilinear,
+\begin{equation}
+  f_A(s)^\dagger f_B(s),
+  \qquad
+  \Omega_S\simeq\Omega_A-\Omega_B,
+  \label{eq:conversion_channel}
+\end{equation}
+so a corresponding source coupling \(S(s)f_A(s)^\dagger f_B(s)\) belongs to a
+difference-frequency channel.  The matrix product \(a^\dagger b\) is its constant-amplitude
+factor, not the complete oscillating mode expression.
+
+The preparation studied here is instead a genuine two-daughter formation process,
+\begin{equation}
+  S\longrightarrow A+B,
+  \qquad
+  \Omega_S\simeq\Omega_A+\Omega_B.
+  \label{eq:formation_channel}
+\end{equation}
+With two outgoing positive-frequency daughter slots, the leading local derivative-free scalar
+depends complex-bilinearly on the daughters.  The mathematical question is therefore not ``which
+pairing does nature arbitrarily prefer?'' but rather:
+\begin{quote}
+Which complex-bilinear pairing of two daughter doublets remains invariant when both are rotated
+together?
+\end{quote}
+This process distinction is Conditional on the effective mode sector and does not imply that every
+physical pair-creation process in nature must have the same form.
+
+% =====================================================================
+\section{The alternating invariant pairing}
+\label{sec:pairing}
+% =====================================================================
+
+\subsection{The compact invariance calculation}
+
+Write the most general local complex-bilinear scalar as
+\begin{equation}
+  B(a,b)=a^T M b,
+  \label{eq:general_bilinear}
+\end{equation}
+where \(M\) is a constant \(2\times2\) pairing matrix.  Rotational scalarity means that rotating both
+daughters together does not change this source coupling:
+\begin{equation}
+  B(Ua,Ub)=B(a,b)
+  \quad\Longleftrightarrow\quad
+  \boxed{U^T M U=M\quad\forall U\in\SU.}
+  \label{eq:invariance}
+\end{equation}
+
+\begin{proposition}[Conditional two-daughter pairing result]
+Within the rotationally scalar-parent, positive-frequency fundamental-doublet, local leading
+derivative-free complex-bilinear formation class, the invariant space satisfying
+\eqref{eq:invariance} is one-dimensional.  Hence
+\begin{equation}
+  \boxed{
+  M=\lambda\epsm,
+  \qquad
+  \epsm=i\sigma_2=
+  \begin{pmatrix}
+  0&1\\[-1mm]
+  -1&0
+  \end{pmatrix},}
+  \label{eq:epsilon}
+\end{equation}
+with overall strength \(\lambda\).
+\end{proposition}
+
+\begin{proof}
+Write \(M=(m_{ij})\).  For the diagonal subgroup
+\[
+  U_z(\phi)=\operatorname{diag}
+  \!\left(\ee^{-\ii\phi/2},\ee^{\ii\phi/2}\right),
+\]
+condition \eqref{eq:invariance} for every \(\phi\) forces \(m_{11}=m_{22}=0\).  Applying a
+noncommuting rotation, for example one generated by \(\sigma_1\), then gives
+\(m_{21}=-m_{12}\).  Therefore \(M\) is proportional to the alternating matrix \(\epsm\).  Direct
+substitution verifies \(U^T\epsm U=\epsm\) for every \(U\in\SU\).
+\end{proof}
+
+The matrix \(\epsm\) is simply the invariant antisymmetric pairing form of a two-component rotational
+doublet.  The notation \(i\sigma_2\) is a convenient standard representation; its appearance does
+not independently derive physical electron spin, the physical doublet sector, or fermionic exchange
+statistics.  Pair-slot alternation, \(B(b,a)=-B(a,b)\), does not
+by itself establish exchange statistics for two identical completed closures.
+Nor does it require antisymmetry of a later measured correlation under
+interchange of analyzer sites.  In particular, selecting an
+\emph{invariant source bilinear} does not prove that
+native \ElEmEr{} dynamics prepares a normalized, pure two-particle singlet state.  Such an
+identification needs a physical daughter-state composition rule, a source evolution that
+populates the relevant two-slot sector, and an appropriate normalization/statistical
+interpretation.  These are not supplied by the uniqueness proof.
+
+This resolves the process-class ``\(\mathcal J\) or \(I\)?'' ambiguity only within the stated process
+model.  The identity-like sesquilinear structure belongs naturally to a difference-frequency
+conversion channel, whereas the genuine scalar-parent two-daughter formation channel selects the
+alternating bilinear.  The result is therefore best described as a \emph{\cmotion{}-constrained
+Conditional preparation bridge}, not as an N1 derivation from primitive \ElEmEr{} dynamics.
+
+\subsection{The anti-linear preparation relation}
+
+A real interaction carrying the selected pair channel can be represented schematically
+at the local formation vertex by the \emph{full mode fields} of
+\eqref{eq:harmonic_modes},
+\begin{equation}
+  V_{\rm pair}(s)
+  =-g_S\!\left[
+  S(s)\bigl(f_A(s)^T\epsm f_B(s)\bigr)^*
+  +S(s)^*\bigl(f_A(s)^T\epsm f_B(s)\bigr)
+  \right],
+  \label{eq:pair_interaction}
+\end{equation}
+where \(g_S\) denotes an effective source coupling.  The first term contains
+\begin{equation}
+  S(s)\bigl(f_A(s)^T\epsm f_B(s)\bigr)^*
+  =S_0\,(a^T\epsm b)^*\,
+    \ee^{-\ii(\Omega_S-\Omega_A-\Omega_B)s},
+  \label{eq:pair_phase}
+\end{equation}
+so a slowly varying (resonant) channel is possible for
+\(\Omega_S\simeq\Omega_A+\Omega_B\) as in \eqref{eq:formation_channel}.
+Variation of the conjugated pair factor with respect to the daughter conjugate
+fields produces terms proportional to \(\epsm f_B^*\) and
+\(-\epsm f_A^*\), respectively; the relative minus sign is the
+antisymmetry \(\epsm^T=-\epsm\).  The constant amplitudes \(a,b\) alone
+would not show the resonance phase.  This motivates the preparation relation
+\begin{equation}
+  \boxed{\Jmap=\epsm K.}
+  \label{eq:Jmap}
+\end{equation}
+Up to an overall phase, this is the algebraic form of Wigner's
+spin-$\tfrac12$ time-reversal operator \cite{Wigner1932TimeReversal}:
+$\Jmap^2=-I$ and the Pauli vector changes sign.  This algebraic
+identification does not make the source preparation a physical reversal
+of time, momentum, or an entire field history.
+Here \(K\) means complex conjugation.  Because complex conjugation reverses multiplication by
+\(i\), \(\Jmap\) is anti-linear rather than linear.
+
+Physically, \(\Jmap\) maps the effective internal description in one daughter slot to the
+complementary relational orientation assigned to the partner by the common preparation.  It is a
+relation between the prepared daughter internal spaces, not a signal propagating continuously from
+one separated wing to the other.  It is also not identified here with charge conjugation or with the
+exchange of two identical completed closures.
+
+% =====================================================================
+\section{From the pairing map to the relational tensor}
+\label{sec:relational_tensor}
+% =====================================================================
+
+The alternating pairing fixes a \emph{dual Pauli-orientation relation} between
+the daughter slots in the chosen common rotational frame.  Its matrix identity is
+\begin{equation}
+  \epsm\sigma_j^T\epsm^{-1}=-\sigma_j,
+  \qquad j=1,2,3.
+  \label{eq:generator_transport}
+\end{equation}
+Define \(\Crel_{ij}\) in these matched bases by
+\begin{equation}
+  \epsm\sigma_j^T\epsm^{-1}
+  =\Crel_{ij}\sigma_i.
+  \label{eq:Crel_definition}
+\end{equation}
+Comparison with \eqref{eq:generator_transport} gives
+\begin{equation}
+  \boxed{\Crel_{ij}=-\delta_{ij}.}
+  \label{eq:Crel}
+\end{equation}
+
+\begin{definition}[Relational Pauli-orientation transport tensor]
+\(\Crel_{ij}\) records the dual Pauli-basis orientation relation induced
+by the alternating common-source pairing in \emph{matched daughter frames}.
+It is Conditional structural information about the preparation, not a
+measured two-analyzer correlation tensor.
+\end{definition}
+
+The sign must not be misread as a reversal of actual \(\SU\) rotations.
+Since \(\Jmap=\epsm K\) is anti-linear, with \(K\) complex conjugation,
+\begin{equation}
+  \Jmap\sigma_j\Jmap^{-1}=-\sigma_j,
+  \qquad
+  T_j:=-\frac{\ii}{2}\sigma_j,
+  \qquad
+  \boxed{\Jmap T_j\Jmap^{-1}=T_j},
+  \label{eq:antilinear_rotation_guard}
+\end{equation}
+and hence \(\Jmap U\Jmap^{-1}=U\) for \(U\in\SU\).
+Anti-linearity reverses \(\ii\) as well as the Pauli-vector sign: the map
+\emph{intertwines} the \(\SU\) representation; it does not reverse
+its anti-Hermitian rotation generators.  Thus \(\Crel=-I\) describes
+opposite dual Pauli orientation rather than reversal of physical rotational
+evolution.
+
+\paragraph{Separated daughter frames.}
+The form \(\Crel=-I\) is stated in the matched reference frames fixed by
+preparation.  To compare differently oriented daughter frames, suppose their
+Pauli-axis component bases are carried by orthogonal rotations
+\(R_A,R_B\in\SO\) into a common comparison convention.  For this
+explicit basis convention, the same transported relation has components
+\begin{equation}
+  C^{\mathrm{rel,comp}}=-R_A R_B^T.
+  \label{eq:frame_transport}
+\end{equation}
+This is conditional frame bookkeeping, not an independently derived
+physical parallel-transport or interaction law.  Purely changing a basis
+also changes the components of each analyzer axis and cannot alter a
+physical scalar correlation.  Actual separated closures may undergo
+different physical rotations, couplings or loss of preparation coherence;
+how their frames and relation evolve is an Open input from native dynamics.
+No preferred global frame or instantaneous transmission between the
+separated wings is assumed.
+
+Equation \eqref{eq:Crel} therefore states an opposite dual Pauli
+orientation in the prepared matching convention.  It does \emph{not} yet
+say what detector outcomes occur when an analyzer is applied.  In particular,
+\begin{equation}
+  \boxed{
+  \Crel_{ij}=-\delta_{ij}
+  \quad\text{is not yet}\quad
+  \langle A_iB_j\rangle=-\delta_{ij}.}
+  \label{eq:rel_not_cov}
+\end{equation}
+The left side belongs to preparation.  The right side would require a definition of local measured
+observables, an analyzer-response law, and a statistical rule for outcomes.
+
+A classical comparison makes the distinction concrete.  If an ordinary hidden unit vector
+\(\nhat\) were isotropically distributed and the partner carried \(-\nhat\), then
+\begin{equation}
+  \left\langle n_i(-n_j)\right\rangle
+  =-\int_{\SSph}n_i n_j\frac{\dd\Omega}{4\pi}
+  =-\frac13\delta_{ij}.
+  \label{eq:classical_covariance}
+\end{equation}
+Thus the \(-\delta_{ij}\) in \eqref{eq:Crel} cannot simply be reinterpreted as the covariance of an
+ordinary isotropic hidden spatial vector.  Its meaning is dual Pauli-orientation transport in matched frames, not a
+classical ensemble average.
+
+% =====================================================================
+\section{The analyzer-transduction boundary}
+\label{sec:analyzer}
+% =====================================================================
+
+The next question is how a local laboratory analyzer turns the prepared relation into a measured
+two-site statistic.  Let \(\ahat\) and \(\bhat\) be unit directed analyzer axes, let
+\(A,B\in\{+1,-1\}\) be the recorded signs, and write \(E(\ahat,\bhat)=\langle AB\rangle\).
+
+\subsection{Isotropy leaves an arbitrary angular function}
+
+If the complete preparation has no preferred direction, a simultaneous rotation of both analyzer
+axes cannot change the scalar correlation:
+\begin{equation}
+  E(R\ahat,R\bhat)=E(\ahat,\bhat),
+  \qquad R\in\SO.
+  \label{eq:rotational_E}
+\end{equation}
+For two directed unit vectors in three dimensions, simultaneous rotational invariance leaves only their inner product, so
+\begin{equation}
+  \boxed{E(\ahat,\bhat)=f(\ahat\cdot\bhat)}
+  \label{eq:general_f}
+\end{equation}
+for some bounded function \(f:[-1,1]\to[-1,1]\).  Isotropy therefore fixes the variable on which the
+correlation may depend, but not the function of that variable.
+
+Suppose in addition that reversing a directed analyzer reverses the signed local outcome.  Then
+\(f(-x)=-f(x)\).  Supplying perfect equal-setting anticorrelation gives \(f(1)=-1\) and
+\(f(-1)=+1\).  Even with continuity, many functions remain.  Two examples are
+\begin{equation}
+  f(x)=-x^3,
+  \qquad
+  f(x)=-\sin\!\left(\frac{\pi x}{2}\right).
+  \label{eq:counterexamples}
+\end{equation}
+Both satisfy the same symmetry and endpoint conditions as the singlet law.
+
+\paragraph{Conditional symmetry route to unbiased local marginals.}
+There is a narrower way to obtain \emph{unbiased} one-site marginals
+without postulating them independently.  Suppose that (i) the mean
+\(m_A(\ahat)=\langle A\rangle\) depends only on the local analyzer setting
+and the relevant reduced local preparation/response data, not on the remote
+setting; (ii) that \emph{complete} reduced local comparison is rotationally
+neutral, so \(m_A(R\ahat)=m_A(\ahat)\) for all \(R\in\SO\); and (iii)
+reversing the directed analyzer reverses its signed mean.  A proper
+rotation maps \(\ahat\) to \(-\ahat\), and therefore
+\begin{equation}
+  m_A(-\ahat)=m_A(\ahat)=-m_A(\ahat)
+  \quad\Longrightarrow\quad
+  \boxed{m_A(\ahat)=0,}
+  \label{eq:conditional_local_marginal}
+\end{equation}
+and likewise \(m_B(\bhat)=0\) under the analogous premises.  For binary
+outcomes this gives \(P(A=\pm1)=P(B=\pm1)=\tfrac12\).
+This is a \emph{Conditional} response-symmetry lemma, not a native
+no-signalling or Born theorem: remote-setting independence is an explicit
+premise.  A scalar-parent label by itself does not establish (ii).  For
+example, conditioning on daughter flight directions, anisotropic
+apparatus states or other selected geometry can leave physical local axes
+and invalidate the required full reduced-state isotropy.
+
+If unbiased binary marginals are supplied, or obtained through the
+separately stipulated premises above, every bounded \(f\) generates the
+pairwise joint family
+\begin{equation}
+  P(A,B\mid\ahat,\bhat)
+  =\frac14\left[1+AB\,f(\ahat\cdot\bhat)\right],
+  \label{eq:general_joint}
+\end{equation}
+whose one-site marginals are \(1/2\), independent of the distant setting.  Marginal no-signalling
+therefore does not choose \(f(x)=-x\) either.  The logical insufficiency
+of no-signalling to select quantum correlations was established by
+Popescu and Rohrlich \cite{PopescuRohrlich1994}.  The continuous,
+rotationally invariant families used here are the present construction;
+they are not identified with the finite-setting PR-box law.
+
+\begin{proposition}[Analyzer-law underdetermination]
+Rotational isotropy, continuity, signed-axis oddness, perfect equal-setting anticorrelation, unbiased
+binary marginals, and marginal no-signalling do not uniquely determine the singlet angular law.
+\end{proposition}
+
+The counterexamples are pairwise conditional probability laws, not automatically
+joint distributions over outcomes for every possible analyzer setting, and they
+need not be realizable by a quantum state.  To make the distinction quantitative,
+take the second function in \eqref{eq:counterexamples} and the usual coplanar
+CHSH settings with
+\(\ahat\cdot\bhat=\ahat\cdot\bhat'=\ahat'\cdot\bhat=1/\sqrt2\)
+and \(\ahat'\cdot\bhat'=-1/\sqrt2\).  Defining
+\(S=E(\ahat,\bhat)+E(\ahat,\bhat')+E(\ahat',\bhat)-E(\ahat',\bhat')\),
+one obtains
+\begin{equation}
+  |S|=4\sin\!\left(\frac{\pi}{2\sqrt2}\right)
+  \simeq3.58>2\sqrt2.
+  \label{eq:nonquantum_nosignal_chsh}
+\end{equation}
+Thus even a rotationally invariant, continuous, unbiased, no-signalling
+pairwise law with perfect equal-setting anticorrelation can exceed the
+standard quantum Tsirelson bound \cite{Tsirelson1980}.  The example is a \emph{mathematical
+nonquantum control}, not a physical prediction of \cmotion{}.  Matching the
+observed singlet requires selecting the \emph{quantum-admissible} correlation,
+not simply obtaining no-signalling or a Bell violation.
+
+This underdetermination is a scientific result, not an editorial caveat.  It shows that the exact
+singlet angular dependence contains constitutive information about how an analyzer couples to the
+prepared relation.
+
+\subsection{The missing bilinear law}
+
+The narrow missing bridge can be written as
+\begin{equation}
+  \boxed{
+  E(\ahat,\bhat)
+  =g\,\ahat_i\Crel_{ij}\bhat_j.}
+  \label{eq:analyzer_law}
+\end{equation}
+Here $\ahat_i$ and $\bhat_j$ are Cartesian components of the directed analyzer
+axes $\ahat$ and $\bhat$, and $g$ is a possible response normalization.
+Physically, \eqref{eq:analyzer_law} says that each local analyzer interrogates the
+prepared rotational relation linearly in its chosen direction, so the two-site mean
+is the double projection of the relational tensor.
+
+If a future physical derivation supplies this law, and the two analyzer axes
+are expressed in the matched prepared frames (or consistently referred to a
+common transported comparison frame), \eqref{eq:Crel} gives
+\begin{equation}
+  E(\ahat,\bhat)=-g\,\ahat\cdot\bhat.
+  \label{eq:dot_up_to_g}
+\end{equation}
+For independently reoriented frames, \eqref{eq:frame_transport} must
+instead be used with consistently transformed analyzer directions.
+The physical frame transport and analyzer comparison remain Open.
+Perfect equal-setting anticorrelation would then fix only the residual normalization, \(g=1\).  The
+intended architecture would therefore be
+\begin{equation}
+  \boxed{\text{derive the form}\;\longrightarrow\;\text{calibrate the residual normalization}.}
+  \label{eq:form_then_norm}
+\end{equation}
+At present even this architecture is only Conditional because exact analyzer bilinearity has not
+been derived from a physical closure--apparatus interaction.
+
+A weak-response expansion gives a useful clue but not a completion.  If the
+respective local analyzer couplings begin as
+\begin{equation}
+  V_A\sim-h_A\,\ahat_iG_i^{(A)},
+  \qquad
+  V_B\sim-h_B\,\bhat_jG_j^{(B)},
+  \label{eq:local_weak_analyzer_couplings}
+\end{equation}
+then the leading connected cross-response naturally has the form
+\begin{equation}
+  \delta^2\mathcal R_{AB}
+  \propto
+  \ahat_i\chi_{ij}\bhat_j.
+  \label{eq:weak_response}
+\end{equation}
+Thus ordinary perturbative response produces a bilinear first harmonic.  Exact detector statistics
+may nevertheless become nonlinear through thresholding, saturation, record formation, or other
+nonperturbative response.  Equation \eqref{eq:weak_response} is therefore a future-work clue, not a
+derivation of \eqref{eq:analyzer_law}.
+
+% =====================================================================
+\section{Why ordinary shared-vector models are not enough}
+\label{sec:shared_vector}
+% =====================================================================
+
+Two concise shared-vector controls separate the relational preparation structure
+from an ordinary shared spatial direction.  Their calculated correlations are
+valid within the supplied classical models; the Negative conclusion concerns
+only their identification with the full singlet angular law.
+
+For a uniformly distributed hidden direction \(\nhat\), consider deterministic local threshold
+readout
+\begin{equation}
+  A=\sgn(\ahat\cdot\nhat),
+  \qquad
+  B=-\sgn(\bhat\cdot\nhat).
+  \label{eq:threshold_model}
+\end{equation}
+This Bell-type model \cite{Bell1964,CHSH1969} gives, for
+\(\theta=\arccos(\ahat\cdot\bhat)\),
+\begin{equation}
+  E_{\rm th}(\theta)=-1+\frac{2\theta}{\pi},
+  \label{eq:threshold_result}
+\end{equation}
+not \(-\cos\theta\).
+
+A smooth factorized local response also misses the target.  If
+\(\langle A\rangle=\ahat\cdot\nhat\),
+\(\langle B\rangle=-\bhat\cdot\nhat\), and the wings are conditionally independent given
+\(\nhat\), then
+\begin{equation}
+  E_{\rm fact}(\ahat,\bhat)
+  =-\int_{\SSph}(\ahat\cdot\nhat)(\bhat\cdot\nhat)
+  \frac{\dd\Omega}{4\pi}
+  =-\frac13\ahat\cdot\bhat.
+  \label{eq:factorized_result}
+\end{equation}
+The same \(1/3\) factor appears in the classical covariance \eqref{eq:classical_covariance}; see also
+standard analyses of isotropic vector hidden-variable models \cite{GhirardiRomano2012}.  These
+failures do not prove the \cmotion{} preparation mechanism.  They show only that common ancestry plus
+an ordinary isotropic hidden direction is structurally insufficient.
+
+% =====================================================================
+\section{Downstream standard singlet controls}
+\label{sec:standard_control}
+% =====================================================================
+
+We now switch from the \cmotion{} preparation question to the standard effective quantum
+representation.  This section states what follows if the missing analyzer bridge reproduces the
+usual singlet measurement rule.  None of the following mathematics is used to select \(\epsm\) or to
+derive \(\Crel\).
+
+In the \emph{supplied standard quantum two-doublet model}, the same invariant
+antisymmetric tensor is represented by the normalized singlet ket
+\begin{equation}
+  |\Psi^-\rangle
+  =\frac{1}{\sqrt2}
+  \left(|+\rangle_A|-\rangle_B-|-\rangle_A|+\rangle_B\right).
+  \label{eq:singlet_state}
+\end{equation}
+This is a correspondence between invariant tensors, \emph{not} a derivation
+that the microscopic two-closure source prepares this pure Hilbert-space state.
+The tensor-product composition rule, amplitude normalization, and physical
+state-production dynamics are supplied or remain Open; if the daughters are
+identical, the required combined internal/spatial exchange structure is
+separately unresolved.  With the standard Pauli analyzer rule and Born trace,
+this \emph{assumed effective state} gives
+\begin{equation}
+  E(\ahat,\bhat)=-\ahat\cdot\bhat.
+  \label{eq:standard_E}
+\end{equation}
+In matched site/analyzer conventions this standard correlation is symmetric
+under interchange of its two axes, \(E(\ahat,\bhat)=E(\bhat,\ahat)\),
+despite the antisymmetry of the preparation pairing slots.  This
+distinction does not decide physical exchange statistics.
+The corresponding binary joint distribution is
+\begin{equation}
+  \boxed{
+  P(A,B\mid\ahat,\bhat)
+  =\frac14\left(1-AB\,\ahat\cdot\bhat\right).}
+  \label{eq:born_joint}
+\end{equation}
+Equation \eqref{eq:born_joint} follows from the supplied standard singlet/Born description.  It is not
+derived directly from \(\Crel\).
+
+Summing over the distant outcome gives
+\begin{equation}
+  P(A\mid\ahat,\bhat)=\frac12,
+  \qquad
+  P(B\mid\ahat,\bhat)=\frac12,
+  \label{eq:marginals}
+\end{equation}
+so changing the distant analyzer setting cannot change the local marginal distribution.  This is
+marginal no-signalling.  It does not constitute a full microscopic locality theorem.
+
+For the standard CHSH analyzer arrangement \cite{CHSH1969,Tsirelson1980},
+\eqref{eq:standard_E} gives
+\begin{equation}
+  |S|=2\sqrt2.
+  \label{eq:CHSH}
+\end{equation}
+Equation \eqref{eq:CHSH} is the ideal prediction for the supplied state and
+optimal analyzer settings, not an experimentally established exact saturation.
+Loophole-free experiments report finite-precision Bell violations with
+finite visibility and implementation-dependent statistics.  Hensen et al.
+test electron spins \cite{Hensen2015LoopholeFree}; Giustina et al. and
+Shalm et al. test photonic Bell inequalities
+\cite{Giustina2015LoopholeFree,Shalm2015LoopholeFree}.
+These experiments test Bell constraints; they need not implement this
+exact ideal singlet/CHSH arrangement.  Bell/CHSH therefore checks the
+nonclassical correlation structure that a completed bridge must reproduce.  Bell violation is not evidence specific to the preparation
+mechanism proposed here, and this paper does not derive the Tsirelson bound from a native \cmotion{}
+operator algebra.
+
+% =====================================================================
+\section{Local causality is not separable completeness}
+\label{sec:locality}
+% =====================================================================
+
+The preparation picture distinguishes two propositions that are often blurred together.
+
+\emph{Local causal propagation} concerns how newly generated physical changes propagate.  The Main
+Framework \cite{CmotionMainFramework2026} constrains that propagation by the
+framework's local-\(c\) causal architecture.  By
+contrast, \emph{separable completeness} is the stronger claim that the complete physical state of a
+prepared pair is nothing more than two independently complete local states, one at each wing.
+
+A common-source relational state can reject the second proposition without asserting a
+superluminal signal during measurement.  The distinction is
+\begin{equation}
+  \boxed{
+  \text{local causal propagation}
+  \;\neq\;
+  \text{separable value-completeness}.}
+  \label{eq:locality_distinction}
+\end{equation}
+For a proposed \emph{complete} shared preparation variable \(\lambda\), Bell-local
+factorization reads
+\begin{equation}
+  P(A,B\mid\ahat,\bhat,\lambda)
+  =P(A\mid\ahat,\lambda)P(B\mid\bhat,\lambda).
+  \label{eq:bell_factorization}
+\end{equation}
+Together with setting-independent preparation weights
+\(\rho(\lambda\mid\ahat,\bhat)=\rho(\lambda)\), ordinary normalized
+conditional probabilities and binary outcomes, this yields the CHSH bound \cite{Bell1964,CHSH1969}
+\begin{equation}
+  \boxed{|S|\leq2,}
+  \qquad
+  S:=E(\ahat,\bhat)+E(\ahat,\bhat')
+  +E(\ahat',\bhat)-E(\ahat',\bhat').
+  \label{eq:bell_complete_bound}
+\end{equation}
+Here \(\lambda\) may describe the \emph{entire jointly prepared pair},
+including an arbitrarily elaborate nonseparable/common-source relation;
+it need not be a pair of independent hidden directions.  The inequality
+still follows if \(\lambda\) screens off the two local response laws and
+is independent of the later setting choices.  The ideal singlet prediction \(|S|=2\sqrt2\), and measured Bell
+violations above the relevant local bound, cannot be reproduced under all
+those premises.  Exact experimental saturation of the ideal value is not
+required for this exclusion.
+
+Local finite-speed propagation and operational no-signalling alone do not
+logically establish Bell factorization.  Conversely, claiming a shared
+nonseparable preparation is \emph{not by itself} an escape from the Bell
+constraint: a completed physical analyzer/outcome model must say precisely
+whether it satisfies the screening-off, setting-independence and related
+premises, and demonstrate the actual joint statistics.  This manuscript
+neither selects a Bell-violating mechanism nor provides such a completed
+model.  The problem of physical analyzer coupling, probabilities and outcomes
+remains Open, with measurement completion owned downstream.
+
+The conceptual distinction does not by itself derive Bell correlations.
+Moreover,
+\begin{equation}
+  \boxed{\text{marginal no-signalling}\;\neq\;\text{full operator microcausality}.}
+  \label{eq:no_signal_not_micro}
+\end{equation}
+The standard joint law has no-signalling marginals, while spacelike commutation of a future complete
+extended-mode operator theory remains an Open proof obligation.
+
+% =====================================================================
+\section{Scientific boundary and compact audit register}
+\label{sec:boundary}
+% =====================================================================
+
+The preparation result narrows the remaining problem rather than completing measurement.  The
+immediate missing bridge is
+\begin{equation}
+  \boxed{
+  \text{prepared relational structure}
+  \;\longrightarrow\;
+  \text{analyzer-dependent statistical correlation}.}
+  \label{eq:sharp_boundary}
+\end{equation}
+The microscopic source/action that realizes the selected process class also remains unresolved, but
+it is upstream of the bounded theorem rather than silently assumed to be solved.
+
+The principal statuses are collected here so that the main argument can remain organized by physics.
+
+The register below records the scientific status of the claims used in
+this manuscript.  In the Derivation Ledger's vocabulary, Conditional means
+that a conclusion follows from an explicit premise or model class not itself
+derived; Structural means an exact or banked organizational/accounting statement
+that does not supply a microscopic law; Model-derived means rigorously derived
+inside a specified effective or analogue model, never native Derived.
+Open means unresolved; Open (sharp) identifies a sharply isolated missing
+bridge, not greater confidence.  Negative excludes an identification, mechanism
+or branch only within its stated scope.  Publication deferral does not resolve
+an Open scientific question.
+
+Scientific status and provenance are separate.  N1 denotes a primitive/native
+route and N2 a C-Motion-constrained effective bridge; standard/control denotes
+supplied conventional mathematics.  These route labels do not constitute a
+second scientific-status vocabulary.  No result here is promoted to N1.
+
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{P{5.0cm}P{3.6cm}P{6.2cm}}
+\toprule
+\textbf{Claim} & \textbf{Status} & \textbf{Scope / boundary}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Claim} & \textbf{Status} & \textbf{Scope / boundary}\\
+\midrule
+\endhead
+Common-source relational preparation interpretation & Conditional & Conditional \cmotion{} interpretation inherited from the field-first ontology; this does not select the singlet law.\\
+Fundamental doublet daughter sector & Conditional & Two-component lifted rotational representation is the tested effective sector, not a primitive matter derivation; physical sector selection remains Open.\\
+Physical complex / positive-frequency sector & Conditional & Used conditionally in the process-class distinction; physical global complex/positive-frequency selection remains Open (sharp).\\
+Alternating scalar two-daughter pairing \(a^T\epsm b\) & Conditional & Conditional exact result within the stated N2 scalar-parent, positive-frequency-doublet, local leading complex-bilinear formation class.\\
+\(\Jmap=\epsm K\) & Conditional & Conditional N2 anti-linear preparation relation: reverses Pauli-vector signs while intertwining full \(\SU\) rotations; not charge conjugation, communication, or exchange.\\
+\(\Crel_{ij}=-\delta_{ij}\) & Conditional & Conditional N2 dual Pauli-orientation relation in matched prepared frames; separated-frame transport law is Open; not measured covariance.\\
+Identification \(\Crel_{ij}=\langle A_iB_j\rangle\) & Open & Open bridge requiring local observables, analyzer transduction, and outcome statistics.\\
+Rotational reduction \(E=f(\ahat\cdot\bhat)\) & Structural & Exact Structural symmetry consequence under the stated isotropy; it does not select the function \(f\).\\
+Isotropy + continuity + signed-axis symmetry + equal-setting anticorrelation + unbiased marginals + no-signalling \(\Rightarrow f=-x\) & Negative & Explicit pairwise counterexamples; one exceeds the quantum Tsirelson bound while preserving no-signalling.\\
+Exact bilinear analyzer law
+\(E=g\,\ahat_i\Crel_{ij}\bhat_j\) &
+Open &
+Minimum missing constitutive analyzer law.\\
+Native measured law \(E=-\ahat\cdot\bhat\) & Open & Follows only after the analyzer law plus normalization are supplied.\\
+Standard singlet/Born representation & Conditional & Supplied tensor-product, pure-singlet and Born control; invariant pairing alone does not derive physical singlet-state production or exchange statistics.\\
+Marginal no-signalling & Model-derived & Model-derived/control consequence of the supplied joint law; exact for that law, but not full microscopic locality.\\
+Bell/CHSH result & Model-derived & Standard/control consequence of supplied quantum singlet; factorizing complete shared-state models with independent settings obey \(|S|\leq2\), irrespective of relational complexity.\\
+Conditional unbiased local marginals & Conditional & Zero one-site means follow only given a rotationally neutral complete reduced local comparison, local-setting-only response, and signed-axis reversal; no native no-signalling theorem.\\
+Definite outcomes / Born dynamics / detector records & Open & Scientifically Open; measurement completion is outside the scope of this paper and remains a deferred research problem. \\
+Fermionic exchange statistics & Open (sharp) & The sharply isolated exchange-sign bridge remains unresolved: alternating pair-slot pairing and one-body \(4\pi\) return do not derive many-body statistics.\\
+Headless director and parity identifications & Negative & Scoped representation controls: a nematic director lacks signed rank-one orientation, and ordinary inversion does not reverse an axial vector; no general geometric no-go.\\
+Classical shared-vector correlations & Model-derived & Exact threshold and factorized model results in \cref{sec:shared_vector}; their identification with the full singlet law is Negative, not the calculations themselves.\\
+Separated-frame comparison & Conditional & Equation \eqref{eq:frame_transport} is basis bookkeeping with supplied rotations; physical transport and coherence dynamics remain Open.\\
+Weak-response bilinearity & Conditional & Leading connected perturbative response with supplied local couplings; exact analyzer statistics and nonlinear detector response remain Open.\\
+Full operator microcausality & Open & No-signalling of one-site marginals does not prove spacelike commutation of the full extended-mode operator algebra.\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\paragraph{Scope of the no-signalling controls.}
+The \emph{Model-derived} no-signalling entry in this paper refers specifically
+to the exact marginal calculation from the \emph{supplied} standard singlet/Born
+joint law \eqref{eq:born_joint}.  In a separate stipulated allowed joint-kernel
+class with additional stipulated admissibility and marginal assumptions,
+a no-signalling result can be established as an exact conditional
+mathematical statement.  This separate control is not used in the preparation
+theorem.  Neither statement derives physical analyzer probabilities or full
+operator microcausality.  Actual no-signalling for a future native analyzer theory
+must be checked from its completed joint law.
+
+The \emph{Conditional} standard singlet/Born control consists of imported
+mathematical consequences, not native \cmotion{} Born or outcome dynamics.  These remain scientifically Open in the separate
+measurement-completion work (publication-deferred).  The deferred measurement-completion programme's target is not merely
+to preserve a postulated probability distribution: it must justify a
+physical apparatus/environment sampling measure \(\nu\) and single-trial
+selection dynamics \(\mathcal S\) that reproduce the standard frequencies
+\(\operatorname{Tr}(\rho E_i)\) for specified preparation and measurement
+contexts.  Equivariance could preserve \emph{given} weights but would not,
+without a further argument, select those weights physically.
+
+The empirical inputs are also kept separate.  Source isotropy may be an empirical preparation
+property if the future microscopic source law does not derive it.  The
+conditional local-marginal lemma \eqref{eq:conditional_local_marginal}
+requires stronger reduced-response assumptions than a scalar parent alone.
+Unbiased marginals are not needed to derive \(\Crel\).  Perfect equal-setting anticorrelation may normalize \(g\) only after the Open
+bilinear analyzer law is established.  The full angular law \(E=-\ahat\cdot\bhat\) is never used as
+an input to the preparation theorem.
+
+Finally, the representation boundary is strict.  The effective doublet is represented in
+\(\CC^2\); \(\epsm\) is its invariant alternating bilinear form; \(\Jmap\) is a preparation relation;
+and \(\Crel\) is a dual Pauli-orientation transport tensor in matched frames.  Only in \cref{sec:standard_control} is the familiar
+tensor-product singlet, Pauli analyzer algebra, and Born rule supplied as standard effective quantum
+machinery.
+
+\paragraph{Future-model admission controls.}
+A proposed native analyzer/measurement law must preserve normalization,
+positivity, operational no-signalling and membership of its claimed
+quantum-admissible joint-kernel class under the \emph{actual} evolution;
+agreement with one CHSH number is insufficient.  It must reproduce the full
+angular dependence and test stability under source/analyzer variations.
+Consistency of multi-pair preparation, composition and swapping is a
+separate future test, not a preparation theorem of this paper.  These
+controls state what a later physical model must demonstrate, rather than
+treating results from prescribed-kernel models as evidence of a native microscopic derivation.
+
+% =====================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+% =====================================================================
+
+The paper asked what a common source can prepare before the standard quantum measurement law is
+supplied.  Within the stated Conditional effective sector, the answer is sharper than an unspecified
+``shared geometry.''  A rotationally scalar source forming two positive-frequency fundamental
+doublet daughters through a leading local complex-bilinear formation process admits the unique
+alternating pairing
+\begin{equation}
+  a^T\epsm b,
+  \qquad
+  \Jmap=\epsm K,
+  \qquad
+  \Crel_{ij}=-\delta_{ij}.
+  \label{eq:conclusion_result}
+\end{equation}
+The first expression is the invariant pair-formation relation (whose full
+mode-field vertex has the sum-frequency phase shown in \eqref{eq:pair_phase}),
+the second is its anti-linear
+preparation map, and the third records opposite dual Pauli-axis orientation in matched
+prepared daughter frames.  The anti-linear map intertwines physical \(\SU\) rotations;
+separated-frame dynamics remain Open.  These are Conditional N2 results, not primitive
+N1 derivations.
+
+The result stops at a physically meaningful boundary.  \(\Crel\) is not the measured covariance.
+Rotational isotropy gives only
+\begin{equation}
+  E(\ahat,\bhat)=f(\ahat\cdot\bhat),
+  \label{eq:conclusion_general_f}
+\end{equation}
+and strong symmetry, endpoint, marginal, and no-signalling conditions still do not force
+\(f(x)=-x\).  The exact local law that converts the prepared rotational relation into analyzer
+statistics remains Open.  If that law is eventually derived as a bilinear double projection, then
+\(\Crel=-I\) fixes the angular dependence and equal-setting anticorrelation can fix only the residual
+normalization.
+
+The remaining task is therefore narrower than ``derive entanglement from scratch'': determine how a
+physical analyzer interrogates the prepared relational structure, after its daughter-frame
+transport has been specified.  Both transport and analyzer coupling remain Open.
+Standard singlet probabilities, Bell/CHSH violation, and no-signalling marginals show what the
+completed bridge must reproduce, but they are downstream controls.  The
+invariant pairing does not alone produce a pure physical singlet or bypass
+Bell-local factorization of complete shared states; additional analyzer
+physics must select the quantum-admissible law.  Born weighting, definite
+single-trial outcomes, detector records, physical doublet and complex-sector selection, the
+microscopic source/action, exchange statistics, and full operator microcausality remain explicit
+open problems rather than hidden assumptions of Structural Entanglement I.
+
+
+
+\newpage
+\printbibliography
+
+\end{document}
